@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DanaExperts Presentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            /* Brand Colors for accents on Light Theme */
+            --dana-dark: #1e3a8a;
+            --dana-primary: #2563eb;
+            --dana-light: #bfdbfe;
+            --dana-gradient: linear-gradient(135deg, #1e3a8a, #3b82f6);
+
+            --odoo-primary: #714B67;
+            --odoo-light: #d8b4fe;
+            --odoo-gray-dark: #334155;
+            --odoo-gradient: linear-gradient(135deg, #4c1d95, #714B67);
+
+            --ynet-primary: #eab308;
+            --ynet-dark: #ca8a04;
+            
+            /* Clean Light Theme Backgrounds */
+            --bg-base: #f8fafc;
+            --bg-panel: rgba(255, 255, 255, 0.85);
+            
+            /* Text Colors */
+            --text-heading: #0f172a;
+            --text-sub: #334155;
+            --text-body: #475569;
+            --text-muted: #64748b;
+            
+            /* Transitions */
+            --trans-fast: 150ms ease;
+            --trans-med: 300ms ease;
+            --trans-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-body);
+            height: 100vh;
+            width: 100vw;
+            user-select: none;
+        }
+
+        /* Abstract Premium Geometric Shapes in Background instead of Glows */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+            transition: all 1.5s ease;
+        }
+
+        .shape-1 { top: -10%; left: -5%; width: 50vw; height: 50vh; background: var(--dana-light); }
+        .shape-2 { bottom: -10%; right: -5%; width: 40vw; height: 40vh; background: var(--odoo-light); }
+
+        /* Dynamic Theme Shapes */
+        body[data-theme="dana"] .shape-1 { background: rgba(59, 130, 246, 0.3); transform: scale(1.2); }
+        body[data-theme="dana"] .shape-2 { background: rgba(226, 232, 240, 0.8); }
+        
+        body[data-theme="odoo"] .shape-1 { background: rgba(226, 232, 240, 0.8); }
+        body[data-theme="odoo"] .shape-2 { background: rgba(168, 85, 247, 0.3); transform: scale(1.3); }
+        
+        body[data-theme="collab"] .shape-1 { background: rgba(59, 130, 246, 0.2); }
+        body[data-theme="collab"] .shape-2 { background: rgba(234, 179, 8, 0.2); }
+
+        /* Elegant Logos - Natural state, no background hacks needed */
+        .logo-pure {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-pure img {
+            width: auto;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); /* Very soft natural shadow */
+            transition: transform var(--trans-med);
+        }
+
+        .logo-pure:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Adjusted Logo Sizes: Make Odoo & Y-NetTech significantly larger */
+        .logo-dana-main { height: 50px !important; }
+        .logo-odoo-main { height: 70px !important; }
+        .logo-ynet-main { height: 75px !important; }
+        
+        .logo-dana-header { height: 35px !important; display: none; }
+        .logo-odoo-header { height: 45px !important; display: none; }
+        
+        .logo-card-head { height: 45px !important; margin-bottom: 15px; }
+
+        /* Header / Watermark */
+        .header {
+            position: fixed;
+            top: 40px;
+            left: 50px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.9;
+        }
+        
+        /* Slide Container */
+        .slide-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        .slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -45%) scale(0.97);
+            width: 90vw;
+            max-width: 1300px;
+            height: 85vh;
+            max-height: 800px;
+            opacity: 0;
+            transition: var(--trans-slow);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        .slide.prev {
+            transform: translate(-50%, -55%) scale(0.97);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Glassmorphism Panel on Light Mode */
+        .glass-panel {
+            background: var(--bg-panel);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            border-radius: 24px;
+            padding: 40px 50px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), 0 0 15px rgba(255, 255, 255, 0.5) inset;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            color: var(--text-heading);
+        }
+
+        .text-dana {
+            color: var(--dana-primary);
+        }
+
+        h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--text-heading);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.05), transparent);
+            margin-left: 20px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: var(--text-body);
+            font-size: 1.15rem;
+        }
+
+        /* Layout Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+        }
+
+        /* Cards - Light Theme */
+        .card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: var(--trans-med);
+            height: 100%;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+        }
+
+        /* Accent top borders for cards */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            opacity: 0.8;
+            transition: var(--trans-med);
+        }
+
+        .card.theme-dana::before { background: var(--dana-primary); }
+        .card.theme-odoo::before { background: var(--odoo-primary); }
+        .card.theme-ynet::before { background: var(--ynet-primary); }
+
+        .card h4 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--text-heading);
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex: 1;
+        }
+
+        ul li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 30px;
+            color: var(--text-sub);
+        }
+
+        /* Custom Bullets */
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .theme-dana ul li::before { background: var(--dana-primary); }
+        .theme-odoo ul li::before { background: var(--odoo-primary); }
+        .theme-ynet ul li::before { background: var(--ynet-primary); }
+
+        /* Logos & Visuals */
+        .logo-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .equation-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .operator {
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* Badges */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        
+        .badge.odoo { border-color: rgba(113, 75, 103, 0.3); color: var(--odoo-primary); background: rgba(113, 75, 103, 0.02); }
+        .badge.dana { border-color: rgba(37, 99, 235, 0.3); color: var(--dana-primary); background: rgba(37, 99, 235, 0.02); }
+        .badge.ynet { border-color: rgba(234, 179, 8, 0.4); color: var(--ynet-dark); background: rgba(234, 179, 8, 0.02); }
+
+        /* Next Steps */
+        .step-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: rgba(0,0,0,0.03);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        /* Navigation Controls - Hidden & Small at bottom right */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 8px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            opacity: 0.3;
+            transition: var(--trans-med);
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .controls:hover {
+            opacity: 1;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .btn-nav {
+            background: #f1f5f9;
+            border: none;
+            color: var(--text-sub);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--trans-fast);
+            width: 32px;
+            height: 32px;
+        }
+
+        .btn-nav:hover {
+            color: #0f172a;
+            background: #e2e8f0;
+        }
+
+        .page-number {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            min-width: 45px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;  /* Move progress bar to top for light theme */
+            left: 0;
+            height: 4px;
+            background: var(--dana-gradient);
+            width: 0%;
+            transition: width var(--trans-med);
+            z-index: 1001;
+        }
+
+        /* Utility */
+        .text-center { text-align: center; }
+        .mt-4 { margin-top: 2rem; }
+        .mb-2 { margin-bottom: 1rem; }
+    </style>
+</head>
+<body data-theme="dana">
+
+    <div class="ambient-glow">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+    </div>
+
+    <!-- Small watermark top left has been removed per request -->
+
+    <div class="slide-container" id="slider">
+
+        <!-- Slide 1: Title -->
+        <div class="slide active" data-theme="collab">
+            <div class="glass-panel text-center">
+                <div class="logo-display">
+                    <div class="logo-pure">
+                        <img src="logodanaexperts.png" alt="DanaExperts" class="logo-dana-main">
+                    </div>
+                    <span class="operator">×</span>
+                    <div class="logo-pure">
+                        <img src="TransparentLogo-UPkaOdnc_ONrY2UO8Ih6uQ.png" alt="Y-NetTech" class="logo-ynet-main">
+                    </div>
+                </div>
+                <h1>Khai Phá Tiềm Năng<br><span class="text-dana">Smart Factory 4.0</span></h1>
+                <h3 style="margin-top: 20px;">Cùng kiến tạo tương lai số hóa toàn diện cho nhà máy sản xuất</h3>
+                <div class="badge-container" style="justify-content: center; margin-top: 40px;">
+                    <span class="badge dana">Strategic Partnership</span>
+                    <span class="badge odoo">Odoo ERP Ecosystem</span>
+                    <span class="badge ynet">Industrial Automation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Về DanaExperts -->
+        <div class="slide" data-theme="dana">
+            <div class="glass-panel">
+                <div class="logo-pure logo-card-head">
+                    <img src="logodanaexperts.png" alt="DanaExperts" class="logo-dana-main">
+                </div>
+                <h2>Đối Tác Triển Khai Chính Thức Của Odoo</h2>
+                <div class="grid-2">
+                    <div>
+                        <p style="font-size: 1.25rem; font-weight: 500; margin-bottom: 25px; color: var(--text-heading);">
+                            DanaExperts mang đến giải pháp ERP/MES mạnh mẽ, vận hành bởi đội ngũ chuyên gia dạn dày kinh nghiệm tại Việt Nam và Châu Âu.
+                        </p>
+                        <ul class="theme-dana">
+                            <li><strong>Hiện diện Toàn cầu:</strong> Văn phòng tại Đà Nẵng, Helsinki (Phần Lan), Nhật Bản & Mỹ.</li>
+                            <li><strong>Chuyên môn Sâu:</strong> Hơn 4 năm chuyên biệt tư vấn & triển khai Odoo All-in-One.</li>
+                            <li><strong>Dịch vụ Toàn diện:</strong> Phân tích nghiệp vụ, Customization, Data Migration, Nâng cấp phiên bản.</li>
+                        </ul>
+                    </div>
+                    <div class="card theme-dana">
+                        <h4>Thế mạnh cốt lõi</h4>
+                        <ul class="theme-dana">
+                            <li>Xây dựng nền tảng Quản trị Sản xuất (Manufacturing) chuyên nghiệp.</li>
+                            <li>Khả năng Tích hợp hệ thống sâu (IoT, API, Data với máy móc).</li>
+                            <li>Quy trình chuẩn hóa, tối ưu hóa giảm thiểu sai sót vận hành.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Odoo ERP -->
+        <div class="slide" data-theme="odoo">
+            <div class="glass-panel">
+                <div class="logo-pure logo-card-head">
+                    <img src="Odoo_logo_rgb.svg.png" alt="Odoo" class="logo-odoo-main">
+                </div>
+                <h2>Hệ Sinh Thái ERP Dẫn Đầu Thế Giới</h2>
+                <div class="grid-2">
+                    <div>
+                        <ul class="theme-odoo">
+                            <li><strong>All-in-One Data:</strong> Hơn 80+ ứng dụng hoạt động liền mạch, sử dụng chung một Database duy nhất.</li>
+                            <li><strong>Quy mô khổng lồ:</strong> 8 triệu+ người dùng, 5000+ doanh nghiệp cài đặt mới mỗi ngày trên 175 quốc gia.</li>
+                            <li><strong>Real-time Access:</strong> Cập nhật dữ liệu lập tức, xóa bỏ "khoảng trống" thông tin các phòng ban.</li>
+                            <li><strong>Kiến trúc mở:</strong> Dễ dàng điều chỉnh, mở rộng không giới hạn theo quy mô doanh nghiệp.</li>
+                        </ul>
+                    </div>
+                    <div class="card theme-odoo">
+                        <h4>Các Module Cốt Lõi Trải Dài</h4>
+                        <div class="badge-container">
+                            <span class="badge odoo">Manufacturing (MRP)</span>
+                            <span class="badge odoo">Inventory & Routing</span>
+                            <span class="badge odoo">Quality Control</span>
+                            <span class="badge odoo">Maintenance</span>
+                            <span class="badge odoo">IoT Box Connect</span>
+                            <span class="badge odoo">B2B Sales & CRM</span>
+                            <span class="badge odoo">Accounting Core</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Odoo Cho Smart Factory -->
+        <div class="slide" data-theme="odoo">
+            <div class="glass-panel">
+                <div class="logo-pure logo-card-head" style="margin-bottom: 5px;">
+                    <img src="Odoo_logo_rgb.svg.png" alt="Odoo" class="logo-odoo-main">
+                </div>
+                <h2 style="margin-bottom: 15px; font-size: 2.1rem;">Quản Trị Nhà Máy Thông Minh (Smart Factory)</h2>
+                <p style="margin-bottom: 20px; font-size: 1.15rem;">Kiểm soát vòng đời sản xuất từ phân xưởng đến bảng điều khiển của ban giám đốc.</p>
+                <div class="grid-2" style="margin-top: 5px; gap: 30px;">
+                    <div class="card theme-odoo" style="padding: 25px 30px;">
+                        <h4 style="margin-bottom: 15px;">Manufacturing & Shop Floor</h4>
+                        <ul class="theme-odoo">
+                            <li>Giao diện Shop Floor trực quan trên Tablet/PC tại chuyền sản xuất.</li>
+                            <li>Giao việc & Điều phối Lệnh sản xuất trực tiếp.</li>
+                            <li>Traceability 100% (Truy xuất nguồn gốc xuyên suốt Lot/Serial).</li>
+                        </ul>
+                    </div>
+                    <div class="card theme-odoo" style="padding: 25px 30px;">
+                        <h4 style="margin-bottom: 15px;">IoT Integration & Analytics</h4>
+                        <ul class="theme-odoo">
+                            <li>Giao tiếp tự động đa chuẩn (MQTT/OPC UA) với máy móc, PLC.</li>
+                            <li>Tự động hóa luồng Data Capture, loại trừ lỗi nhập liệu thủ công.</li>
+                            <li>Báo cáo OEE (Hiệu quả thiết bị tổng thể) Real-time.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Mô Hình Hợp Tác -->
+        <div class="slide" data-theme="collab">
+            <div class="glass-panel text-center">
+                <h2>Mô Hình Hợp Tác Giao Thoa</h2>
+                <p style="font-size:1.2rem; margin-bottom: 20px;">Kết nối đỉnh cao chuyên môn phần cứng tại xưởng và phần mềm quản trị tổng thể.</p>
+                
+                <div class="equation-box" style="margin: 15px 0;">
+                    <div class="card theme-ynet" style="flex: 1; padding: 25px 20px; align-items: center; border-width: 2px;">
+                        <div class="logo-pure" style="margin-bottom: 20px;">
+                            <img src="TransparentLogo-UPkaOdnc_ONrY2UO8Ih6uQ.png" alt="Y-NetTech" class="logo-ynet-main">
+                        </div>
+                        <h4 style="margin-bottom: 10px; font-size: 1.3rem;">Thiết Bị Sàn Nhà Máy</h4>
+                        <p style="font-size: 1.05rem; text-align: center; margin: 0;">Automation Systems, Robot, Sensors, PLC, Machine Vision & AI Control</p>
+                    </div>
+                    
+                    <span class="operator">+</span>
+                    
+                    <div class="card theme-dana" style="flex: 1; padding: 25px 20px; align-items: center; border-width: 2px;">
+                        <div class="logo-pure" style="margin-bottom: 20px;">
+                            <img src="logodanaexperts.png" alt="DanaExperts" class="logo-dana-main">
+                        </div>
+                        <h4 style="margin-bottom: 10px; font-size: 1.3rem;">Quản Trị Doanh Nghiệp</h4>
+                        <p style="font-size: 1.05rem; text-align: center; margin: 0;">Odoo ERP Core, Data Processing, Shop Floor MES, Analytics Dashboard</p>
+                    </div>
+                </div>
+                
+                <div style="background: var(--dana-primary); padding: 15px 40px; border-radius: 100px; display: inline-block; margin-top: 15px; box-shadow: 0 10px 20px rgba(37,99,235,0.2);">
+                    <h3 style="margin: 0; color: #ffffff; font-size: 1.5rem; font-weight: 700;">
+                        Giải Pháp End-to-End Smart Factory Hoàn Chỉnh
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Case Studies -->
+        <div class="slide" data-theme="dana">
+            <div class="glass-panel">
+                <h2>Bảo Chứng Năng Lực Tại Thị Trường Phần Lan</h2>
+                <div class="grid-3 mt-4">
+                    <div class="card theme-dana" style="padding: 40px 30px;">
+                        <div class="step-number">01</div>
+                        <h4>Uusioaines Oy</h4>
+                        <p style="font-size: 1rem; margin-bottom: 15px; color: var(--dana-primary); font-weight: 500;">Công nghiệp tái chế</p>
+                        <ul class="theme-dana">
+                            <li>Tích hợp luồng Manufacturing, Inventory, Accounting.</li>
+                            <li>Mở rộng hệ thống vận hành lõi.</li>
+                        </ul>
+                    </div>
+                    <div class="card theme-dana" style="padding: 40px 30px;">
+                        <div class="step-number">02</div>
+                        <h4>kW-Set Oy</h4>
+                        <p style="font-size: 1rem; margin-bottom: 15px; color: var(--dana-primary); font-weight: 500;">Dịch vụ thiết bị</p>
+                        <ul class="theme-dana">
+                            <li>Phát triển chuyên sâu Field Service.</li>
+                            <li>Quản lý thiết bị cho thuê & lịch bảo trì hoàn toàn tự động.</li>
+                        </ul>
+                    </div>
+                    <div class="card theme-dana" style="padding: 40px 30px;">
+                        <div class="step-number">03</div>
+                        <h4>Nettiväri</h4>
+                        <p style="font-size: 1rem; margin-bottom: 15px; color: var(--dana-primary); font-weight: 500;">Thương mại B2B</p>
+                        <ul class="theme-dana">
+                            <li>Migrate Data phức tạp từ 3 hệ thống rời rạc.</li>
+                            <li>Xây dựng nền tảng All-in-One quản trị tập trung.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Next Steps -->
+        <div class="slide" data-theme="collab">
+            <div class="glass-panel text-center">
+                <h2 style="margin-bottom: 15px;">Bước Tiến Hợp Tác Kế Tiếp</h2>
+                <div class="grid-3" style="text-align: left; gap: 20px; margin-top: 15px;">
+                    <div class="card theme-dana" style="padding: 25px 20px;">
+                        <h4 style="font-size: 1.2rem; margin-bottom: 10px;">1. Phân Tích Hiện Trạng</h4>
+                        <p style="font-size: 1rem; margin: 0;">Gặp gỡ, bóc tách "điểm khuyết" dữ liệu của khách dùng máy móc Y-NetTech khi đồng bộ lên ERP.</p>
+                    </div>
+                    <div class="card theme-odoo" style="padding: 25px 20px;">
+                        <h4 style="font-size: 1.2rem; margin-bottom: 10px;">2. Technical Demo</h4>
+                        <p style="font-size: 1rem; margin: 0;">Workshop trực quan hóa luồng: Machine Sensor/PLC -> Odoo IoT Box -> Odoo Dashboard.</p>
+                    </div>
+                    <div class="card theme-ynet" style="padding: 25px 20px;">
+                        <h4 style="font-size: 1.2rem; margin-bottom: 10px;">3. Triển Khai Pilot</h4>
+                        <p style="font-size: 1rem; margin: 0;">Lựa chọn 1 dây chuyền mẫu triển khai pilot, kiểm chứng hiệu quả thực tế trước khi scale rộng.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.05);">
+                    <div class="logo-pure" style="margin-bottom: 10px;">
+                        <img src="logodanaexperts.png" alt="DanaExperts" style="height: 30px !important;">
+                    </div>
+                    <h3 style="color: var(--text-heading); margin-bottom: 5px; font-size: 1.4rem; font-weight: 800;">Trân trọng cảm ơn đối tác Y-NetTech. Hãy cùng khơi mở tương lai!</h3>
+                    <p style="color: var(--text-sub); font-weight: 500; font-size: 1rem; margin: 0;">
+                        <span style="opacity: 0.7;">Email:</span> <strong>contact@danaexperts.com</strong>
+                        <span style="margin: 0 15px; opacity: 0.3;">|</span> 
+                        <span style="opacity: 0.7;">Hotline:</span> <strong>(+84) 876-666-634</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Hidden Navigation Controls -->
+    <!-- Nút điều hướng được đặt ẩn (opacity thấp) và có kích thước nhỏ ở góc dưới phải -->
+    <div class="controls">
+        <button class="btn-nav" id="btnPrev" title="Trang trước" aria-label="Previous Slide">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <span class="page-number" id="pageIndicator">1 / 7</span>
+        <button class="btn-nav" id="btnNext" title="Trang sau" aria-label="Next Slide">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+    </div>
+    
+    <div class="progress-bar" id="progressBar"></div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const pageIndicator = document.getElementById('pageIndicator');
+        const progressBar = document.getElementById('progressBar');
+        const bodyTag = document.body;
+        let currentSlide = 0;
+
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                    bodyTag.setAttribute('data-theme', slide.getAttribute('data-theme'));
+                } else if (index < currentSlide) {
+                    slide.classList.add('prev');
+                }
+            });
+
+            pageIndicator.innerText = `${currentSlide + 1} / ${slides.length}`;
+            progressBar.style.width = `${((currentSlide + 1) / slides.length) * 100}%`;
+            
+            const currentTheme = slides[currentSlide].getAttribute('data-theme');
+            if (currentTheme === 'odoo') {
+                progressBar.style.background = 'var(--odoo-primary)';
+            } else if (currentTheme === 'collab') {
+                progressBar.style.background = 'linear-gradient(to right, var(--dana-primary), var(--ynet-primary))';
+            } else {
+                progressBar.style.background = 'var(--dana-primary)';
+            }
+            
+            btnPrev.style.visibility = currentSlide === 0 ? 'hidden' : 'visible';
+            btnNext.style.display = currentSlide === slides.length - 1 ? 'none' : 'flex';
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlider();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlider();
+            }
+        }
+
+        btnNext.addEventListener('click', nextSlide);
+        btnPrev.addEventListener('click', prevSlide);
+
+        // Keyboard & click navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        let isThrottled = false;
+        document.addEventListener('wheel', (e) => {
+            if (isThrottled) return;
+            isThrottled = true;
+            setTimeout(() => { isThrottled = false; }, 1000);
+
+            if (e.deltaY > 50) {
+                nextSlide();
+            } else if (e.deltaY < -50) {
+                prevSlide();
+            }
+        }, { passive: true });
+
+        updateSlider();
+    </script>
+</body>
+</html>

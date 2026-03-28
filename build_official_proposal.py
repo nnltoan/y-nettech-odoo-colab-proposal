@@ -1,0 +1,760 @@
+import codecs
+
+html_content = """<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Xuất Dự Án / プロジェクト提案: Smart Factory 4.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --accent: #0284C7;
+            --surface: #F8FAFC;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            color: #334155;
+            background-color: #E2E8F0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page-container {
+            max-width: 210mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .page {
+            padding: 20mm 20mm;
+            min-height: 297mm;
+            position: relative;
+            page-break-after: always;
+        }
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Language Toggle Classes */
+        body.lang-vi .jp { display: none !important; }
+        body.lang-jp .vi { display: none !important; }
+        
+        /* Print Styles */
+        @media print {
+            body { background: white; margin: 0; }
+            .page-container { box-shadow: none; margin: 0; max-width: none; }
+            .page { padding: 0; min-height: auto; margin-bottom: 2cm; }
+            .avoid-break { page-break-inside: avoid; }
+            h2, h3 { page-break-after: avoid; }
+            img { max-width: 100% !important; page-break-inside: avoid; }
+            #lang-toggle { display: none !important; }
+        }
+
+        .timeline-dot {
+            width: 12px; height: 12px; background: #0284C7; border-radius: 50%;
+            position: absolute; left: -6px; top: 6px;
+        }
+        .timeline-item {
+            border-left: 2px solid #E2E8F0;
+            padding-left: 20px;
+            position: relative;
+            padding-bottom: 24px;
+        }
+        
+        /* Fixed Lang Toggle Button */
+        #lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 4px;
+        }
+        .lang-btn {
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: #0284C7;
+            color: white;
+        }
+        .lang-btn.inactive {
+            background: transparent;
+            color: #64748B;
+        }
+        .lang-btn.inactive:hover {
+            background: #f1f5f9;
+        }
+    </style>
+    <script>
+        function setLang(lang) {
+            // Set body class
+            document.body.className = 'antialiased lang-' + lang;
+            
+            // Update buttons
+            document.getElementById('btn-vi').className = lang === 'vi' ? 'lang-btn active' : 'lang-btn inactive';
+            document.getElementById('btn-jp').className = lang === 'jp' ? 'lang-btn active' : 'lang-btn inactive';
+            
+            // Swap ROI Image - Swapped according to user feedback
+            const img = document.getElementById('roi-image');
+            if(img) {
+                img.src = lang === 'vi' ? 'Gemini_Generated_Image_lk83prlk83prlk83.png' : 'Gemini_Generated_Image_lmky0xlmky0xlmky.png';
+            }
+        }
+    </script>
+</head>
+<body class="antialiased lang-vi">
+
+<div id="lang-toggle">
+    <button id="btn-vi" class="lang-btn active" onclick="setLang('vi')">Tiếng Việt</button>
+    <button id="btn-jp" class="lang-btn inactive" onclick="setLang('jp')">日本語</button>
+</div>
+
+<div class="page-container">
+
+    <!-- PAGE 1: COVER -->
+    <div class="page flex flex-col justify-center items-center text-center relative overflow-hidden bg-white">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-slate-200 to-sky-600"></div>
+        
+        <div class="flex items-center justify-center space-x-8 mb-16 relative z-10 w-full px-8">
+            <img src="TransparentLogo-UPkaOdnc_ONrY2UO8Ih6uQ.png" alt="Y-NetTech" class="h-12 object-contain drop-shadow-sm">
+            <div class="h-10 w-px bg-slate-300"></div>
+            <img src="logodanaexperts.png" alt="DanaExperts" class="h-12 object-contain drop-shadow-sm">
+            <div class="h-10 w-px bg-slate-300"></div>
+            <img src="Odoo_logo_rgb.svg.png" alt="Odoo ERP" class="h-10 object-contain drop-shadow-sm">
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto mt-12 mb-24">
+            <h1 class="text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+                <span class="vi">Giải Pháp <br><span class="text-sky-600">Smart Factory 4.0</span></span>
+                <span class="jp">インダストリー4.0 <br><span class="text-sky-600">スマートファクトリーソリューション</span></span>
+            </h1>
+            <p class="text-xl text-slate-500 font-medium tracking-wide uppercase">
+                <span class="vi">Chuyển Đổi Số Toàn Diện Cho Nhà Máy Sản Xuất</span>
+                <span class="jp">製造工場の包括的デジタルトランスフォーメーション</span>
+            </p>
+        </div>
+
+        <div class="relative z-10 w-full max-w-md mx-auto text-left bg-slate-50 rounded-2xl p-8 border border-slate-200">
+            <div class="mb-4 border-b border-slate-200 pb-4">
+                <p class="text-sm font-semibold text-sky-600 uppercase tracking-wider mb-1">
+                    <span class="vi">Khách hàng</span>
+                    <span class="jp">クライアント</span>
+                </p>
+                <p class="text-lg font-medium text-slate-800">
+                    <span class="vi">Nhà máy Công nghiệp (Nhật Bản)</span>
+                    <span class="jp">工業製造拠点 (日本)</span>
+                </p>
+                <p class="text-sm text-slate-500">
+                    <span class="vi">Quy mô: 2,000+ nhân sự</span>
+                    <span class="jp">規模: 2,000名以上</span>
+                </p>
+            </div>
+            <div>
+                <p class="text-sm font-semibold text-sky-600 uppercase tracking-wider mb-1">
+                    <span class="vi">Thực hiện bởi</span>
+                    <span class="jp">提案者</span>
+                </p>
+                <p class="text-base font-medium text-slate-800">
+                    <span class="vi">Liên minh Y-NetTech & DanaExperts</span>
+                    <span class="jp">Y-NetTech & DanaExperts アライアンス</span>
+                </p>
+                <p class="text-xs text-slate-400 mt-2">
+                    <span class="vi">Ngày: Tháng 03, 2026</span>
+                    <span class="jp">日付: 2026年 3月</span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-0 w-full text-center">
+            <p class="text-xs text-slate-400">Strictly Confidential &bull; Designed for Board of Directors Review</p>
+        </div>
+    </div>
+
+
+    <!-- PAGE 2: EXECUTIVE SUMMARY & PAIN POINTS -->
+    <div class="page bg-white">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+            <span class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">01</span>
+            <span class="vi">Bài Toán Vận Hành & Tầm Nhìn</span>
+            <span class="jp">運用上の課題と協業ビジョン</span>
+        </h2>
+        
+        <div class="mb-10 text-slate-600 text-lg leading-relaxed">
+            <p class="mb-4 vi">Kính thưa Ban Giám Đốc,</p>
+            <p class="mb-4 jp">役員各位、</p>
+            <p class="vi">Trong kỷ nguyên sản xuất hiện đại, dữ liệu liên tục là yếu tố sống còn. Đối với nhà máy <strong>hơn 2,000 nhân sự</strong>, việc duy trì quy trình quản lý thủ công tạo ra sự lãng phí vô hình khổng lồ trong ngân sách vận hành.</p>
+            <p class="jp">現代の製造業において、一貫性のあるデータは不可欠です。<strong>2,000名以上</strong>の従業員を抱える工場にとって、手作業による管理を維持することは、運営予算において目に見えない莫大な無駄を生み出します。</p>
+        </div>
+
+        <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4">
+            <span class="vi">Thách Thức Hiện Tại (Nỗi Đau)</span>
+            <span class="jp">現状の最大の課題（ペインポイント）</span>
+        </h3>
+        
+        <div class="grid grid-cols-2 gap-6 mb-12 avoid-break">
+            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                <h4 class="font-bold text-slate-800 mb-2">
+                    <span class="vi">Quản lý bằng Giấy & Excel</span>
+                    <span class="jp">紙とExcelによる手動管理</span>
+                </h4>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Dữ liệu chia cắt. Tỉ lệ sai sót do con người cao, tốn thời gian đối soát.</span>
+                    <span class="jp">データが分断されており、人為的エラーの発生率が高く、照合に膨大な時間を要します。</span>
+                </p>
+            </div>
+            
+            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                <h4 class="font-bold text-slate-800 mb-2">
+                    <span class="vi">Lãng Phí Nhân Sự Gián Tiếp</span>
+                    <span class="jp">間接部門の人材の浪費</span>
+                </h4>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Cần lực lượng lớn nhân sự chỉ để ghi chép, nhập chứng từ báo cáo mỗi ngày.</span>
+                    <span class="jp">毎日、レポートの記録・入力・集計だけのために、非常に多くの人員を配置する必要があります。</span>
+                </p>
+            </div>
+            
+            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                <h4 class="font-bold text-slate-800 mb-2">
+                    <span class="vi">Khuất tầm nhìn (No Real-time)</span>
+                    <span class="jp">リアルタイムの可視性欠如</span>
+                </h4>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Lãnh đạo không theo dõi được Hiệu suất thiết bị (OEE) và tồn kho tức thời.</span>
+                    <span class="jp">経営陣は、設備総合効率（OEE）やリアルタイムの正確な在庫状況を即座に把握できません。</span>
+                </p>
+            </div>
+            
+            <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                <h4 class="font-bold text-slate-800 mb-2">
+                    <span class="vi">Tích Hợp Hệ Thống Cũ Kém</span>
+                    <span class="jp">レガシーシステムの統合困難</span>
+                </h4>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Thiết bị phần mềm cũ không API tạo ra các ốc đảo dữ liệu trong nhà máy.</span>
+                    <span class="jp">API接続を持たない古いクローズドソフトウェアにより、工場内にデータの“孤島（サイロ）”が形成されています。</span>
+                </p>
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4 avoid-break">
+            <span class="vi">Tầm Nhìn Hợp Tác: Y-NetTech x DanaExperts</span>
+            <span class="jp">統合されたアライアンス：Y-NetTech x DanaExperts</span>
+        </h3>
+        
+        <div class="bg-sky-50 rounded-2xl p-8 shadow-sm border border-sky-100 avoid-break">
+            <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
+                <div class="flex-1 bg-white p-6 rounded-xl border border-sky-200">
+                    <h4 class="text-sky-600 font-bold mb-2 uppercase text-xs tracking-widest">
+                        <span class="vi">Tầng Thiết Bị & Sàn Sản Xuất</span>
+                        <span class="jp">ハードウェア・製造フロア層</span>
+                    </h4>
+                    <p class="font-bold text-xl mb-2 text-slate-800">Y-NetTech</p>
+                    <ul class="text-slate-600 text-sm space-y-2 list-disc pl-4 mt-4">
+                        <li class="vi"><strong>Automation:</strong> Máy móc, PLC, Robot.</li>
+                        <li class="vi"><strong>Digitalization:</strong> Thu thập dữ liệu phần cứng trực tiếp.</li>
+                        <li class="jp"><strong>自動化・FA（ファクトリーオートメーション）:</strong> 機械設備、PLC、ロボット。</li>
+                        <li class="jp"><strong>デジタル化:</strong> 製造現場から直接ハードウェアデータを収集。</li>
+                    </ul>
+                </div>
+                <div class="hidden md:flex flex-col items-center justify-center pt-8">
+                    <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                </div>
+                <div class="flex-1 bg-white p-6 rounded-xl border border-sky-200">
+                    <h4 class="text-sky-600 font-bold mb-2 uppercase text-xs tracking-widest">
+                        <span class="vi">Tầng Quản Trị ERP & MES</span>
+                        <span class="jp">ERP・MES 管理システム層</span>
+                    </h4>
+                    <p class="font-bold text-xl mb-2 text-slate-800">DanaExperts</p>
+                    <ul class="text-slate-600 text-sm space-y-2 list-disc pl-4 mt-4">
+                        <li class="vi"><strong>Odoo ERP:</strong> Phân hệ nghiệp vụ Mua Hàng, Tồn Kho cốt lõi.</li>
+                        <li class="vi"><strong>MES / Dashboard:</strong> Nhận dữ liệu để phân tích OEE Real-time.</li>
+                        <li class="jp"><strong>Odoo ERP:</strong> 購買、在庫などビジネスのコアシステム。</li>
+                        <li class="jp"><strong>MES・ダッシュボード:</strong> ハードウェアデータを受信し、リアルタイムでOEEと生産進捗を可視化。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 3: THE SOLUTION & DATA WORKFLOW -->
+    <div class="page bg-white">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+            <span class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">02</span>
+            <span class="vi">Bức Tranh Toàn Cảnh (Data Workflow)</span>
+            <span class="jp">全体像 (データワークフロー)</span>
+        </h2>
+        
+        <p class="text-slate-600 mb-8 max-w-3xl">
+            <span class="vi">Luồng dữ liệu liền mạch. Hệ thống thiết kế chuyên tối ưu cho nhà máy quy mô <strong>2,000 nhân sự</strong>.</span>
+            <span class="jp">原材料の購買から最終出荷までのシームレスなデータフロー。<strong>2,000名</strong>規模の分業モデルに最適化されたシステムアーキテクチャ。</span>
+        </p>
+
+        <!-- Flow Diagram Visual -->
+        <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm mb-12 avoid-break relative">
+            
+            <div class="space-y-4 relative z-10 w-full">
+                <!-- Row 1 -->
+                <div class="flex items-center justify-between bg-slate-50 p-4 border border-slate-200 rounded-lg">
+                    <div class="font-bold text-slate-800 w-48 shrink-0">
+                        <span class="vi">1. Mua Hàng (Purchase)</span>
+                        <span class="jp">1. 購買管理 (Purchase)</span>
+                    </div>
+                    <div class="text-sm text-slate-600 flex-1 border-l-2 border-slate-300 pl-4 ml-4">
+                        <span class="vi">Đơn hàng tự động gửi NPP dựa trên ngưỡng tồn kho điện tử hiển thị.</span>
+                        <span class="jp">規定された最小在庫しきい値に基づき、自動的に発注書をサプライヤーに送信します。</span>
+                    </div>
+                </div>
+                
+                <!-- Row 2 -->
+                <div class="flex items-center justify-between bg-white p-4 border border-sky-200 rounded-lg shadow-sm">
+                    <div class="font-bold text-sky-700 w-48 shrink-0">
+                        <span class="vi">2. Kho Bãi (Inventory)</span>
+                        <span class="jp">2. 倉庫・在庫 (Inventory)</span>
+                    </div>
+                    <div class="text-sm text-slate-600 flex-1 border-l-2 border-sky-300 pl-4 ml-4">
+                        <span class="vi">Sử dụng thiết bị Barcode/RFID. Không cần nạp số liệu lên thẻ kho giấy.</span>
+                        <span class="jp">バーコード/RFID スキャナーによる入出庫処理。紙の在庫台帳への記入は不要でリアルタイム反映されます。</span>
+                    </div>
+                </div>
+
+                <!-- Row 3 - CORE -->
+                <div class="flex items-center justify-between bg-sky-50 border-2 border-sky-400 p-6 rounded-lg text-slate-800 shadow-sm transform scale-[1.02]">
+                    <div class="font-bold text-sky-700 w-48 shrink-0 flex items-center">
+                        <span class="vi">3. Sản Xuất (MES)</span>
+                        <span class="jp">3. 製造実行システム (MES)</span>
+                    </div>
+                    <div class="text-sm text-slate-700 font-medium flex-1 border-l-2 border-sky-400 pl-4 ml-4">
+                        <span class="vi">
+                            Kéo dữ liệu trực tiếp (chu kỳ chạy máy, đếm sản phẩm) từ Sensors/PLC của Y-NetTech lên <strong>Tablet (Shop Floor)</strong>. Loại bỏ 100% việc nhập sổ.
+                        </span>
+                        <span class="jp">
+                            Y-NetTechのセンサー/PLCから製造データ（稼働サイクル、生産数）を<strong>現場タブレット</strong>にダイレクトに引き上げます。作業員の手入力は100%排除されます。
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="flex items-center justify-between bg-white p-4 border border-slate-200 rounded-lg">
+                    <div class="font-bold text-slate-800 w-48 shrink-0">
+                        <span class="vi">4. Kiểm Chất Lượng (QC)</span>
+                        <span class="jp">4. 品質管理 (QC / 品質保証)</span>
+                    </div>
+                    <div class="text-sm text-slate-600 flex-1 border-l-2 border-slate-300 pl-4 ml-4">
+                        <span class="vi">Cảnh báo lỗi thông minh. Quản lý hàng hỏng tự động theo Số lô (Lot/Serial).</span>
+                        <span class="jp">インテリジェントなエラー検出と警報。不良品は製造ロット番号やシリアル単位で正確に追跡・保管されます。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4 avoid-break">
+            <span class="vi">Xử Lý Kỹ Thuật (Phần Mềm Đóng)</span>
+            <span class="jp">技術的統合ソリューション（閉鎖的システム対応）</span>
+        </h3>
+        <p class="text-sm text-slate-600 mb-6">
+            <span class="vi">Ngay cả các thiết bị dùng phần mềm legacy (cũ) không cho phép API, chúng tôi có 3 phương án đấu nối:</span>
+            <span class="jp">工場内の古い設備で通信用APIを備えていない・ソフトウェアが閉鎖的（クローズド）である場合でも、3つの統合アプローチが可能です：</span>
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 avoid-break">
+            <div class="bg-slate-50 p-6 border border-slate-200 rounded-xl">
+                <span class="text-sky-600 font-bold text-lg inline-block mb-3">01. Direct Database</span>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Truy xuất trực tiếp Read-Only thông qua Middleware vào database gốc để lấy log.</span>
+                    <span class="jp">ミドルウェアを介して元のデータベースに読み取り専用（Read-only）で直接接続し、ログを安全に抽出します。</span>
+                </p>
+            </div>
+            <div class="bg-slate-50 p-6 border border-slate-200 rounded-xl">
+                <span class="text-sky-600 font-bold text-lg inline-block mb-3">02. File Sync</span>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Tự động hóa luồng Export/Import FTP thông qua file (.csv/.txt) sinh ra từ máy.</span>
+                    <span class="jp">機械が自動生成するCSVやテキストファイルをFTP経由でスケジュール通りに自動取得します。</span>
+                </p>
+            </div>
+            <div class="bg-sky-50 p-6 border border-sky-200 rounded-xl">
+                <span class="text-sky-600 font-bold text-lg inline-block mb-3">03. Odoo IoT Box</span>
+                <p class="text-sm text-slate-700">
+                    <span class="vi">Trỏ dây cáp điện từ IoT Box thẳng vào máy để báo lên Odoo mà không đụng chạm software.</span>
+                    <span class="jp">Odoo IoT Boxのケーブルを直接機械の信号線（PLCなど）に接続し、古いソフトウェアを完全に迂回して状態を通知します。</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 4: PROOF OF CAPABILITY (JEWELRY INDUSTRY) -->
+    <div class="page bg-white">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+            <span class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">03</span>
+            <span class="vi">Bảo Chứng Năng Lực: Sự Khắc Nghiệt Của Ngành Trang Sức</span>
+            <span class="jp">能力の証明：ジュエリー業界の極めて厳しい技術要件</span>
+        </h2>
+        
+        <p class="text-slate-600 mb-8 max-w-3xl">
+            <span class="vi">Để minh chứng cho Ban giám đốc về sức chịu tải và độ chính xác của Odoo ERP, chúng tôi sử dụng <strong>Ngành Trang Sức</strong> – ngành công nghiệp tinh vi bậc nhất – làm chuẩn đối sánh.</span>
+            <span class="jp">経営陣の皆さまに対しOdooのデータ処理能力と堅牢性を証明するため、製造業の中でも最も精巧で厳しい要件を持つ<strong>「ジュエリー・宝飾品業界」</strong>の事例を参考指標として紹介します。</span>
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 avoid-break">
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sky-600 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg></div>
+                <h4 class="font-bold text-slate-800 mb-2">
+                    <span class="vi">Định mức (BOM) Phức Tạp</span>
+                    <span class="jp">超複雑なBOM (部品表)</span>
+                </h4>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Mỗi sản phẩm trang sức có hàng ngàn biến thể (tinh khiết vàng, số carat). Odoo tính toán trôi chảy các bản vẽ kỹ thuật này.</span>
+                    <span class="jp">各製品は数千のバリエーション（金の純度、ダイヤのカラット数やカット）を含みます。これら多階層の複雑な設計構成をスムーズに処理します。</span>
+                </p>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sky-600 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg></div>
+                <h4 class="font-bold text-slate-800 mb-2">
+                    <span class="vi">Tồn Kho Vi Mô</span>
+                    <span class="jp">マイクロレベルの在庫管理</span>
+                </h4>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Quản lý thất thoát đo mút ở mức miligram thông qua túi lưu trữ ("bag control") giữa từng khâu đánh bóng.</span>
+                    <span class="jp">研磨やセッティングの各工程間において、「バッグコントロール」方式を使用し、ミリグラム単位の損失や材料の移動を厳格に追跡します。</span>
+                </p>
+            </div>
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-sky-600 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                <h4 class="font-bold text-slate-800 mb-2">
+                    <span class="vi">Giá Biến Động Real-time</span>
+                    <span class="jp">リアルタイムの市場価格連携</span>
+                </h4>
+                <p class="text-sm text-slate-600">
+                    <span class="vi">Tự động liên kết mốc giá vàng thế giới để định giá chi phí linh kiện tồn kho thay đổi theo phút.</span>
+                    <span class="jp">世界の金・貴金属市場価格と自動連携し、1分単位でリアルタイムに材料コストと在庫価格を動的評価（COGS）します。</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- NEW CLEAR DESIGN for Everlee Jewelers -->
+        <div class="bg-white border-2 border-sky-100 rounded-2xl p-8 mb-8 avoid-break shadow-md relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-sky-50 rounded-bl-full -z-10"></div>
+            
+            <h3 class="text-2xl font-bold text-slate-800 mb-2">
+                <span class="vi">Case Study Tiêu Biểu / Thực Tế: Everlee Jewelers</span>
+                <span class="jp">主要実績事例：Everlee Jewelers（米国）</span>
+            </h3>
+            <p class="text-sky-600 text-sm font-semibold mb-6 tracking-wide uppercase">
+                <span class="vi">Chuyển đổi số thành công bằng Odoo 17 Enterprise</span>
+                <span class="jp">Odoo 17 DX エンタープライズ導入成功</span>
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <h5 class="text-slate-800 font-bold mb-3 border-b-2 border-slate-100 pb-2">
+                        <span class="vi">Khó Khăn Trước Đây</span>
+                        <span class="jp">導入前の重大なペインポイント</span>
+                    </h5>
+                    <p class="text-sm text-slate-600 mb-4">
+                        <span class="vi">Hệ thống phân mảnh, tính hoa hồng thủ công. Quản lý tồn kho mờ mịt gây khó khăn cực độ cho B2B.</span>
+                        <span class="jp">既存システムが分断され、販売手数料計算も手動。在庫の透明性が著しく低く、B2Bパートナーとの連携に極度の支障が生じていました。</span>
+                    </p>
+                    
+                    <h5 class="text-slate-800 font-bold mb-3 border-b-2 border-slate-100 pb-2 mt-6">
+                        <span class="vi">DanaExperts Khắc Phục Bằng Odoo MES</span>
+                        <span class="jp">Odoo + MES 導入による解決策</span>
+                    </h5>
+                    <ul class="space-y-2 text-slate-600 text-sm list-disc pl-4">
+                        <li class="vi">Cung cấp Cổng Portal trao đổi cho đối tác B2B.</li>
+                        <li class="vi">Tự động hóa thanh toán hoa hồng (Commission).</li>
+                        <li class="jp">B2Bパートナー向けの標準通信ポータルを提供し集権化。</li>
+                        <li class="jp">複雑な毎月の売上手数料（Commission）計算を完全自動化。</li>
+                    </ul>
+                </div>
+                <div class="w-px bg-slate-200 hidden md:block"></div>
+                <div class="flex-1 flex flex-col justify-center">
+                    <h5 class="text-sky-700 font-bold mb-4 text-center">
+                        <span class="vi">Hiệu Quả Đột Phá Sau Triển Khai</span>
+                        <span class="jp">導入後の圧倒的なROIと成果</span>
+                    </h5>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-center">
+                            <div class="text-3xl font-extrabold text-sky-600 mb-1">-50%</div>
+                            <div class="text-xs text-slate-600 font-semibold uppercase">
+                                <span class="vi">Chi phí vận hành</span>
+                                <span class="jp">運用・管理コスト低減</span>
+                            </div>
+                        </div>
+                        <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-center">
+                            <div class="text-3xl font-extrabold text-sky-600 mb-1">-70%</div>
+                            <div class="text-xs text-slate-600 font-semibold uppercase">
+                                <span class="vi">Thao tác thủ công</span>
+                                <span class="jp">不必要な手作業の削減</span>
+                            </div>
+                        </div>
+                        <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-center col-span-2">
+                            <div class="text-3xl font-extrabold text-sky-600 mb-1">+60%</div>
+                            <div class="text-xs text-slate-600 font-semibold uppercase">
+                                <span class="vi">Năng suất lao động tổng thể</span>
+                                <span class="jp">全社的な従業員生産性の向上</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5: AI MEETING SECRETARY -->
+    <div class="page bg-white">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+            <span class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">04</span>
+            <span class="vi">Đột Phá AI: Tự Động Hóa Từ Cuộc Giao Tiếp</span>
+            <span class="jp">AIのブレークスルー：初期のコミュニケーションから自動化</span>
+        </h2>
+        
+        <p class="text-slate-600 mb-6 max-w-3xl">
+            <span class="vi">DanaExperts sở hữu năng lực AI chuyên sâu. Giải quyết tận gốc bài toán <strong>"nhập liệu thủ công"</strong> bằng giải pháp AI Meeting Secretary tự ghi chép.</span>
+            <span class="jp">DanaExpertsはエンタープライズAI技術を保有しています。独自のAIシステム（AI Meeting Secretary）によりデータ化を完全自動化し作業員から<strong>手動データ入力問題</strong>を根本から解決します。</span>
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 avoid-break">
+            <div>
+                <h4 class="text-xl font-bold text-slate-800 mb-4 border-l-4 border-sky-500 pl-3">
+                    <span class="vi">Hệ sinh thái AI Meeting Secretary hoạt động thế nào?</span>
+                    <span class="jp">AI機能はどのように動作するのか？</span>
+                </h4>
+                <ul class="space-y-4 text-slate-600">
+                    <li class="flex items-start">
+                        <div class="bg-sky-100 text-sky-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs mr-3 mt-0.5 shrink-0">1</div>
+                        <div>
+                            <strong class="vi">Thu thập đa kênh:</strong><strong class="jp">マルチチャネルからの収集:</strong>
+                            <span class="vi"> AI tự phân tích file ghi âm, họp video (Teams/Zoom), Email.</span>
+                            <span class="jp"> 音声ファイル、オンライン会議動画、メールテキストなど、多角的な情報を分析。</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="bg-sky-100 text-sky-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs mr-3 mt-0.5 shrink-0">2</div>
+                        <div>
+                            <strong class="vi">Bóc tách thông minh:</strong><strong class="jp">AIによるインテリジェント抽出:</strong>
+                            <span class="vi"> Dùng Whisper (Speech-to-Text) và LLM để loại bỏ hội thoại thừa.</span>
+                            <span class="jp"> WhisperとLLMモデルを使用し、関係のない雑談から核心情報のみを抽出。</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="bg-sky-100 text-sky-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs mr-3 mt-0.5 shrink-0">3</div>
+                        <div>
+                            <strong class="vi">Auto Data Mapping:</strong><strong class="jp">自動データ変換とマッピング:</strong>
+                            <span class="vi"> Nhận diện và điền chuẩn xác >25 thông số kỹ thuật (Chất liệu, Kích thước, v.v.) vào Form.</span>
+                            <span class="jp"> 会話の文脈から25項目以上の技術仕様（素材など）を特定し、Odoo等のフォームへ正確に自動入力します。</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h4 class="font-bold text-slate-800 mb-3 text-center">
+                    <span class="vi">Minh Họa Khả Năng Sinh Form Tự Động</span>
+                    <span class="jp">S-DV-01 技術要件フォーム (自動入力成功例)</span>
+                </h4>
+                <p class="text-sm text-slate-600 mb-4 text-center">
+                    <span class="vi">Biểu mẫu yêu cầu phức tạp được AI tự soạn chính xác 95%.</span>
+                    <span class="jp">人間の手による入力なしに、要件の複雑な見積りや定義を95%以上の精度で自動設定します。</span>
+                </p>
+                <div class="rounded-lg overflow-hidden border border-slate-200 shadow max-h-56 relative text-center">
+                    <!-- Same Image for Both -->
+                    <img src="formRoyiSal.png" alt="Royi Sal Form Example" class="w-full object-cover object-top h-full">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-sky-600 text-white p-6 rounded-xl shadow-lg border border-sky-700 avoid-break mt-6">
+            <h4 class="font-bold text-xl mb-3">
+                <span class="vi">Ứng Dụng Giá Trị Trực Tiếp Cho Nhà Máy Tại Nhật Bản</span>
+                <span class="jp">日本の工場全体における莫大な実践的価値</span>
+            </h4>
+            <p class="text-sky-50 leading-relaxed text-sm">
+                <span class="vi">Với số lượng lớn Vendor nội địa Nhật và Oversea, AI Secretary sẽ "lắng nghe" và dịch tự động các trao đổi phức tạp, sau đó soạn thảo ra Lệnh Mua Hàng (PR) hoặc Yêu cầu Đổi Thiết Kế (ECO). Tính năng này giải phóng hàng chục ngàn giờ hành chính và rào cản ngôn ngữ.</span>
+                <span class="jp">日本のサプライヤーや海外のベンダーとのやり取りをAI秘書が直接「リスニング」し解析。その後、複雑な購買依頼書（PR）や設計変更通知（ECO）のドラフトを自動で作成します。これにより言語の障壁と入力作業が解消され、従業員の年間数万時間が解放されます。</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- PAGE 6: ROI & CASE STUDIES -->
+    <div class="page bg-white">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+            <span class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">05</span>
+            <span class="vi">Phân Tích Hoàn Vốn (ROI)</span>
+            <span class="jp">投資利益率（ROI）分析モデル</span>
+        </h2>
+        
+        <!-- ROI SIMULATION -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 mb-8 avoid-break shadow-sm">
+            <h3 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-4">
+                <span class="vi">Mô Phỏng ROI Cho Doanh Nghiệp (2,000 Staffs)</span>
+                <span class="jp">ROIシミュレーション（人員規模2,000名）</span>
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-xl border border-rose-100">
+                    <h5 class="text-rose-600 font-bold mb-3 border-b border-rose-50 pb-2">
+                        <span class="vi">Chi phí lãng phí hiện hành</span>
+                        <span class="jp">導入前の無駄な見えないコスト</span>
+                    </h5>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-rose-500 mr-2">✖</span>
+                            <span class="vi">Quỹ lương cho các nhân sự chỉ chuyên ngồi nhập tài liệu dư thừa.</span>
+                            <span class="jp">書類整理・データ入力業務だけを専門とするスタッフの膨大な人件費。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-rose-500 mr-2">✖</span>
+                            <span class="vi">Thâm hụt tồn kho không rõ lý do do đối soát giấy tờ lệch.</span>
+                            <span class="jp">紙での照合ズレによって原因不明の在庫損失が発生する。</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-emerald-100">
+                    <h5 class="text-emerald-600 font-bold mb-3 border-b border-emerald-50 pb-2">
+                        <span class="vi">Lợi Ích Của Công Nghệ Odoo + Y-NetTech</span>
+                        <span class="jp">Odoo + Y-NetTech導入後のメリット</span>
+                    </h5>
+                    <ul class="space-y-3 text-slate-600 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 mr-2">✔</span>
+                            <span class="vi">Điểu chuyển tối đa <strong>50%</strong> người nhập liệu sang lao động sinh lời.</span>
+                            <span class="jp">入力スタッフを最大<strong>50%</strong>削減し、利益を生む直接生産等へ配置転換。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-emerald-500 mr-2">✔</span>
+                            <span class="vi">Lộ trình 100% không còn hàng tồn kho ảo, độ chính xác siêu cao.</span>
+                            <span class="jp">架空在庫が消失し、極めて高い材料精度（99%以上）を保証。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-sky-50 border border-sky-200 p-6 rounded-xl text-center shadow-inner">
+                <p class="text-sm text-sky-700 font-bold uppercase tracking-widest mb-2">
+                    <span class="vi">DỰ KIẾN KHOẢNG THỜI GIAN HOÀN VỐN (Breakeven)</span>
+                    <span class="jp">推定投資回収期間（ブレークイーブンポイント）</span>
+                </p>
+                <div class="text-4xl font-extrabold text-sky-600">
+                    <span class="vi">Chỉ Từ 9 Đến 14 Tháng</span>
+                    <span class="jp">わずか 9〜14 ヶ月</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-3 font-medium">
+                    <span class="vi">*Giảm quỹ lương + giảm hàng thiếu hụt bù đắp hoàn toàn chi phí phần cứng/mềm ban đầu.</span>
+                    <span class="jp">*給与削減＋在庫損失の削減分が、初期ハードウェア・ソフトウェア投資を完全に相殺します。</span>
+                </p>
+            </div>
+        </div>
+        
+        <div class="mt-8 text-center avoid-break">
+            <!-- ROI image logic bound here -->
+            <img id="roi-image" src="Gemini_Generated_Image_lk83prlk83prlk83.png" alt="ROI Break-even chart" class="mx-auto rounded-xl border border-slate-200 shadow-md">
+            <p class="text-xs mt-3 text-slate-500 italic bg-white inline-block px-3 py-1 rounded">
+                <span class="vi">Mô phỏng điểm hoàn vốn theo chi phí cơ hội thực tế.</span>
+                <span class="jp">実際の機会費用と人件費に基づいたブレークイーブンポイントのシミュレーション図。</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- PAGE 7: ROADMAP & CLOSING -->
+    <div class="page bg-white">
+        <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+            <span class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">06</span>
+            <span class="vi">Lộ Trình Tích Hợp Rủi Ro Bằng Zero</span>
+            <span class="jp">ゼロリスクのシステム導入ロードマップ</span>
+        </h2>
+
+        <p class="text-slate-600 mb-10 max-w-3xl">
+            <span class="vi">Triết lý tích hợp hệ thống: <strong>"Think Big, Start Small"</strong>. Không bao giờ làm ngưng trệ nhà máy.</span>
+            <span class="jp">私たちのシステム導入哲学は<strong>「Think Big, Start Small（大きく構想し、小さく始める）」</strong>です。工場の稼働を急停止させることは決してありません。</span>
+        </p>
+
+        <div class="relative max-w-2xl ml-4 mb-16 avoid-break">
+            <!-- Items -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 class="font-bold text-lg text-slate-800">
+                    <span class="vi">Giai Đoạn 1: Pilot & Proof of Concept (POC)</span>
+                    <span class="jp">フェーズ 1: パイロット運用とPOC（概念実証）</span>
+                </h4>
+                <p class="text-sm text-slate-600 mb-2 mt-1">
+                    <span class="vi">Không lật tung tất cả. Chúng tôi chọn 1 dây chuyền hoặc 1 kho phụ để gắn cảm biến Y-NetTech.</span>
+                    <span class="jp">全体を一度に置き換えません。1つの生産ラインまたは小規模倉庫でY-NetTechセンサーを安全にテスト運用します。</span>
+                </p>
+                <span class="inline-block bg-sky-100 text-sky-700 font-bold text-xs px-2 py-1 rounded">Month 1 - 2</span>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <h4 class="font-bold text-lg text-slate-800">
+                    <span class="vi">Giai Đoạn 2: UI Kiosk Mode & Huấn Luyện</span>
+                    <span class="jp">フェーズ 2: 現場向けキオスクUIと簡素化トレーニング</span>
+                </h4>
+                <p class="text-sm text-slate-600 mb-2 mt-1">
+                    <span class="vi">Dùng cho công nhân lớn tuổi. Tùy biến màn hình POS thành hệ thống Nút bấm khổng lồ cực dễ dùng.</span>
+                    <span class="jp">ITに不慣れな高齢作業員向け。画面の機能を隠し、極めて直感的な「巨大ボタン」のキオスクモードUIにカスタマイズします。</span>
+                </p>
+                <span class="inline-block bg-sky-100 text-sky-700 font-bold text-xs px-2 py-1 rounded">Month 3 - 4</span>
+            </div>
+            
+            <div class="timeline-item border-l-transparent pb-0">
+                <div class="timeline-dot"></div>
+                <h4 class="font-bold text-lg text-slate-800">
+                    <span class="vi">Giai Đoạn 3: Roll-out Toàn Bộ Quy Mô</span>
+                    <span class="jp">フェーズ 3: メイン工場への全面展開（スケール）</span>
+                </h4>
+                <p class="text-sm text-slate-600 mb-2 mt-1">
+                    <span class="vi">Gắn thiết bị và scale lên 2000 nhân sự khi dữ liệu POC đã trơn tru hoàn hảo.</span>
+                    <span class="jp">フェーズ1のデータ移行が完璧に動作することが証明された後、2,000人規模の工場全体へ残りの機能を安全に展開します。</span>
+                </p>
+                <span class="inline-block bg-sky-100 text-sky-700 font-bold text-xs px-2 py-1 rounded">Month 5+</span>
+            </div>
+        </div>
+
+        <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 mt-20 avoid-break shadow-sm">
+            <h3 class="text-2xl font-bold text-sky-700 mb-4">
+                <span class="vi">Trân Trọng Đề Xuất</span>
+                <span class="jp">ご提案にかかる御礼</span>
+            </h3>
+            <p class="text-slate-600 mb-8 max-w-xl mx-auto font-medium">
+                <span class="vi">Sự kết hợp giữa Nền tảng Tự động hóa Y-NetTech và Cỗ máy Dữ liệu Odoo DanaExperts là câu trả lời toàn diện nhất cho nhà máy của Quý khách.</span>
+                <span class="jp">Y-NetTechの強力なハードウェアプロセス自動化プラットフォームと、DanaExpertsによるソフトウェアERPの融合こそが、貴社工場の革新への最も包括的な答えであると確信しています。</span>
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-700 font-bold">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 text-sky-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    www.danaexperts.com
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 text-sky-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    contact@danaexperts.com
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+"""
+
+with codecs.open('Official_Proposal_Y-NetTech.html', mode='w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("Created Official_Proposal_Y-NetTech.html with 100% Japanese Translation and fully fixed Image assignments.")
