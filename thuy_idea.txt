@@ -1,0 +1,18 @@
+Results
+Visualize
+Hình ảnh chụp với khách hàng để tăng sự tin tưởng
+Before and After
+Why Odoo
+Triển khai nhanh chóng (Quick Implementation)
+Bằng việc hợp tác với đội ngũ Odoo chuyên nghiệp và giàu kinh nghiệm, AToro chỉ mất 9 tháng để triển khai xong hệ thống ERP.
+Nhờ áp dụng phương pháp triển khai ERP theo từng giai đoạn cuốn chiếu, Odoo đảm bảo công ty sản xuất hóa chất này có thể duy trì hoạt động kinh doanh liên tục trong quá trình chuyển đổi. Đội ngũ triển khai trước tiên đã thực hiện phân tích khoảng cách (gap analysis) và khởi động dự án trước khi tiến hành cài đặt hệ thống và vận hành chính thức (go-live).
+Tính năng linh hoạt (Flexible Features)
+Odoo hỗ trợ các hoạt động quốc tế của AToro bằng tính năng đa công ty, cho phép đội ngũ quản lý tập trung mọi chi nhánh trên cùng một cơ sở dữ liệu.
+Tính năng này cung cấp một quy trình vận hành tiêu chuẩn (SOP) cho các chi nhánh địa phương bằng cách sao chép các thiết lập và cấu hình Odoo tương tự nhau.
+Quản trị quy trình kinh doanh tích hợp (Integrated Business Process Management)
+Mua hàng & Kho vận (Purchase & Inventory)
+Nhà sản xuất sử dụng các ứng dụng Odoo Mua hàng và Kho vận để ghi nhận chi phí và duy trì mức tồn kho chính xác theo thời gian thực cho tất cả các loại hóa chất khác nhau của mình.
+Challenges:
+Supply Chain Complexity
+Apsara Furniture ensures everything is managed before polished pieces and comfortable furniture can make it to the homes of customers.
+This means import of raw materials such as fabrics and metals, inventory storage, product manufacturing and quality checks. All these logistical hurdles need to be crushed before the final step of delivery to a customer’s home.
