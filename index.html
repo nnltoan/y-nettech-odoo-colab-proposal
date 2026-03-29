@@ -105,10 +105,16 @@
             document.getElementById('btn-vi').className = lang === 'vi' ? 'lang-btn active' : 'lang-btn inactive';
             document.getElementById('btn-jp').className = lang === 'jp' ? 'lang-btn active' : 'lang-btn inactive';
             
-            // Swap ROI Image - Swapped according to user feedback
-            const img = document.getElementById('roi-image');
-            if(img) {
-                img.src = lang === 'vi' ? 'Gemini_Generated_Image_lk83prlk83prlk83.png' : 'Gemini_Generated_Image_lmky0xlmky0xlmky.png';
+            // Swap Integration Image depending on language
+            const intImg = document.getElementById('integration-image');
+            if(intImg) {
+                intImg.src = lang === 'vi' ? 'Gemini_Generated_Image_upov4hupov4hupov.png' : 'Gemini_Generated_Image_6xopnp6xopnp6xop.png';
+            }
+            
+            // Swap ROI Break-even chart
+            const roiImg = document.getElementById('roi-image');
+            if(roiImg) {
+                roiImg.src = lang === 'vi' ? 'roi_chart.png' : 'roi_chart_jp.png';
             }
         }
     </script>
@@ -392,6 +398,18 @@
                 </p>
             </div>
         </div>
+
+        <div class="mt-10 text-center avoid-break bg-white border border-slate-200 rounded-2xl p-6 shadow-md">
+            <h4 class="text-xl font-bold text-sky-700 mb-6 tracking-wide">
+                <span class="vi">Hệ Thống Quản Trị Và Tích Hợp Odoo - Quản Lý Thiết Bị Tích Hợp</span>
+                <span class="jp">Odoo 管理および統合システム - 統合デバイス管理</span>
+            </h4>
+            <img id="integration-image" src="Gemini_Generated_Image_upov4hupov4hupov.png" alt="Odoo Integrated Device Management" class="mx-auto rounded-xl shadow-inner border border-slate-200 max-w-full">
+            <p class="text-xs text-slate-500 mt-4 italic bg-slate-50 inline-block px-4 py-2 rounded-full">
+                <span class="vi">Sơ đồ luồng dữ liệu thiết bị thực tế trong nhà máy.</span>
+                <span class="jp">工場内の実際のデバイスデータフロー図。</span>
+            </p>
+        </div>
     </div>
 
 
@@ -659,8 +677,8 @@
         </div>
         
         <div class="mt-8 text-center avoid-break">
-            <!-- ROI image logic bound here -->
-            <img id="roi-image" src="Gemini_Generated_Image_lk83prlk83prlk83.png" alt="ROI Break-even chart" class="mx-auto rounded-xl border border-slate-200 shadow-md">
+            <!-- Authentic ROI Break-even Simulation -->
+            <img id="roi-image" src="roi_chart.png" alt="ROI Break-even chart" class="mx-auto rounded-xl border border-slate-200 shadow-md">
             <p class="text-xs mt-3 text-slate-500 italic bg-white inline-block px-3 py-1 rounded">
                 <span class="vi">Mô phỏng điểm hoàn vốn theo chi phí cơ hội thực tế.</span>
                 <span class="jp">実際の機会費用と人件費に基づいたブレークイーブンポイントのシミュレーション図。</span>
