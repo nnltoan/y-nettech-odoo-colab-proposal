@@ -116,6 +116,12 @@
             if(roiImg) {
                 roiImg.src = lang === 'vi' ? 'roi_chart.png' : 'roi_chart_jp.png';
             }
+            
+            // Swap OEE Dashboard Image
+            const oeeImg = document.getElementById('oee-image');
+            if(oeeImg) {
+                oeeImg.src = lang === 'vi' ? 'oee_dashboard.png' : 'oee_dashboard_jp.png';
+            }
         }
     </script>
 </head>
@@ -414,7 +420,7 @@
                 <span class="vi">Giao Di&#7879;n Dashboard OEE Th&#7901;i Gian Th&#7921;c (Real-time MES)</span>
                 <span class="jp">&#12522;&#12450;&#12523;&#12479;&#12452;&#12512; OEE &#12514;&#12491;&#12479;&#12522;&#12531;&#12464;&#12480;&#12483;&#12471;&#12517;&#12508;&#12540;&#12489; (MES&#30011;&#38754;)</span>
             </h4>
-            <img src="oee_dashboard.png" alt="OEE Real-time Dashboard" class="mx-auto rounded-xl shadow-md border border-slate-200 max-w-full">
+            <img id="oee-image" src="oee_dashboard.png" alt="OEE Real-time Dashboard" class="mx-auto rounded-xl shadow-md border border-slate-200 max-w-full">
             <p class="text-xs text-slate-500 mt-3 italic">
                 <span class="vi">B&#7843;ng &#273;i&#7873;u khi&#7875;n Hi&#7879;u su&#7845;t T&#7893;ng th&#7875; Thi&#7871;t b&#7883; (OEE) &#8211; c&#7843;nh b&#225;o t&#7921;&#273;&#7897;ng t&#7915; d&#7919; li&#7879;u IoT th&#7921;c t&#7871; c&#7911;a nh&#224; m&#225;y.</span>
                 <span class="jp">IoT&#12475;&#12531;&#12469;&#12540;&#12363;&#12425;&#12398;&#12522;&#12450;&#12523;&#12487;&#12540;&#12479;&#306B;&#22522;&#12389;&#12356;&#12383;OEE&#12514;&#12491;&#12479;&#12522;&#12531;&#12464;&#12480;&#12483;&#12471;&#12517;&#12508;&#12540;&#12489;&#65294;&#27770;&#23450;&#27425;&#31383;&#12408;&#12398;&#30452;&#30528;&#30340;&#12394;&#12487;&#12540;&#12479;&#25552;&#20379;&#65294;</span>
