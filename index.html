@@ -88,8 +88,20 @@
             /* Form demo image */
             img[alt="Royi Sal Form Example"] { max-height: 160px !important; }
 
-            /* ── Cover page ──────────────────────────────────────────── */
-            .page.flex.flex-col { justify-content: center !important; }
+            /* ── Cover page: full A4, flex-1 inner div handles centering ─ */
+            .page:first-child {
+                min-height: 297mm !important;
+                padding: 20mm !important;
+                display: flex !important;
+                flex-direction: column !important;
+                position: relative !important;
+            }
+            .page:first-child h1 { font-size: 36pt !important; line-height: 1.15 !important; }
+            .page:first-child h1 span { font-size: inherit !important; line-height: inherit !important; }
+            #cover-footer {
+                break-before: avoid !important;
+                page-break-before: avoid !important;
+            }
 
             /* ── Timeline ────────────────────────────────────────────── */
             .timeline-item { padding-bottom: 14px !important; }
@@ -182,8 +194,10 @@
 <div class="page-container">
 
     <!-- PAGE 1: COVER -->
-    <div class="page flex flex-col justify-center items-center text-center relative overflow-hidden bg-white">
+    <div class="page flex flex-col text-center relative overflow-hidden bg-white">
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-slate-200 to-sky-600"></div>
+        <!-- flex-1 div: grows to fill space, centering the main content block -->
+        <div class="flex-1 flex flex-col justify-center items-center w-full">
         
         <div class="flex items-center justify-center space-x-8 mb-8 relative z-10 w-full px-8">
             <img src="TransparentLogo-UPkaOdnc_ONrY2UO8Ih6uQ.png" alt="Y-NetTech" class="h-12 object-contain drop-shadow-sm">
@@ -234,8 +248,9 @@
                 </p>
             </div>
         </div>
-        
-        <div class="absolute bottom-10 left-0 w-full text-center">
+        </div><!-- /flex-1 -->
+        <!-- Footer: outside flex-1, sits naturally at bottom of outer flex-col page -->
+        <div id="cover-footer" class="py-4 w-full text-center">
             <p class="text-xs text-slate-400">Strictly Confidential &bull; Designed for Board of Directors Review</p>
         </div>
     </div>
