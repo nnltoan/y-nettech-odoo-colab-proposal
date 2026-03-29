@@ -254,7 +254,50 @@
             </div>
         </div>
 
-        <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4 avoid-break">
+        <h3 class="text-xl font-bold text-slate-800 mb-5 border-l-4 border-sky-500 pl-4 avoid-break mt-12">
+            <span class="vi">Sự Chuyển Trục Mô Hình (Paradigm Shift)</span>
+            <span class="jp">パラダイムシフト：運用モデルの変革</span>
+        </h3>
+        
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm mb-12 avoid-break">
+            <!-- Table Header -->
+            <div class="grid grid-cols-3 bg-slate-100 text-slate-800 font-bold text-sm uppercase tracking-wider text-center divide-x divide-slate-200 border-b border-slate-200">
+                <div class="p-4"><span class="vi">Quy trình (Process)</span><span class="jp">プロセス</span></div>
+                <div class="p-4 bg-slate-200 text-slate-500"><span class="vi">Cách cũ (The Old Way)</span><span class="jp">従来の方法（The Old Way）</span></div>
+                <div class="p-4 bg-sky-100 text-sky-700"><span class="vi">Cách Odoo (The Odoo Way)</span><span class="jp">Odooのアプローチ (The Odoo Way)</span></div>
+            </div>
+            
+            <!-- Rows -->
+            <div class="grid grid-cols-3 text-sm divide-x divide-y divide-slate-200 bg-white">
+                
+                <!-- Row 1 -->
+                <div class="p-4 font-bold text-slate-800 flex items-center"><span class="vi">Dữ liệu & Hệ thống</span><span class="jp">データとシステム</span></div>
+                <div class="p-4 text-slate-500 leading-relaxed"><span class="vi">Dữ liệu bị phân tán (Silo), rời rạc giữa các bộ phận Sản xuất, IT và Khối Văn phòng.</span><span class="jp">各部門（製造、IT、オフィス等）間でデータが分散し、サイロ化している状態。</span></div>
+                <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30"><span class="vi">Dữ liệu chạy xuyên suốt trên một nền tảng duy nhất, đồng bộ từ ERP đến Tầng thiết bị IoT.</span><span class="jp">統合ERPからIoTハードウェア層まで、単一のプラットフォーム上でデータがシームレスに連携。</span></div>
+                
+                <!-- Row 2 -->
+                <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span class="vi">Quản lý Báo cáo</span><span class="jp">進捗とレポート管理</span></div>
+                <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Khó theo dõi tiến độ thời gian thực; Lãnh đạo phải đi tới xưởng hoặc gọi điện trực tiếp để hỏi dự án đến đâu.</span><span class="jp">リアルタイムな追跡が困難。経営陣は状況確認のため現場に赴くか、個別に尋ねる必要がある。</span></div>
+                <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200"><span class="vi">Dashboard & Gantt Chart tự động cập nhật tiến độ và cảnh báo nếu có khu vực bị quá tải năng lực.</span><span class="jp">ダッシュボードとガントチャートが進捗を自動更新し、エリアのリソース過負荷を即座に警告。</span></div>
+
+                <!-- Row 3 -->
+                <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span class="vi">Vật tư & Kho</span><span class="jp">資材と在庫管理</span></div>
+                <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Lấy vật tư và theo dõi trên giấy/bảng tính. Dễ thiếu hụt linh kiện hoặc lấy lộn vật tư của dự án khác.</span><span class="jp">紙や表計算ソフトでの手動資材調達。プロジェクト間での資材の取り違えや欠品が発生しやすい。</span></div>
+                <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200"><span class="vi">Tự động báo Tồn kho và "Giữ hàng" (Reserve) theo kế hoạch chuẩn xác từ cấu trúc Định mức BOM gốc.</span><span class="jp">プロジェクトごとに資材を自動引当（Reserve）。BOMからシリアル番号まで厳格かつ自動的に管理。</span></div>
+
+                <!-- Row 4 -->
+                <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span class="vi">Bảo trì thiết bị</span><span class="jp">設備と保守</span></div>
+                <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Bảo trì theo cảm tính hoặc thụ động (đợi máy hỏng mới lập phiếu sửa chữa), dẫn đến Downtime kéo dài.</span><span class="jp">受動的保守（機械が故障してから修理を実施）、結果的に深刻かつ長時間のダウンタイムを招く。</span></div>
+                <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200"><span class="vi">Bảo trì dự đoán (Predictive Maintenance) dựa trên tín hiệu cảnh báo cảnh báo từ Sensor thực tế kết nối vào IoT Hub.</span><span class="jp">予知保全（Predictive Maintenance）。IoT Hubに接続されたセンサーの実データに基づき早期警告を発信。</span></div>
+
+                <!-- Row 5 -->
+                <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span class="vi">Ra quyết định</span><span class="jp">意思決定</span></div>
+                <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Quyết định chậm trễ do phải đợi tập hợp báo cáo số liệu thủ công dịp cuối tháng. Dữ liệu mâu thuẫn.</span><span class="jp">月末の手作業によるレポート集計を待つため、判断が遅れる。各部門からのデータに矛盾が生じる。</span></div>
+                <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200"><span class="vi">Cấp C-level ra quyết định trong vài giây vào bất cứ lúc nào thông qua hệ thống báo cáo Odoo tự sinh theo thời gian thực.</span><span class="jp">ERP・ダッシュボードを通じて、経営幹部（C-level）は24時間365日、数秒で実データに基づく的確な判断を下せる。</span></div>
+            </div>
+        </div>
+
+        <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4 avoid-break mt-12">
             <span class="vi">Tầm Nhìn Hợp Tác: Y-NetTech x DanaExperts</span>
             <span class="jp">統合されたアライアンス：Y-NetTech x DanaExperts</span>
         </h3>
