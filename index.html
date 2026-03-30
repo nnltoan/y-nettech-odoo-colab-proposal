@@ -433,69 +433,90 @@
             <div class="mb-10 text-slate-600 text-lg leading-relaxed">
                 <p class="mb-4 vi">Kính thưa Ban Giám Đốc,</p>
                 <p class="mb-4 jp">役員各位、</p>
-                <p class="vi">Trong kỷ nguyên sản xuất hiện đại, dữ liệu liên tục là yếu tố sống còn. Đối với nhà máy
-                    <strong>hơn 2,000 nhân sự</strong>, việc duy trì quy trình quản lý thủ công tạo ra sự lãng phí vô
-                    hình khổng lồ trong ngân sách vận hành.</p>
-                <p class="jp">
-                    現代の製造業において、一貫性のあるデータは不可欠です。<strong>2,000名以上</strong>の従業員を抱える工場にとって、手作業による管理を維持することは、運営予算において目に見えない莫大な無駄を生み出します。
-                </p>
-            </div>
-
-            <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4">
-                <span class="vi">Thách Thức Hiện Tại (Nỗi Đau)</span>
-                <span class="jp">現状の最大の課題（ペインポイント）</span>
-            </h3>
-
-            <div class="grid grid-cols-2 gap-6 mb-12 avoid-break">
-                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                    <h4 class="font-bold text-slate-800 mb-2">
-                        <span class="vi">Quản lý bằng Giấy & Excel</span>
-                        <span class="jp">紙とExcelによる手動管理</span>
-                    </h4>
-                    <p class="text-sm text-slate-600">
-                        <span class="vi">Dữ liệu chia cắt. Tỉ lệ sai sót do con người cao, tốn thời gian đối
-                            soát.</span>
-                        <span class="jp">データが分断されており、人為的エラーの発生率が高く、照合に膨大な時間を要します。</span>
-                    </p>
+                <p class="vi">Trong k            <!-- Before image: paper/excel chaos -->
+            <div class="flex gap-6 mb-8 avoid-break items-start">
+                <div class="flex-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-red-50 rounded-xl p-5 border border-red-200">
+                            <div class="text-2xl mb-2">📋</div>
+                            <h4 class="font-bold text-red-800 mb-1 text-sm"><span class="vi">Giấy & Excel — Silo Data</span><span class="jp">紙・Excel — データサイロ</span></h4>
+                            <p class="text-xs text-red-600"><span class="vi">Dữ liệu chia cắt. Sai sót do con người cao, đối soát mất nhiều giờ.</span><span class="jp">データ分断・人的エラー多発・照合に膨大な時間。</span></p>
+                        </div>
+                        <div class="bg-red-50 rounded-xl p-5 border border-red-200">
+                            <div class="text-2xl mb-2">👥</div>
+                            <h4 class="font-bold text-red-800 mb-1 text-sm"><span class="vi">Lãng Phí Nhân Sự Gián Tiếp</span><span class="jp">間接人員の浪費</span></h4>
+                            <p class="text-xs text-red-600"><span class="vi">Nhiều người chỉ để nhập liệu, báo cáo, không tạo ra giá trị.</span><span class="jp">多大な人員がデータ入力・報告だけに費やされ、付加価値を生まない。</span></p>
+                        </div>
+                        <div class="bg-red-50 rounded-xl p-5 border border-red-200">
+                            <div class="text-2xl mb-2">🔇</div>
+                            <h4 class="font-bold text-red-800 mb-1 text-sm"><span class="vi">Không Có Real-time</span><span class="jp">リアルタイム可視性ゼロ</span></h4>
+                            <p class="text-xs text-red-600"><span class="vi">BGĐ không theo dõi OEE và tồn kho tức thời — quyết định chậm.</span><span class="jp">OEE・在庫をリアルタイム把握できず、意思決定が遅延。</span></p>
+                        </div>
+                        <div class="bg-red-50 rounded-xl p-5 border border-red-200">
+                            <div class="text-2xl mb-2">🏝️</div>
+                            <h4 class="font-bold text-red-800 mb-1 text-sm"><span class="vi">Hệ Thống Cũ — Data Silo</span><span class="jp">レガシー — データの孤島</span></h4>
+                            <p class="text-xs text-red-600"><span class="vi">Thiết bị không API, tạo ốc đảo dữ liệu, không liên thông.</span><span class="jp">APIなし設備がサイロを形成、システム間連携不可。</span></p>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                    <h4 class="font-bold text-slate-800 mb-2">
-                        <span class="vi">Lãng Phí Nhân Sự Gián Tiếp</span>
-                        <span class="jp">間接部門の人材の浪費</span>
-                    </h4>
-                    <p class="text-sm text-slate-600">
-                        <span class="vi">Cần lực lượng lớn nhân sự chỉ để ghi chép, nhập chứng từ báo cáo mỗi
-                            ngày.</span>
-                        <span class="jp">毎日、レポートの記録・入力・集計だけのために、非常に多くの人員を配置する必要があります。</span>
-                    </p>
-                </div>
-
-                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                    <h4 class="font-bold text-slate-800 mb-2">
-                        <span class="vi">Khuất tầm nhìn (No Real-time)</span>
-                        <span class="jp">リアルタイムの可視性欠如</span>
-                    </h4>
-                    <p class="text-sm text-slate-600">
-                        <span class="vi">Lãnh đạo không theo dõi được Hiệu suất thiết bị (OEE) và tồn kho tức
-                            thời.</span>
-                        <span class="jp">経営陣は、設備総合効率（OEE）やリアルタイムの正確な在庫状況を即座に把握できません。</span>
-                    </p>
-                </div>
-
-                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
-                    <h4 class="font-bold text-slate-800 mb-2">
-                        <span class="vi">Tích Hợp Hệ Thống Cũ Kém</span>
-                        <span class="jp">レガシーシステムの統合困難</span>
-                    </h4>
-                    <p class="text-sm text-slate-600">
-                        <span class="vi">Thiết bị phần mềm cũ không API tạo ra các ốc đảo dữ liệu trong nhà máy.</span>
-                        <span class="jp">API接続を持たない古いクローズドソフトウェアにより、工場内にデータの“孤島（サイロ）”が形成されています。</span>
-                    </p>
+                <div class="w-52 flex-shrink-0 text-center">
+                    <div class="text-xs font-bold text-red-600 mb-2 uppercase tracking-wide"><span class="vi">⚠ Thực trạng hiện tại</span><span class="jp">⚠ 現状の実態</span></div>
+                    <img src="mpr-min.png" alt="Paper Excel manual data management" class="rounded-xl border-2 border-red-200 shadow-md w-full object-cover" style="max-height:180px;">
+                    <p class="text-xs text-slate-400 mt-2 italic"><span class="vi">Quản lý bằng giấy & Excel thủ công</span><span class="jp">紙・Excelによる手作業管理</span></p>
                 </div>
             </div>
 
-            <h3 class="text-xl font-bold text-slate-800 mb-5 border-l-4 border-sky-500 pl-4 avoid-break mt-12">
+            <!-- Quantified pain points table -->
+            <div class="mb-10 avoid-break">
+                <h4 class="text-base font-bold text-slate-700 mb-3 flex items-center gap-2">
+                    <span class="w-5 h-5 bg-rose-500 rounded flex items-center justify-center text-white text-xs">!</span>
+                    <span class="vi">Định Lượng Nỗi Đau — Số Liệu Thực Tế Ngành Sản Xuất</span>
+                    <span class="jp">ペインポイントの定量化 — 製造業の実績データ</span>
+                </h4>
+                <div class="border border-slate-200 rounded-xl overflow-hidden text-sm shadow-sm">
+                    <div class="grid bg-slate-800 text-white font-bold text-xs uppercase tracking-wide" style="grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;">
+                        <div class="p-3"><span class="vi">Nỗi đau hiện tại</span><span class="jp">現状の課題</span></div>
+                        <div class="p-3 text-center border-l border-slate-600"><span class="vi">Hiện tại (ước tính)</span><span class="jp">現状（推定）</span></div>
+                        <div class="p-3 text-center border-l border-slate-600 text-emerald-300"><span class="vi">Mục tiêu sau Odoo</span><span class="jp">Odoo導入後の目標</span></div>
+                        <div class="p-3 text-center border-l border-slate-600 text-sky-300"><span class="vi">Tác động (~năm 1)</span><span class="jp">効果（導入初年度）</span></div>
+                    </div>
+                    <div class="divide-y divide-slate-100">
+                        <div class="grid items-center" style="grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;">
+                            <div class="p-3 font-medium text-slate-700"><span class="vi">⏱ Thời gian data entry & reporting</span><span class="jp">⏱ データ入力・報告業務時間</span></div>
+                            <div class="p-3 text-center text-rose-600 font-bold border-l border-slate-100">1,200 <span class="text-xs font-normal"><span class="vi">giờ/tháng</span><span class="jp">時間/月</span></span></div>
+                            <div class="p-3 text-center text-emerald-700 font-bold border-l border-slate-100">< 400 <span class="text-xs font-normal"><span class="vi">giờ/tháng</span><span class="jp">時間/月</span></span></div>
+                            <div class="p-3 text-center text-sky-700 font-bold border-l border-slate-100"><span class="vi">↓ 60–70%</span><span class="jp">↓ 60〜70%削減</span></div>
+                        </div>
+                        <div class="grid items-center bg-slate-50" style="grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;">
+                            <div class="p-3 font-medium text-slate-700"><span class="vi">📦 Tỷ lệ sai sót Inventory</span><span class="jp">📦 在庫誤差率</span></div>
+                            <div class="p-3 text-center text-rose-600 font-bold border-l border-slate-100">8–12%</div>
+                            <div class="p-3 text-center text-emerald-700 font-bold border-l border-slate-100">< 1%</div>
+                            <div class="p-3 text-center text-sky-700 font-bold border-l border-slate-100"><span class="vi">↓ 90%+ chính xác</span><span class="jp">↓ 精度90%以上向上</span></div>
+                        </div>
+                        <div class="grid items-center" style="grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;">
+                            <div class="p-3 font-medium text-slate-700"><span class="vi">⚙️ Downtime do thiếu NVL / hỏng máy</span><span class="jp">⚙️ 材料不足・機械障害によるダウンタイム</span></div>
+                            <div class="p-3 text-center text-rose-600 font-bold border-l border-slate-100">15–20%</div>
+                            <div class="p-3 text-center text-emerald-700 font-bold border-l border-slate-100">< 5%</div>
+                            <div class="p-3 text-center text-sky-700 font-bold border-l border-slate-100"><span class="vi">↓ 75% downtime</span><span class="jp">↓ ダウンタイム75%削減</span></div>
+                        </div>
+                        <div class="grid items-center bg-slate-50" style="grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;">
+                            <div class="p-3 font-medium text-slate-700"><span class="vi">📊 OEE trung bình toàn nhà máy</span><span class="jp">📊 工場全体平均OEE</span></div>
+                            <div class="p-3 text-center text-rose-600 font-bold border-l border-slate-100">65–75%</div>
+                            <div class="p-3 text-center text-emerald-700 font-bold border-l border-slate-100">> 85%</div>
+                            <div class="p-3 text-center text-sky-700 font-bold border-l border-slate-100"><span class="vi">↑ 15–30% OEE</span><span class="jp">↑ OEE 15〜30%向上</span></div>
+                        </div>
+                        <div class="grid items-center" style="grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;">
+                            <div class="p-3 font-medium text-slate-700"><span class="vi">🏭 Nhân sự gián tiếp (data entry, reporting)</span><span class="jp">🏭 間接人員（入力・報告）</span></div>
+                            <div class="p-3 text-center text-rose-600 font-bold border-l border-slate-100">100%</div>
+                            <div class="p-3 text-center text-emerald-700 font-bold border-l border-slate-100">60–75%</div>
+                            <div class="p-3 text-center text-sky-700 font-bold border-l border-slate-100"><span class="vi">↓ 25–40% headcount</span><span class="jp">↓ 間接人員25〜40%削減</span></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 mt-2 italic"><span class="vi">* Dựa trên benchmark ngành sản xuất tương đồng tại Đông Nam Á & Nhật Bản. Số liệu chính xác sẽ được xác nhận trong giai đoạn Gap Analysis.</span><span class="jp">* 東南アジア・日本の同業製造業ベンチマークに基づく。正確な数値はギャップ分析フェーズで確定。</span></p>
+            </div>
+
+                        <h3 class="text-xl font-bold text-slate-800 mb-5 border-l-4 border-sky-500 pl-4 avoid-break mt-12">
                 <span class="vi">Sự Chuyển Trục Mô Hình (Paradigm Shift)</span>
                 <span class="jp">パラダイムシフト：運用モデルの変革</span>
             </h3>
@@ -576,39 +597,49 @@
             </h3>
 
             <div class="bg-sky-50 rounded-2xl p-8 shadow-sm border border-sky-100 avoid-break">
-                <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
-                    <div class="flex-1 bg-white p-6 rounded-xl border border-sky-200">
-                        <h4 class="text-sky-600 font-bold mb-2 uppercase text-xs tracking-widest">
-                            <span class="vi">Tầng Thiết Bị & Sàn Sản Xuất</span>
-                            <span class="jp">ハードウェア・製造フロア層</span>
-                        </h4>
-                        <p class="font-bold text-xl mb-2 text-slate-800">Y-NetTech</p>
-                        <ul class="text-slate-600 text-sm space-y-2 list-disc pl-4 mt-4">
-                            <li class="vi"><strong>Automation:</strong> Máy móc, PLC, Robot.</li>
-                            <li class="vi"><strong>Digitalization:</strong> Thu thập dữ liệu phần cứng trực tiếp.</li>
-                            <li class="jp"><strong>自動化・FA（ファクトリーオートメーション）:</strong> 機械設備、PLC、ロボット。</li>
-                            <li class="jp"><strong>デジタル化:</strong> 製造現場から直接ハードウェアデータを収集。</li>
-                        </ul>
+                <div class="flex flex-col gap-5">
+                    <!-- Responsibility matrix -->
+                    <div class="grid grid-cols-2 gap-5">
+                        <div class="bg-white p-5 rounded-xl border-2 border-sky-200">
+                            <h4 class="text-sky-600 font-bold mb-1 uppercase text-xs tracking-widest"><span class="vi">Chịu Trách Nhiệm</span><span class="jp">担当範囲</span></h4>
+                            <p class="font-bold text-xl mb-3 text-slate-800">Y-NetTech</p>
+                            <ul class="text-slate-600 text-sm space-y-1.5">
+                                <li class="vi flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>PLC & Automation:</strong> Lập trình máy móc, robot, dây chuyền tự động</span></li>
+                                <li class="vi flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>Sensor & RFID:</strong> Thiết bị thu thập dữ liệu sản lượng, nhiệt độ, rung động</span></li>
+                                <li class="vi flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>Shop Floor Tablet:</strong> Terminal operator tại từng công đoạn sản xuất</span></li>
+                                <li class="vi flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>IoT Hub & Edge:</strong> Giao thức OPC-UA, MQTT kết nối thiết bị → Odoo</span></li>
+                                <li class="jp flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>PLC・自動化:</strong> 機械・ロボット・自動ラインのプログラミング</span></li>
+                                <li class="jp flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>センサー・RFID:</strong> 生産量・温度・振動データ収集デバイス</span></li>
+                                <li class="jp flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>現場タブレット:</strong> 各工程の作業者向けオペレーターターミナル</span></li>
+                                <li class="jp flex gap-2"><span class="text-sky-500 font-bold">▸</span><span><strong>IoT Hub:</strong> OPC-UA・MQTTプロトコルで設備→Odooをリアルタイム連携</span></li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-5 rounded-xl border-2 border-indigo-200">
+                            <h4 class="text-indigo-600 font-bold mb-1 uppercase text-xs tracking-widest"><span class="vi">Chịu Trách Nhiệm</span><span class="jp">担当範囲</span></h4>
+                            <p class="font-bold text-xl mb-3 text-slate-800">DanaExperts</p>
+                            <ul class="text-slate-600 text-sm space-y-1.5">
+                                <li class="vi flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>Odoo Enterprise:</strong> Triển khai, license, cấu hình multi-company cho 2,000+ user</span></li>
+                                <li class="vi flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>Customization:</strong> Phát triển module theo quy trình đặc thù nhà máy</span></li>
+                                <li class="vi flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>Integration:</strong> Kết nối Odoo ↔ IoT Hub ↔ thiết bị Y-NetTech</span></li>
+                                <li class="vi flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>Training & Go-Live:</strong> Đào tạo, hỗ trợ vận hành, tiếng Nhật khi cần</span></li>
+                                <li class="jp flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>Odoo Enterprise:</strong> 導入・ライセンス・2,000名以上対応マルチカンパニー設定</span></li>
+                                <li class="jp flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>カスタマイズ:</strong> 工場固有プロセスに合わせたモジュール開発</span></li>
+                                <li class="jp flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>システム統合:</strong> Odoo ↔ IoT Hub ↔ Y-NetTech設備の接続</span></li>
+                                <li class="jp flex gap-2"><span class="text-indigo-500 font-bold">▸</span><span><strong>研修・稼働支援:</strong> 日本語サポート対応</span></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="hidden md:flex flex-col items-center justify-center pt-8">
-                        <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                        </svg>
+                    <!-- Architecture diagram -->
+                    <div class="text-center bg-white rounded-xl border border-sky-100 p-4">
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wide mb-3"><span class="vi">🏗 Kiến Trúc Hệ Thống: ERP × MES × Shop Floor (không còn data silo)</span><span class="jp">🏗 システムアーキテクチャ：ERP × MES × 現場（データサイロ解消）</span></div>
+                        <img src="Blog_Industry4_MES.webp" alt="ERP MES Shop Floor Integration Architecture" class="mx-auto rounded-lg shadow-md border border-slate-200 max-w-full" style="max-height:200px;object-fit:contain;">
+                        <p class="text-xs text-slate-400 mt-2 italic"><span class="vi">Tầng ERP (Odoo) ↔ Tầng MES ↔ Tầng Shop Floor (Y-NetTech IoT) — kết nối xuyên suốt, không gián đoạn</span><span class="jp">ERP層（Odoo）↔ MES層 ↔ 現場層（Y-NetTech IoT）— シームレスな垂直統合</span></p>
                     </div>
-                    <div class="flex-1 bg-white p-6 rounded-xl border border-sky-200">
-                        <h4 class="text-sky-600 font-bold mb-2 uppercase text-xs tracking-widest">
-                            <span class="vi">Tầng Quản Trị ERP & MES</span>
-                            <span class="jp">ERP・MES 管理システム層</span>
-                        </h4>
-                        <p class="font-bold text-xl mb-2 text-slate-800">DanaExperts</p>
-                        <ul class="text-slate-600 text-sm space-y-2 list-disc pl-4 mt-4">
-                            <li class="vi"><strong>Odoo ERP:</strong> Phân hệ nghiệp vụ Mua Hàng, Tồn Kho cốt lõi.</li>
-                            <li class="vi"><strong>MES / Dashboard:</strong> Nhận dữ liệu để phân tích OEE Real-time.
-                            </li>
-                            <li class="jp"><strong>Odoo ERP:</strong> 購買、在庫などビジネスのコアシステム。</li>
-                            <li class="jp"><strong>MES・ダッシュボード:</strong> ハードウェアデータを受信し、リアルタイムでOEEと生産進捗を可視化。</li>
-                        </ul>
+                    <!-- Odoo dashboard visual -->
+                    <div class="text-center bg-slate-900 rounded-xl border border-slate-700 p-4">
+                        <div class="text-xs font-bold text-sky-400 uppercase tracking-wide mb-3"><span class="vi">📊 Kết Quả: CEO Dashboard Real-time trên Odoo Enterprise</span><span class="jp">📊 成果：OdooエンタープライズのCEOリアルタイムダッシュボード</span></div>
+                        <img src="2020-dash-gal-1-1.gif" alt="Odoo Real-time Dashboard" class="mx-auto rounded-lg shadow-md border border-slate-700 max-w-full" style="max-height:160px;object-fit:contain;">
+                        <p class="text-xs text-slate-400 mt-2 italic"><span class="vi">KPI toàn nhà máy hiển thị real-time — BGĐ theo dõi mọi lúc, mọi nơi</span><span class="jp">工場全体のKPIをリアルタイム表示 — 経営陣はいつでもどこでも把握</span></p>
                     </div>
                 </div>
             </div>
