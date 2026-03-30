@@ -406,6 +406,399 @@
     </div>
 
 
+    <!-- PAGE F1: OVERVIEW FLOWCHART -->
+    <div class="page bg-white">
+        <h2 class="text-3xl font-bold text-slate-900 mb-3 flex items-center">
+            <span class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F1</span>
+            <span class="vi">Quy Trình Nghiệp Vụ Tổng Quan — Với Odoo</span>
+            <span class="jp">業務プロセス全体概要 — Odoo導入後</span>
+        </h2>
+        <p class="text-xs text-slate-400 italic mb-4 vi">Toàn bộ chu trình từ nhận đơn → giao hàng → thu tiền chạy liền mạch trên một nền tảng Odoo duy nhất. Mỗi bước tự động liên thông, không cần nhập liệu thủ công.</p>
+        <p class="text-xs text-slate-400 italic mb-4 jp">受注から出荷・入金まで、単一OdooプラットフォームでEnd-to-Endを完全自動化。各ステップは手動入力なしで連携。</p>
+        <!-- Legend -->
+        <div class="flex flex-wrap gap-x-5 gap-y-1 mb-5 text-xs text-slate-600">
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span><span class="vi">Sales</span><span class="jp">営業</span></span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block"></span><span class="vi">Kế Hoạch SX</span><span class="jp">生産計画</span></span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span><span class="vi">Mua Hàng</span><span class="jp">購買</span></span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span><span class="vi">Kho NVL</span><span class="jp">原材料倉庫</span></span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block"></span><span class="vi">Xưởng SX</span><span class="jp">製造現場</span></span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-violet-500 inline-block"></span><span class="vi">QC</span><span class="jp">品質管理</span></span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-teal-500 inline-block"></span><span class="vi">Logistics/Kế Toán</span><span class="jp">物流/経理</span></span>
+            <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="vi">Y-NetTech IoT</span><span class="jp">Y-NetTech IoT</span></span>
+        </div>
+
+        <!-- ROW 1: Stages 1-4 -->
+        <div class="flex items-stretch gap-1 mb-1 avoid-break">
+            <div class="flex-1 bg-blue-50 border-2 border-blue-300 rounded-xl p-3 flex flex-col">
+                <div class="flex items-center gap-1.5 mb-1.5"><span class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">1</span><div class="font-bold text-blue-700 text-xs leading-tight"><div class="vi">Nhận Đơn Hàng</div><div class="jp">受注管理</div></div></div>
+                <span class="text-xs font-bold text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Sale</span>
+                <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Tạo Quotation, xác nhận SO</span><span class="jp">見積・SO確認</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Gửi báo giá tự động qua email</span><span class="jp">見積自動メール送信</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">SO confirmed → trigger MRP</span><span class="jp">SO確定→MRP自動連携</span></li>
+                </ul>
+                <div class="mt-2 text-xs text-blue-400 font-semibold"><span class="vi">👤 Sales / CSKH</span><span class="jp">👤 営業担当</span></div>
+            </div>
+            <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+            <div class="flex-1 bg-indigo-50 border-2 border-indigo-300 rounded-xl p-3 flex flex-col">
+                <div class="flex items-center gap-1.5 mb-1.5"><span class="w-6 h-6 bg-indigo-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">2</span><div class="font-bold text-indigo-700 text-xs leading-tight"><div class="vi">Lập KHSX (MRP)</div><div class="jp">生産計画(MRP)</div></div></div>
+                <span class="text-xs font-bold text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Manufacturing</span>
+                <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Tự tính BOM & NVL cần dùng</span><span class="jp">BOM・必要材料を自動算出</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Kiểm tra tồn kho, tạo MO</span><span class="jp">在庫確認・製造指示自動作成</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Gantt tự xếp lịch Workcenter</span><span class="jp">ガントで作業ステーション自動配分</span></li>
+                </ul>
+                <div class="mt-2 text-xs text-indigo-400 font-semibold"><span class="vi">👤 Kế Hoạch SX</span><span class="jp">👤 生産計画担当</span></div>
+            </div>
+            <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+            <div class="flex-1 bg-orange-50 border-2 border-orange-300 rounded-xl p-3 flex flex-col">
+                <div class="flex items-center gap-1.5 mb-1.5"><span class="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">3</span><div class="font-bold text-orange-700 text-xs leading-tight"><div class="vi">Mua Hàng</div><div class="jp">購買管理</div></div></div>
+                <span class="text-xs font-bold text-orange-600 bg-orange-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Purchase</span>
+                <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">RFQ tự động gửi nhà cung cấp</span><span class="jp">RFQ自動生成・送信</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">So sánh báo giá & tạo PO</span><span class="jp">見積比較・PO作成</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Phê duyệt PO qua mobile</span><span class="jp">モバイルでPO承認</span></li>
+                </ul>
+                <div class="mt-2 text-xs text-orange-400 font-semibold"><span class="vi">👤 Phòng Mua Hàng</span><span class="jp">👤 購買担当</span></div>
+            </div>
+            <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+            <div class="flex-1 bg-emerald-50 border-2 border-emerald-300 rounded-xl p-3 flex flex-col">
+                <div class="flex items-center gap-1.5 mb-1.5"><span class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">4</span><div class="font-bold text-emerald-700 text-xs leading-tight"><div class="vi">Nhập Kho NVL</div><div class="jp">原材料入庫</div></div></div>
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Inventory</span>
+                <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Scan Barcode/RFID → nhập kho</span><span class="jp">バーコード/RFIDスキャン入庫</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Gán Lot Number, QC incoming</span><span class="jp">ロット番号付番・受入検査</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Reserve NVL tự động cho MO</span><span class="jp">MO用原材料を自動引当</span></li>
+                </ul>
+                <div class="mt-2 text-xs text-emerald-400 font-semibold"><span class="vi">👤 Kho NVL</span><span class="jp">👤 原材料倉庫</span></div>
+            </div>
+            <div class="flex flex-col items-center justify-end pb-2 pl-1"><span class="text-slate-400 text-2xl leading-none">↩</span></div>
+        </div>
+
+        <!-- Row 2 connector label -->
+        <div class="text-right text-xs text-slate-400 italic mb-1 pr-8"><span class="vi">↓ tiếp theo (stages 5–7)</span><span class="jp">↓ 次のステップ（5〜7）</span></div>
+
+        <!-- ROW 2: Stages 5-7 -->
+        <div class="flex items-stretch gap-1 mb-6 avoid-break">
+            <div class="flex-1 bg-sky-50 border-2 border-sky-400 rounded-xl p-3 flex flex-col shadow">
+                <div class="flex items-center gap-1.5 mb-1.5"><span class="w-6 h-6 bg-sky-600 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">5</span><div class="font-bold text-sky-700 text-xs leading-tight"><div class="vi">Sản Xuất (MES)</div><div class="jp">製造実行 (MES)</div></div></div>
+                <span class="text-xs font-bold text-sky-600 bg-sky-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Manufacturing + IoT</span>
+                <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Shop Floor tablet: Start/Done</span><span class="jp">現場タブレット操作</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Sensor Y-NetTech đếm SL auto</span><span class="jp">Y-NetTechセンサー自動カウント</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">OEE real-time, cảnh báo dừng máy</span><span class="jp">OEEリアルタイム・停止アラート</span></li>
+                </ul>
+                <div class="mt-2 text-xs text-sky-400 font-semibold"><span class="vi">👤 Xưởng SX + Y-NetTech</span><span class="jp">👤 製造現場 + Y-NetTech</span></div>
+            </div>
+            <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+            <div class="flex-1 bg-violet-50 border-2 border-violet-300 rounded-xl p-3 flex flex-col">
+                <div class="flex items-center gap-1.5 mb-1.5"><span class="w-6 h-6 bg-violet-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">6</span><div class="font-bold text-violet-700 text-xs leading-tight"><div class="vi">Kiểm Tra CL (QC)</div><div class="jp">品質検査 (QC)</div></div></div>
+                <span class="text-xs font-bold text-violet-600 bg-violet-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Quality</span>
+                <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Control Points tự tạo theo SX</span><span class="jp">製造連動でQCポイント自動生成</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Pass→Kho TP | Fail→NCR+Block</span><span class="jp">合格→完成品倉庫 | 不合格→自動NCR</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Truy xuất lỗi tận Lot NVL gốc</span><span class="jp">欠陥をロット単位で追跡</span></li>
+                </ul>
+                <div class="mt-2 text-xs text-violet-400 font-semibold"><span class="vi">👤 Phòng QC</span><span class="jp">👤 品質管理部門</span></div>
+            </div>
+            <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+            <div class="flex-1 bg-teal-50 border-2 border-teal-300 rounded-xl p-3 flex flex-col">
+                <div class="flex items-center gap-1.5 mb-1.5"><span class="w-6 h-6 bg-teal-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">7</span><div class="font-bold text-teal-700 text-xs leading-tight"><div class="vi">Giao Hàng & Kế Toán</div><div class="jp">出荷・会計処理</div></div></div>
+                <span class="text-xs font-bold text-teal-600 bg-teal-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Inventory + Accounting</span>
+                <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">1-click: xuất kho + DO + Invoice</span><span class="jp">ワンクリック：出庫・DO・請求書</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">KH xác nhận qua Customer Portal</span><span class="jp">顧客ポータルで受領確認</span></li>
+                    <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Bank reconciliation auto 95%+</span><span class="jp">銀行照合95%以上自動化</span></li>
+                </ul>
+                <div class="mt-2 text-xs text-teal-400 font-semibold"><span class="vi">👤 Logistics + Kế Toán</span><span class="jp">👤 物流・経理担当</span></div>
+            </div>
+            <div class="w-8 flex-shrink-0"></div>
+        </div>
+
+        <!-- CEO Dashboard Bar -->
+        <div class="bg-slate-900 rounded-xl p-4 text-white flex items-start gap-4 avoid-break">
+            <div class="text-3xl mt-1">📊</div>
+            <div class="flex-1">
+                <div class="font-bold text-sky-400 text-sm mb-2"><span class="vi">CEO Real-time Dashboard — Theo dõi xuyên suốt 7 quy trình bất kỳ lúc nào</span><span class="jp">CEOリアルタイムダッシュボード — 全7プロセスを24時間監視</span></div>
+                <div class="grid grid-cols-3 gap-2 text-xs text-slate-300">
+                    <span class="flex items-center gap-1.5">📦 <span class="vi">Tồn kho NVL/TP real-time</span><span class="jp">原材料/完成品リアルタイム在庫</span></span>
+                    <span class="flex items-center gap-1.5">⚙️ <span class="vi">OEE thiết bị theo máy</span><span class="jp">設備別OEEモニタリング</span></span>
+                    <span class="flex items-center gap-1.5">🎯 <span class="vi">Tiến độ từng đơn hàng</span><span class="jp">注文別進捗状況</span></span>
+                    <span class="flex items-center gap-1.5">✅ <span class="vi">Tỷ lệ QC Pass/Fail theo ngày</span><span class="jp">日次QC合格率</span></span>
+                    <span class="flex items-center gap-1.5">💰 <span class="vi">Công nợ & Dòng tiền</span><span class="jp">売掛金・キャッシュフロー</span></span>
+                    <span class="flex items-center gap-1.5">🚨 <span class="vi">Cảnh báo: tồn kho thấp / máy dừng</span><span class="jp">在庫低水準・機械停止アラート</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE F2: DETAIL — STAGES 1-2: ORDER → MRP -->
+    <div class="page bg-white">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+            <span class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F2</span>
+            <span class="vi">Chi Tiết: Nhận Đơn Hàng → Lập Kế Hoạch Sản Xuất</span>
+            <span class="jp">詳細フロー：受注 → 生産計画（MRP）</span>
+        </h2>
+        <p class="text-xs text-slate-400 italic mb-4 vi">Stages 1–2 | Module: Sale · Manufacturing (MRP)</p>
+        <p class="text-xs text-slate-400 italic mb-4 jp">ステージ1〜2 | モジュール：Sale · Manufacturing (MRP)</p>
+
+        <!-- SWIMLANE KEY -->
+        <div class="flex gap-3 mb-4 text-xs">
+            <span class="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded"><span class="w-4 h-3 bg-amber-200 border border-amber-400 rounded-sm inline-block"></span><span class="vi">菱形 = Điểm quyết định</span><span class="jp">菱形 = 分岐点</span></span>
+            <span class="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded"><span class="w-4 h-3 bg-sky-100 border border-sky-300 rounded-sm inline-block"></span><span class="vi">Ô vuông = Tác vụ Odoo</span><span class="jp">四角 = Odooアクション</span></span>
+            <span class="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded"><span class="text-slate-400 font-bold">①</span><span class="vi">= Kết nối giữa lanes</span><span class="jp">= レーン間連携</span></span>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm text-xs">
+            <!-- Lane: Customer -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:64px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-blue-300 bg-blue-50" style="width:80px;"><span class="font-bold text-blue-700 text-center leading-tight"><span class="vi">Khách Hàng</span><span class="jp">顧客</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-blue-800"><span class="vi">Gửi đơn hàng</span><span class="jp">発注・購買依頼</span></div><div class="text-slate-400 mt-0.5">Email / Portal</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-blue-800"><span class="vi">Xem & duyệt báo giá ①</span><span class="jp">見積確認・承認 ①</span></div><div class="text-slate-400 mt-0.5">Odoo Portal</div></div>
+                </div>
+            </div>
+            <!-- Lane: Sales -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-indigo-300 bg-indigo-50" style="width:80px;"><span class="font-bold text-indigo-700 text-center leading-tight"><span class="vi">Sales / CSKH</span><span class="jp">営業</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-indigo-800"><span class="vi">Nhận yêu cầu</span><span class="jp">要求受付</span></div><div class="text-slate-400 mt-0.5">Odoo: Sale</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-indigo-800"><span class="vi">Tạo Quotation</span><span class="jp">見積書作成</span></div><div class="text-slate-400 mt-0.5">Odoo: Sale</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <!-- Decision Diamond -->
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#f59e0b;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">KH<br>duyệt?</span><span class="jp">承認?</span></span></div>
+                        <div class="flex gap-3 mt-1"><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">Có →</span><span class="jp">Y →</span></span><span class="text-rose-500 font-bold" style="font-size:9px;"><span class="vi">↩Sửa</span><span class="jp">↩修正</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-emerald-800"><span class="vi">✅ Confirm SO ②</span><span class="jp">✅ SO確定 ②</span></div><div class="text-slate-400 mt-0.5">Odoo: Sale</div></div>
+                </div>
+            </div>
+            <!-- Lane: Odoo Auto-trigger -->
+            <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:40px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100" style="width:80px;"><span class="font-bold text-slate-500 text-center leading-tight text-xs"><span class="vi">Odoo Auto</span><span class="jp">自動連携</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3">
+                    <span class="text-slate-400 text-xs italic"><span class="vi">② SO confirmed → Odoo tự động tạo Manufacturing Order & khởi động MRP Scheduler</span><span class="jp">② SO確定→Odooが自動で製造指示(MO)作成・MRPスケジューラー起動</span></span>
+                </div>
+            </div>
+            <!-- Lane: Ke Hoach SX -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:80px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-sky-400 bg-sky-50" style="width:80px;"><span class="font-bold text-sky-700 text-center leading-tight"><span class="vi">Kế Hoạch Sản Xuất</span><span class="jp">生産計画</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-sky-800"><span class="vi">Nhận MO từ Odoo</span><span class="jp">MO受信</span></div><div class="text-slate-400 mt-0.5">MRP auto</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#8b5cf6;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">Đủ<br>kho TP?</span><span class="jp">完成品<br>在庫?</span></span></div>
+                        <div class="flex gap-3 mt-1"><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">Có→DO</span><span class="jp">Y→DO</span></span><span class="text-rose-500 font-bold" style="font-size:9px;"><span class="vi">Không↓</span><span class="jp">N↓</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-sky-800"><span class="vi">Tính BOM</span><span class="jp">BOM計算</span></div><div class="text-slate-400 mt-0.5">Odoo: MRP</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#0ea5e9;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">Đủ<br>NVL?</span><span class="jp">材料<br>十分?</span></span></div>
+                        <div class="flex gap-3 mt-1"><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">Có→SX</span><span class="jp">Y→製造</span></span><span class="text-rose-500 font-bold" style="font-size:9px;"><span class="vi">Không③</span><span class="jp">N③</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-indigo-50 border border-indigo-300 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-indigo-800"><span class="vi">Gantt: Xếp lịch</span><span class="jp">ガント自動配分</span></div><div class="text-slate-400 mt-0.5">Odoo: MRP</div></div>
+                </div>
+            </div>
+            <!-- Lane: Purchase triggered -->
+            <div class="flex" style="min-height:48px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-orange-300 bg-orange-50" style="width:80px;"><span class="font-bold text-orange-700 text-center leading-tight"><span class="vi">Mua Hàng</span><span class="jp">購買</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3">
+                    <span class="text-orange-600 font-bold">③</span>
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-orange-800"><span class="vi">Nhận RFQ tự động</span><span class="jp">自動RFQ受信</span></div><div class="text-slate-400 mt-0.5">Odoo: Purchase</div></div>
+                    <span class="text-slate-400 italic text-xs"><span class="vi">→ tiếp tục ở trang F3</span><span class="jp">→ F3ページへ続く</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE F3: DETAIL — STAGES 3-5: PURCHASE → INVENTORY → MANUFACTURING -->
+    <div class="page bg-white">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+            <span class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F3</span>
+            <span class="vi">Chi Tiết: Mua Hàng → Nhập Kho NVL → Sản Xuất</span>
+            <span class="jp">詳細フロー：購買 → 原材料入庫 → 製造</span>
+        </h2>
+        <p class="text-xs text-slate-400 italic mb-5 vi">Stages 3–5 | Module: Purchase · Inventory · Manufacturing · IoT (Y-NetTech)</p>
+        <p class="text-xs text-slate-400 italic mb-5 jp">ステージ3〜5 | モジュール：Purchase · Inventory · Manufacturing · IoT</p>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm text-xs">
+            <!-- Lane: Mua Hang -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-orange-400 bg-orange-50" style="width:80px;"><span class="font-bold text-orange-700 text-center leading-tight"><span class="vi">Mua Hàng</span><span class="jp">購買</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-orange-800"><span class="vi">So sánh NCC</span><span class="jp">仕入先比較</span></div><div class="text-slate-400 mt-0.5">Odoo: Purchase</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-orange-800"><span class="vi">Tạo PO</span><span class="jp">PO作成</span></div><div class="text-slate-400 mt-0.5">Odoo: Purchase</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#f59e0b;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">Cần<br>approve?</span><span class="jp">承認<br>必要?</span></span></div>
+                        <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">→BGĐ</span><span class="jp">→役員</span></span><span class="text-slate-500 font-bold" style="font-size:9px;"><span class="vi">Không→</span><span class="jp">N→</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-emerald-800"><span class="vi">Gửi PO cho NCC ④</span><span class="jp">NCC へPO送付 ④</span></div><div class="text-slate-400 mt-0.5">Email auto</div></div>
+                </div>
+            </div>
+            <!-- Lane: NCC -->
+            <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:56px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100" style="width:80px;"><span class="font-bold text-slate-600 text-center leading-tight"><span class="vi">Nhà Cung Cấp (NCC)</span><span class="jp">サプライヤー</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <span class="text-slate-400 font-bold">④</span>
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-slate-700"><span class="vi">Nhận & xác nhận PO</span><span class="jp">PO受信・確認</span></div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-slate-700"><span class="vi">Giao hàng ⑤</span><span class="jp">納品 ⑤</span></div></div>
+                </div>
+            </div>
+            <!-- Lane: Kho NVL -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:80px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-emerald-400 bg-emerald-50" style="width:80px;"><span class="font-bold text-emerald-700 text-center leading-tight"><span class="vi">Kho NVL</span><span class="jp">原材料倉庫</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <span class="text-emerald-600 font-bold">⑤</span>
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-emerald-800"><span class="vi">Mở Receipt từ PO</span><span class="jp">PO連動Receipt開幕</span></div><div class="text-slate-400 mt-0.5">Odoo: Inventory</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-emerald-800"><span class="vi">Scan Barcode/RFID</span><span class="jp">スキャン入庫</span></div><div class="text-slate-400 mt-0.5">Barcode App</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#10b981;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">QC<br>Incoming?</span><span class="jp">受入<br>検査?</span></span></div>
+                        <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">Pass→</span><span class="jp">OK→</span></span><span class="text-rose-500 font-bold" style="font-size:9px;"><span class="vi">↩Return</span><span class="jp">↩返品</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-emerald-800"><span class="vi">Nhập kho, gán Lot</span><span class="jp">入庫・ロット付番</span></div><div class="text-slate-400 mt-0.5">Real-time ⑥</div></div>
+                </div>
+            </div>
+            <!-- Lane: Odoo auto reserve -->
+            <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:36px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100" style="width:80px;"><span class="font-bold text-slate-500 text-center leading-tight text-xs"><span class="vi">Odoo Auto</span><span class="jp">自動</span></span></div>
+                <div class="flex-1 flex items-center p-3">
+                    <span class="text-slate-400 italic"><span class="vi">⑥ Tồn kho đủ cho MO → Odoo tự động Reserve NVL & chuyển MO sang trạng thái "Ready to Produce"</span><span class="jp">⑥ MO必要量が確保→Odooが自動でNVL引当・MO状態を「製造可能」に更新</span></span>
+                </div>
+            </div>
+            <!-- Lane: Xuong SX -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:80px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-sky-500 bg-sky-50" style="width:80px;"><span class="font-bold text-sky-700 text-center leading-tight"><span class="vi">Xưởng Sản Xuất</span><span class="jp">製造現場</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-sky-800"><span class="vi">Nhận MO trên Tablet</span><span class="jp">タブレットでMO確認</span></div><div class="text-slate-400 mt-0.5">Shop Floor</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-sky-800"><span class="vi">Bấm Start → Vận hành</span><span class="jp">開始ボタン→稼働</span></div><div class="text-slate-400 mt-0.5">Work Orders</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#0284c7;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">Có<br>Scrap?</span><span class="jp">廃棄<br>あり?</span></span></div>
+                        <div class="flex gap-2 mt-1"><span class="text-slate-500 font-bold" style="font-size:9px;"><span class="vi">Có→Ghi</span><span class="jp">Y→記録</span></span><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">Không→</span><span class="jp">N→</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-emerald-800"><span class="vi">✅ Hoàn thành MO ⑦</span><span class="jp">✅ MO完了 ⑦</span></div><div class="text-slate-400 mt-0.5">Mark as Done</div></div>
+                </div>
+            </div>
+            <!-- Lane: Y-NetTech IoT -->
+            <div class="flex" style="min-height:48px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-amber-400 bg-amber-50" style="width:80px;"><span class="font-bold text-amber-700 text-center leading-tight"><span class="vi">Y-NetTech IoT</span><span class="jp">IoTセンサー</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-amber-800"><span class="vi">Sensor/PLC đếm SL</span><span class="jp">センサー/PLC自動カウント</span></div><div class="text-slate-400 mt-0.5">IoT Box</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-amber-800"><span class="vi">Push data → Odoo MES</span><span class="jp">データをOdoo MESへ送信</span></div><div class="text-slate-400 mt-0.5">Real-time</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-slate-900 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-sky-400"><span class="vi">OEE Dashboard cập nhật</span><span class="jp">OEEダッシュボード更新</span></div><div class="text-amber-400 mt-0.5 text-xs">Live</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE F4: DETAIL — STAGES 6-7: QC → DELIVERY → ACCOUNTING -->
+    <div class="page bg-white">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+            <span class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F4</span>
+            <span class="vi">Chi Tiết: Kiểm Tra CL → Giao Hàng → Kế Toán</span>
+            <span class="jp">詳細フロー：品質検査 → 出荷 → 会計処理</span>
+        </h2>
+        <p class="text-xs text-slate-400 italic mb-5 vi">Stages 6–7 | Module: Quality · Inventory · Accounting</p>
+        <p class="text-xs text-slate-400 italic mb-5 jp">ステージ6〜7 | モジュール：Quality · Inventory · Accounting</p>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm text-xs">
+            <!-- Lane: QC -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:88px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-violet-400 bg-violet-50" style="width:80px;"><span class="font-bold text-violet-700 text-center leading-tight"><span class="vi">Phòng QC</span><span class="jp">品質管理</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-violet-50 border border-violet-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-violet-800"><span class="vi">⑦ Nhận thông báo QC</span><span class="jp">⑦ QC通知受信</span></div><div class="text-slate-400 mt-0.5">Odoo: Quality</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-violet-50 border border-violet-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-violet-800"><span class="vi">Điền checklist trên tablet</span><span class="jp">タブレットでチェック記入</span></div><div class="text-slate-400 mt-0.5">Quality Check</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#8b5cf6;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">Kết quả<br>Pass?</span><span class="jp">結果<br>合格?</span></span></div>
+                        <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">Pass→⑧</span><span class="jp">OK→⑧</span></span><span class="text-rose-500 font-bold" style="font-size:9px;"><span class="vi">Fail↓</span><span class="jp">NG↓</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#ef4444;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">Rework<br>được?</span><span class="jp">手直し<br>可能?</span></span></div>
+                        <div class="flex gap-2 mt-1"><span class="text-amber-500 font-bold" style="font-size:9px;"><span class="vi">Có→SX</span><span class="jp">Y→再製造</span></span><span class="text-rose-600 font-bold" style="font-size:9px;"><span class="vi">Không→Scrap</span><span class="jp">N→廃棄</span></span></div>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 rounded-lg px-2 py-1 text-center flex-shrink-0"><div class="font-bold text-rose-700"><span class="vi">NCR auto + Block Lot</span><span class="jp">NCR自動作成・ロットブロック</span></div><div class="text-slate-400 mt-0.5">Alert Manager</div></div>
+                </div>
+            </div>
+            <!-- Lane: Kho TP -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:64px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-teal-400 bg-teal-50" style="width:80px;"><span class="font-bold text-teal-700 text-center leading-tight"><span class="vi">Kho Thành Phẩm</span><span class="jp">完成品倉庫</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <span class="text-teal-600 font-bold">⑧</span>
+                    <div class="bg-teal-50 border border-teal-200 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-teal-800"><span class="vi">Nhập kho TP đạt QC</span><span class="jp">合格品を完成品倉庫へ</span></div><div class="text-slate-400 mt-0.5">Odoo: Inventory</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="flex flex-col items-center flex-shrink-0">
+                        <div style="width:50px;height:50px;background:#14b8a6;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;"><span style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span class="vi">Đủ<br>xuất?</span><span class="jp">出荷<br>可能?</span></span></div>
+                        <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold" style="font-size:9px;"><span class="vi">Có→⑨</span><span class="jp">Y→⑨</span></span><span class="text-slate-500 font-bold" style="font-size:9px;"><span class="vi">Chờ SX</span><span class="jp">製造待ち</span></span></div>
+                    </div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-teal-50 border-2 border-teal-400 rounded-lg px-3 py-2 text-center" style="min-width:100px;"><div class="font-bold text-teal-800"><span class="vi">⑨ DO kích hoạt từ SO</span><span class="jp">⑨ SOからDO自動起動</span></div><div class="text-slate-400 mt-0.5">Linked to SO</div></div>
+                </div>
+            </div>
+            <!-- Lane: Logistics -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-cyan-400 bg-cyan-50" style="width:80px;"><span class="font-bold text-cyan-700 text-center leading-tight"><span class="vi">Logistics / Giao Hàng</span><span class="jp">物流・配送</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <span class="text-cyan-600 font-bold">⑨</span>
+                    <div class="bg-cyan-50 border border-cyan-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-cyan-800"><span class="vi">Đóng gói hàng</span><span class="jp">梱包作業</span></div><div class="text-slate-400 mt-0.5">Packing</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-cyan-50 border border-cyan-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-cyan-800"><span class="vi">Scan Barcode xuất kho</span><span class="jp">バーコードスキャン出庫</span></div><div class="text-slate-400 mt-0.5">Odoo: Inventory</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-cyan-50 border border-cyan-200 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-cyan-800"><span class="vi">In DO + Packing List</span><span class="jp">DO・梱包リスト印刷</span></div><div class="text-slate-400 mt-0.5">Auto-print</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-emerald-800"><span class="vi">✅ Giao hàng cho KH ⑩</span><span class="jp">✅ 顧客へ納品 ⑩</span></div></div>
+                </div>
+            </div>
+            <!-- Lane: Customer confirm -->
+            <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:48px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100" style="width:80px;"><span class="font-bold text-slate-600 text-center leading-tight"><span class="vi">Khách Hàng</span><span class="jp">顧客</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <span class="text-slate-500 font-bold">⑩</span>
+                    <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-center" style="min-width:110px;"><div class="font-bold text-slate-700"><span class="vi">Nhận hàng & xác nhận qua Portal</span><span class="jp">受領・ポータルで確認</span></div></div>
+                </div>
+            </div>
+            <!-- Lane: Ke Toan -->
+            <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-500 bg-slate-100" style="width:80px;"><span class="font-bold text-slate-700 text-center leading-tight"><span class="vi">Kế Toán</span><span class="jp">経理</span></span></div>
+                <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                    <div class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-center" style="min-width:110px;"><div class="font-bold text-slate-800"><span class="vi">Invoice tự tạo từ DO</span><span class="jp">DOから請求書自動生成</span></div><div class="text-slate-400 mt-0.5">Odoo: Accounting</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-slate-800"><span class="vi">Gửi Invoice cho KH</span><span class="jp">顧客へ請求書送付</span></div><div class="text-slate-400 mt-0.5">Email auto</div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-center" style="min-width:95px;"><div class="font-bold text-slate-800"><span class="vi">KH thanh toán</span><span class="jp">顧客支払い</span></div></div>
+                    <span class="text-slate-400 font-bold">→</span>
+                    <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center" style="min-width:110px;"><div class="font-bold text-emerald-800"><span class="vi">✅ Bank Reconcile auto 95%+</span><span class="jp">✅ 銀行照合95%+自動</span></div><div class="text-slate-400 mt-0.5">Odoo: Accounting</div></div>
+                </div>
+            </div>
+            <!-- Lane: BGD Dashboard -->
+            <div class="flex bg-slate-900" style="min-height:48px;">
+                <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-sky-500 bg-slate-800" style="width:80px;"><span class="font-bold text-sky-400 text-center leading-tight text-xs">📊 BGĐ</span></div>
+                <div class="flex-1 flex items-center gap-3 p-3 text-xs text-slate-300">
+                    <span class="vi">P&L cập nhật real-time · Công nợ phải thu · Dòng tiền tức thời · Cảnh báo tự động</span>
+                    <span class="jp">P&Lリアルタイム更新 · 売掛金 · キャッシュフロー即時 · 自動アラート</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- PAGE 3: THE SOLUTION & DATA WORKFLOW -->
     <div class="page bg-white">
         <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
