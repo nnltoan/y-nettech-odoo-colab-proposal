@@ -1,0 +1,28 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/sessions/dreamy-friendly-ride/mnt/Odoo_Y-nettech_colab/demo-app/dist"
+publishOrigin = "ui"
+commandOrigin = "ui"
+base = "/sessions/dreamy-friendly-ride/mnt/Odoo_Y-nettech_colab/demo-app"
+command = "npm run build"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
