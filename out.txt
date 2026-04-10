@@ -1,0 +1,16 @@
+Line 358: <!-- PAGE 1: COVER --> | count 1
+Line 424: <!-- PAGE EX: EXECUTIVE SUMMARY — For Board of Directors --> | count 1
+Line 561: <!-- PAGE 2: EXECUTIVE SUMMARY & PAIN POINTS --> | count 1
+Line 745: <!-- PAGE F1: OVERVIEW FLOWCHART --> | count 5
+Line 980: <!-- PAGE F2: DETAIL — STAGES 1-2: ORDER → MRP --> | count 5
+Line 1154: <!-- PAGE F3: DETAIL — STAGES 3-5: PURCHASE → INVENTORY → MANUFACTURING --> | count 5
+Line 1354: <!-- PAGE F4: DETAIL — STAGES 6-7: QC → DELIVERY → ACCOUNTING --> | count 5
+Line 1550: <!-- PAGE 3: THE SOLUTION & DATA WORKFLOW --> | count 5
+Line 1744: <!-- PAGE 4: PROOF OF CAPABILITY (JEWELRY INDUSTRY) --> | count 5
+Line 1886: <!-- PAGE 5: AI MEETING SECRETARY --> | count 5
+Line 1985: <!-- PAGE 5B: LUMINA CASE STUDY --> | count 5
+Line 2103: <!-- PAGE 6: ROI & CASE STUDIES --> | count 5
+Line 2193: <!-- PAGE 6A: WORKFORCE & PROCESS BENEFITS --> | count 5
+Line 2401: <!-- PAGE 6B: PRICING & MANUFACTURING FLOW --> | count 5
+Line 2648: <!-- PAGE RK: RISK, KPI & CHANGE MANAGEMENT --> | count 5
+Line 2790: <!-- PAGE 8: ROADMAP & CLOSING --> | count 5

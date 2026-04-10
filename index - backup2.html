@@ -1,0 +1,2628 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Xuất Dự Án / プロジェクト提案: Smart Factory 4.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --accent: #0284C7;
+            --surface: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            color: #334155;
+            background-color: #E2E8F0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page-container {
+            max-width: 210mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .page {
+            padding: 20mm 20mm;
+            min-height: 297mm;
+            position: relative;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Language Toggle Classes */
+        body.lang-vi .jp {
+            display: none !important;
+        }
+
+        body.lang-jp .vi {
+            display: none !important;
+        }
+
+        /* Print Styles */
+        @media print {
+
+            /* Base */
+            body {
+                background: white !important;
+                margin: 0;
+                font-size: 10pt;
+                color: #1e293b;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page-container {
+                box-shadow: none !important;
+                margin: 0;
+                max-width: none;
+            }
+
+            .page {
+                padding: 14mm 16mm !important;
+                min-height: auto !important;
+                page-break-after: always;
+                margin: 0 !important;
+            }
+
+            .page:last-child {
+                page-break-after: auto;
+            }
+
+            .avoid-break {
+                page-break-inside: avoid;
+            }
+
+            /* Hide UI chrome */
+            #lang-toggle {
+                display: none !important;
+            }
+
+            /* ── Typography ─────────────────────────────────────────── */
+            h1 {
+                font-size: 22pt !important;
+                line-height: 1.2 !important;
+                margin-bottom: 10px !important;
+            }
+
+            h2 {
+                font-size: 16pt !important;
+                margin-bottom: 12px !important;
+                page-break-after: avoid;
+            }
+
+            h3 {
+                font-size: 13pt !important;
+                margin-bottom: 8px !important;
+                page-break-after: avoid;
+            }
+
+            h4,
+            h5 {
+                font-size: 11pt !important;
+                margin-bottom: 6px !important;
+            }
+
+            p,
+            li,
+            span,
+            div {
+                font-size: 9.5pt !important;
+                line-height: 1.45 !important;
+            }
+
+            /* ── Spacing compressions ────────────────────────────────── */
+            .mb-24 {
+                margin-bottom: 1.5rem !important;
+            }
+
+            .mb-16 {
+                margin-bottom: 1.25rem !important;
+            }
+
+            .mb-12,
+            .mb-10,
+            .mb-8 {
+                margin-bottom: 0.9rem !important;
+            }
+
+            .mb-6 {
+                margin-bottom: 0.6rem !important;
+            }
+
+            .mt-20,
+            .mt-16 {
+                margin-top: 1.25rem !important;
+            }
+
+            .mt-12,
+            .mt-10,
+            .mt-8 {
+                margin-top: 0.9rem !important;
+            }
+
+            .mt-6 {
+                margin-top: 0.6rem !important;
+            }
+
+            .p-8 {
+                padding: 0.9rem !important;
+            }
+
+            .p-6 {
+                padding: 0.75rem !important;
+            }
+
+            .p-4 {
+                padding: 0.5rem !important;
+            }
+
+            .p-3 {
+                padding: 0.4rem !important;
+            }
+
+            .gap-8 {
+                gap: 0.85rem !important;
+            }
+
+            .gap-6,
+            .gap-4 {
+                gap: 0.7rem !important;
+            }
+
+            .space-y-4>*+* {
+                margin-top: 0.5rem !important;
+            }
+
+            .space-y-3>*+* {
+                margin-top: 0.4rem !important;
+            }
+
+            .space-y-2>*+* {
+                margin-top: 0.3rem !important;
+            }
+
+            .pb-4 {
+                padding-bottom: 0.5rem !important;
+            }
+
+            /* ── Images ─────────────────────────────────────────────── */
+            /* General images: capped to prevent full-page takeover */
+            img {
+                max-width: 100% !important;
+                page-break-inside: avoid;
+                object-fit: contain;
+            }
+
+            /* Large diagram/chart images */
+            #integration-image,
+            #roi-image,
+            #oee-image {
+                max-height: 200px !important;
+            }
+
+            /* Logo images – keep their native small size */
+            img[alt="Y-NetTech"],
+            img[alt="DanaExperts"],
+            img[alt="Odoo ERP"] {
+                max-height: 40px !important;
+            }
+
+            /* Form demo image */
+            img[alt="Royi Sal Form Example"] {
+                max-height: 160px !important;
+            }
+
+            /* ── Cover page: full A4, flex-1 inner div handles centering ─ */
+            .page:first-child {
+                min-height: 297mm !important;
+                padding: 20mm !important;
+                display: flex !important;
+                flex-direction: column !important;
+                position: relative !important;
+            }
+
+            .page:first-child h1 {
+                font-size: 36pt !important;
+                line-height: 1.15 !important;
+            }
+
+            .page:first-child h1 span {
+                font-size: inherit !important;
+                line-height: inherit !important;
+            }
+
+            #cover-footer {
+                break-before: avoid !important;
+                page-break-before: avoid !important;
+            }
+
+            /* ── Timeline ────────────────────────────────────────────── */
+            .timeline-item {
+                padding-bottom: 14px !important;
+            }
+
+            /* ── Comparison table text ───────────────────────────────── */
+            .grid .p-4 {
+                padding: 0.45rem !important;
+            }
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background: #0284C7;
+            border-radius: 50%;
+            position: absolute;
+            left: -6px;
+            top: 6px;
+        }
+
+        .timeline-item {
+            border-left: 2px solid #E2E8F0;
+            padding-left: 20px;
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        /* Fixed Lang Toggle Button */
+        #lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 4px;
+        }
+
+        .lang-btn {
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: #0284C7;
+            color: white;
+        }
+
+        .lang-btn.inactive {
+            background: transparent;
+            color: #64748B;
+        }
+
+        .lang-btn.inactive:hover {
+            background: #f1f5f9;
+        }
+    </style>
+    <script>
+        function setLang(lang) {
+            // Set body class
+            document.body.className = 'antialiased lang-' + lang;
+
+            // Update buttons
+            document.getElementById('btn-vi').className = lang === 'vi' ? 'lang-btn active' : 'lang-btn inactive';
+            document.getElementById('btn-jp').className = lang === 'jp' ? 'lang-btn active' : 'lang-btn inactive';
+
+            // Swap Integration Image depending on language
+            const intImg = document.getElementById('integration-image');
+            if (intImg) {
+                intImg.src = lang === 'vi' ? 'IMG_20260330_193114.jpg' : 'IMG_20260330_193754jp.jpg';
+            }
+
+            // Swap ROI Break-even chart
+            const roiImg = document.getElementById('roi-image');
+            if (roiImg) {
+                roiImg.src = lang === 'vi' ? 'roi_chart.png' : 'roi_chart_jp.png';
+            }
+
+            // Swap OEE Dashboard Image
+            const oeeImg = document.getElementById('oee-image');
+            if (oeeImg) {
+                oeeImg.src = lang === 'vi' ? 'oee_dashboard.png' : 'oee_dashboard_jp.png';
+            }
+        }
+    </script>
+</head>
+
+<body class="antialiased lang-vi">
+
+    <div id="lang-toggle">
+        <button id="btn-vi" class="lang-btn active" onclick="setLang('vi')">Tiếng Việt</button>
+        <button id="btn-jp" class="lang-btn inactive" onclick="setLang('jp')">日本語</button>
+    </div>
+
+    <div class="page-container">
+
+        <!-- PAGE 1: COVER -->
+        <div class="page flex flex-col text-center relative overflow-hidden bg-white">
+            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-slate-200 to-sky-600"></div>
+            <!-- flex-1 div: grows to fill space, centering the main content block -->
+            <div class="flex-1 flex flex-col justify-center items-center w-full">
+
+                <div class="flex items-center justify-center space-x-8 mb-8 relative z-10 w-full px-8">
+                    <img src="TransparentLogo-UPkaOdnc_ONrY2UO8Ih6uQ.png" alt="Y-NetTech"
+                        class="h-12 object-contain drop-shadow-sm">
+                    <div class="h-10 w-px bg-slate-300"></div>
+                    <img src="logodanaexperts.png" alt="DanaExperts" class="h-12 object-contain drop-shadow-sm">
+                    <div class="h-10 w-px bg-slate-300"></div>
+                    <img src="Odoo_logo_rgb.svg.png" alt="Odoo ERP" class="h-10 object-contain drop-shadow-sm">
+                </div>
+
+                <div class="relative z-10 max-w-3xl mx-auto mt-8 mb-12">
+                    <h1 class="text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+                        <span class="vi">Giải Pháp <br><span class="text-sky-600">Smart Factory 4.0</span></span>
+                        <span class="jp">インダストリー4.0 <br><span class="text-sky-600">スマートファクトリーソリューション</span></span>
+                    </h1>
+                    <p class="text-xl text-slate-500 font-medium tracking-wide uppercase">
+                        <span class="vi">Chuyển Đổi Số Toàn Diện Cho Nhà Máy Sản Xuất</span>
+                        <span class="jp">製造工場の包括的デジタルトランスフォーメーション</span>
+                    </p>
+                </div>
+
+                <div
+                    class="relative z-10 w-full max-w-md mx-auto text-left bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                    <div class="mb-4 border-b border-slate-200 pb-4">
+                        <p class="text-sm font-semibold text-sky-600 uppercase tracking-wider mb-1">
+                            <span class="vi">Khách hàng</span>
+                            <span class="jp">クライアント</span>
+                        </p>
+                        <p class="text-lg font-medium text-slate-800">
+                            <span class="vi">Nhà máy Công nghiệp (Nhật Bản)</span>
+                            <span class="jp">工業製造拠点 (日本)</span>
+                        </p>
+                        <p class="text-sm text-slate-500">
+                            <span class="vi">Quy mô: 2,000+ nhân sự</span>
+                            <span class="jp">規模: 2,000名以上</span>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold text-sky-600 uppercase tracking-wider mb-1">
+                            <span class="vi">Thực hiện bởi</span>
+                            <span class="jp">提案者</span>
+                        </p>
+                        <p class="text-base font-medium text-slate-800">
+                            <span class="vi">Liên minh Y-NetTech & DanaExperts</span>
+                            <span class="jp">Y-NetTech & DanaExperts アライアンス</span>
+                        </p>
+                        <p class="text-xs text-slate-400 mt-2">
+                            <span class="vi">Ngày: Tháng 03, 2026</span>
+                            <span class="jp">日付: 2026年 3月</span>
+                        </p>
+                    </div>
+                </div>
+            </div><!-- /flex-1 -->
+            <!-- Footer: outside flex-1, sits naturally at bottom of outer flex-col page -->
+            <div id="cover-footer" class="py-4 w-full text-center">
+                <p class="text-xs text-slate-400">Strictly Confidential &bull; Designed for Board of Directors Review
+                </p>
+            </div>
+        </div>
+
+
+        <!-- PAGE 2: EXECUTIVE SUMMARY & PAIN POINTS -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <span
+                    class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">01</span>
+                <span class="vi">Bài Toán Vận Hành & Tầm Nhìn</span>
+                <span class="jp">運用上の課題と協業ビジョン</span>
+            </h2>
+
+            <div class="mb-10 text-slate-600 text-lg leading-relaxed">
+                <p class="mb-4 vi">Kính thưa Ban Giám Đốc,</p>
+                <p class="mb-4 jp">役員各位、</p>
+                <p class="vi">Trong kỷ nguyên sản xuất hiện đại, dữ liệu liên tục là yếu tố sống còn. Đối với nhà máy
+                    <strong>hơn 2,000 nhân sự</strong>, việc duy trì quy trình quản lý thủ công tạo ra sự lãng phí vô
+                    hình khổng lồ trong ngân sách vận hành.</p>
+                <p class="jp">
+                    現代の製造業において、一貫性のあるデータは不可欠です。<strong>2,000名以上</strong>の従業員を抱える工場にとって、手作業による管理を維持することは、運営予算において目に見えない莫大な無駄を生み出します。
+                </p>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4">
+                <span class="vi">Thách Thức Hiện Tại (Nỗi Đau)</span>
+                <span class="jp">現状の最大の課題（ペインポイント）</span>
+            </h3>
+
+            <div class="grid grid-cols-2 gap-6 mb-12 avoid-break">
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2">
+                        <span class="vi">Quản lý bằng Giấy & Excel</span>
+                        <span class="jp">紙とExcelによる手動管理</span>
+                    </h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Dữ liệu chia cắt. Tỉ lệ sai sót do con người cao, tốn thời gian đối
+                            soát.</span>
+                        <span class="jp">データが分断されており、人為的エラーの発生率が高く、照合に膨大な時間を要します。</span>
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2">
+                        <span class="vi">Lãng Phí Nhân Sự Gián Tiếp</span>
+                        <span class="jp">間接部門の人材の浪費</span>
+                    </h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Cần lực lượng lớn nhân sự chỉ để ghi chép, nhập chứng từ báo cáo mỗi
+                            ngày.</span>
+                        <span class="jp">毎日、レポートの記録・入力・集計だけのために、非常に多くの人員を配置する必要があります。</span>
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2">
+                        <span class="vi">Khuất tầm nhìn (No Real-time)</span>
+                        <span class="jp">リアルタイムの可視性欠如</span>
+                    </h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Lãnh đạo không theo dõi được Hiệu suất thiết bị (OEE) và tồn kho tức
+                            thời.</span>
+                        <span class="jp">経営陣は、設備総合効率（OEE）やリアルタイムの正確な在庫状況を即座に把握できません。</span>
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2">
+                        <span class="vi">Tích Hợp Hệ Thống Cũ Kém</span>
+                        <span class="jp">レガシーシステムの統合困難</span>
+                    </h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Thiết bị phần mềm cũ không API tạo ra các ốc đảo dữ liệu trong nhà máy.</span>
+                        <span class="jp">API接続を持たない古いクローズドソフトウェアにより、工場内にデータの“孤島（サイロ）”が形成されています。</span>
+                    </p>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mb-5 border-l-4 border-sky-500 pl-4 avoid-break mt-12">
+                <span class="vi">Sự Chuyển Trục Mô Hình (Paradigm Shift)</span>
+                <span class="jp">パラダイムシフト：運用モデルの変革</span>
+            </h3>
+
+            <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm mb-12 avoid-break">
+                <!-- Table Header -->
+                <div
+                    class="grid grid-cols-3 bg-slate-100 text-slate-800 font-bold text-sm uppercase tracking-wider text-center divide-x divide-slate-200 border-b border-slate-200">
+                    <div class="p-4"><span class="vi">Quy trình (Process)</span><span class="jp">プロセス</span></div>
+                    <div class="p-4 bg-slate-200 text-slate-500"><span class="vi">Cách cũ (The Old Way)</span><span
+                            class="jp">従来の方法（The Old Way）</span></div>
+                    <div class="p-4 bg-sky-100 text-sky-700"><span class="vi">Cách Odoo (The Odoo Way)</span><span
+                            class="jp">Odooのアプローチ (The Odoo Way)</span></div>
+                </div>
+
+                <!-- Rows -->
+                <div class="grid grid-cols-3 text-sm divide-x divide-y divide-slate-200 bg-white">
+
+                    <!-- Row 1 -->
+                    <div class="p-4 font-bold text-slate-800 flex items-center"><span class="vi">Dữ liệu & Hệ
+                            thống</span><span class="jp">データとシステム</span></div>
+                    <div class="p-4 text-slate-500 leading-relaxed"><span class="vi">Dữ liệu bị phân tán (Silo), rời rạc
+                            giữa các bộ phận Sản xuất, IT và Khối Văn phòng.</span><span
+                            class="jp">各部門（製造、IT、オフィス等）間でデータが分散し、サイロ化している状態。</span></div>
+                    <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30"><span class="vi">Dữ liệu chạy
+                            xuyên suốt trên một nền tảng duy nhất, đồng bộ từ ERP đến Tầng thiết bị IoT.</span><span
+                            class="jp">統合ERPからIoTハードウェア層まで、単一のプラットフォーム上でデータがシームレスに連携。</span></div>
+
+                    <!-- Row 2 -->
+                    <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span
+                            class="vi">Quản lý Báo cáo</span><span class="jp">進捗とレポート管理</span></div>
+                    <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Khó theo
+                            dõi tiến độ thời gian thực; Lãnh đạo phải đi tới xưởng hoặc gọi điện trực tiếp để hỏi dự án
+                            đến đâu.</span><span class="jp">リアルタイムな追跡が困難。経営陣は状況確認のため現場に赴くか、個別に尋ねる必要がある。</span></div>
+                    <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200">
+                        <span class="vi">Dashboard & Gantt Chart tự động cập nhật tiến độ và cảnh báo nếu có khu vực bị
+                            quá tải năng lực.</span><span class="jp">ダッシュボードとガントチャートが進捗を自動更新し、エリアのリソース過負荷を即座に警告。</span>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span
+                            class="vi">Vật tư & Kho</span><span class="jp">資材と在庫管理</span></div>
+                    <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Lấy vật
+                            tư và theo dõi trên giấy/bảng tính. Dễ thiếu hụt linh kiện hoặc lấy lộn vật tư của dự án
+                            khác.</span><span class="jp">紙や表計算ソフトでの手動資材調達。プロジェクト間での資材の取り違えや欠品が発生しやすい。</span></div>
+                    <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200">
+                        <span class="vi">Tự động báo Tồn kho và "Giữ hàng" (Reserve) theo kế hoạch chuẩn xác từ cấu trúc
+                            Định mức BOM gốc.</span><span
+                            class="jp">プロジェクトごとに資材を自動引当（Reserve）。BOMからシリアル番号まで厳格かつ自動的に管理。</span></div>
+
+                    <!-- Row 4 -->
+                    <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span
+                            class="vi">Bảo trì thiết bị</span><span class="jp">設備と保守</span></div>
+                    <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Bảo trì
+                            theo cảm tính hoặc thụ động (đợi máy hỏng mới lập phiếu sửa chữa), dẫn đến Downtime kéo
+                            dài.</span><span class="jp">受動的保守（機械が故障してから修理を実施）、結果的に深刻かつ長時間のダウンタイムを招く。</span></div>
+                    <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200">
+                        <span class="vi">Bảo trì dự đoán (Predictive Maintenance) dựa trên tín hiệu cảnh báo cảnh báo từ
+                            Sensor thực tế kết nối vào IoT Hub.</span><span class="jp">予知保全（Predictive Maintenance）。IoT
+                            Hubに接続されたセンサーの実データに基づき早期警告を発信。</span></div>
+
+                    <!-- Row 5 -->
+                    <div class="p-4 font-bold text-slate-800 flex items-center border-t border-slate-200"><span
+                            class="vi">Ra quyết định</span><span class="jp">意思決定</span></div>
+                    <div class="p-4 text-slate-500 leading-relaxed border-t border-slate-200"><span class="vi">Quyết
+                            định chậm trễ do phải đợi tập hợp báo cáo số liệu thủ công dịp cuối tháng. Dữ liệu mâu
+                            thuẫn.</span><span class="jp">月末の手作業によるレポート集計を待つため、判断が遅れる。各部門からのデータに矛盾が生じる。</span></div>
+                    <div class="p-4 text-sky-800 font-medium leading-relaxed bg-sky-50/30 border-t border-slate-200">
+                        <span class="vi">Cấp C-level ra quyết định trong vài giây vào bất cứ lúc nào thông qua hệ thống
+                            báo cáo Odoo tự sinh theo thời gian thực.</span><span
+                            class="jp">ERP・ダッシュボードを通じて、経営幹部（C-level）は24時間365日、数秒で実データに基づく的確な判断を下せる。</span></div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4 avoid-break mt-12">
+                <span class="vi">Tầm Nhìn Hợp Tác: Y-NetTech x DanaExperts</span>
+                <span class="jp">統合されたアライアンス：Y-NetTech x DanaExperts</span>
+            </h3>
+
+            <div class="bg-sky-50 rounded-2xl p-8 shadow-sm border border-sky-100 avoid-break">
+                <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
+                    <div class="flex-1 bg-white p-6 rounded-xl border border-sky-200">
+                        <h4 class="text-sky-600 font-bold mb-2 uppercase text-xs tracking-widest">
+                            <span class="vi">Tầng Thiết Bị & Sàn Sản Xuất</span>
+                            <span class="jp">ハードウェア・製造フロア層</span>
+                        </h4>
+                        <p class="font-bold text-xl mb-2 text-slate-800">Y-NetTech</p>
+                        <ul class="text-slate-600 text-sm space-y-2 list-disc pl-4 mt-4">
+                            <li class="vi"><strong>Automation:</strong> Máy móc, PLC, Robot.</li>
+                            <li class="vi"><strong>Digitalization:</strong> Thu thập dữ liệu phần cứng trực tiếp.</li>
+                            <li class="jp"><strong>自動化・FA（ファクトリーオートメーション）:</strong> 機械設備、PLC、ロボット。</li>
+                            <li class="jp"><strong>デジタル化:</strong> 製造現場から直接ハードウェアデータを収集。</li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:flex flex-col items-center justify-center pt-8">
+                        <svg class="w-8 h-8 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1 bg-white p-6 rounded-xl border border-sky-200">
+                        <h4 class="text-sky-600 font-bold mb-2 uppercase text-xs tracking-widest">
+                            <span class="vi">Tầng Quản Trị ERP & MES</span>
+                            <span class="jp">ERP・MES 管理システム層</span>
+                        </h4>
+                        <p class="font-bold text-xl mb-2 text-slate-800">DanaExperts</p>
+                        <ul class="text-slate-600 text-sm space-y-2 list-disc pl-4 mt-4">
+                            <li class="vi"><strong>Odoo ERP:</strong> Phân hệ nghiệp vụ Mua Hàng, Tồn Kho cốt lõi.</li>
+                            <li class="vi"><strong>MES / Dashboard:</strong> Nhận dữ liệu để phân tích OEE Real-time.
+                            </li>
+                            <li class="jp"><strong>Odoo ERP:</strong> 購買、在庫などビジネスのコアシステム。</li>
+                            <li class="jp"><strong>MES・ダッシュボード:</strong> ハードウェアデータを受信し、リアルタイムでOEEと生産進捗を可視化。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE F1: OVERVIEW FLOWCHART -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-3 flex items-center">
+                <span
+                    class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F1</span>
+                <span class="vi">Quy Trình Nghiệp Vụ Tổng Quan — Với Odoo</span>
+                <span class="jp">業務プロセス全体概要 — Odoo導入後</span>
+            </h2>
+            <p class="text-xs text-slate-400 italic mb-4 vi">Toàn bộ chu trình từ nhận đơn → giao hàng → thu tiền chạy
+                liền mạch trên một nền tảng Odoo duy nhất. Mỗi bước tự động liên thông, không cần nhập liệu thủ công.
+            </p>
+            <p class="text-xs text-slate-400 italic mb-4 jp">
+                受注から出荷・入金まで、単一OdooプラットフォームでEnd-to-Endを完全自動化。各ステップは手動入力なしで連携。</p>
+            <!-- Legend -->
+            <div class="flex flex-wrap gap-x-5 gap-y-1 mb-5 text-xs text-slate-600">
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span><span
+                        class="vi">Sales</span><span class="jp">営業</span></span>
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block"></span><span class="vi">Kế Hoạch
+                        SX</span><span class="jp">生産計画</span></span>
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block"></span><span class="vi">Mua
+                        Hàng</span><span class="jp">購買</span></span>
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span><span class="vi">Kho
+                        NVL</span><span class="jp">原材料倉庫</span></span>
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block"></span><span class="vi">Xưởng
+                        SX</span><span class="jp">製造現場</span></span>
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-violet-500 inline-block"></span><span
+                        class="vi">QC</span><span class="jp">品質管理</span></span>
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-teal-500 inline-block"></span><span class="vi">Logistics/Kế
+                        Toán</span><span class="jp">物流/経理</span></span>
+                <span class="flex items-center gap-1"><span
+                        class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="vi">Y-NetTech
+                        IoT</span><span class="jp">Y-NetTech IoT</span></span>
+            </div>
+
+            <!-- ROW 1: Stages 1-4 -->
+            <div class="flex items-stretch gap-1 mb-1 avoid-break">
+                <div class="flex-1 bg-blue-50 border-2 border-blue-300 rounded-xl p-3 flex flex-col">
+                    <div class="flex items-center gap-1.5 mb-1.5"><span
+                            class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">1</span>
+                        <div class="font-bold text-blue-700 text-xs leading-tight">
+                            <div class="vi">Nhận Đơn Hàng</div>
+                            <div class="jp">受注管理</div>
+                        </div>
+                    </div>
+                    <span
+                        class="text-xs font-bold text-blue-600 bg-blue-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Sale</span>
+                    <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Tạo Quotation,
+                                xác nhận SO</span><span class="jp">見積・SO確認</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Gửi báo giá tự
+                                động qua email</span><span class="jp">見積自動メール送信</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">SO confirmed →
+                                trigger MRP</span><span class="jp">SO確定→MRP自動連携</span></li>
+                    </ul>
+                    <div class="mt-2 text-xs text-blue-400 font-semibold"><span class="vi">👤 Sales / CSKH</span><span
+                            class="jp">👤 営業担当</span></div>
+                </div>
+                <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+                <div class="flex-1 bg-indigo-50 border-2 border-indigo-300 rounded-xl p-3 flex flex-col">
+                    <div class="flex items-center gap-1.5 mb-1.5"><span
+                            class="w-6 h-6 bg-indigo-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">2</span>
+                        <div class="font-bold text-indigo-700 text-xs leading-tight">
+                            <div class="vi">Lập KHSX (MRP)</div>
+                            <div class="jp">生産計画(MRP)</div>
+                        </div>
+                    </div>
+                    <span
+                        class="text-xs font-bold text-indigo-600 bg-indigo-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Manufacturing</span>
+                    <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Tự tính BOM & NVL
+                                cần dùng</span><span class="jp">BOM・必要材料を自動算出</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Kiểm tra tồn kho,
+                                tạo MO</span><span class="jp">在庫確認・製造指示自動作成</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Gantt tự xếp lịch
+                                Workcenter</span><span class="jp">ガントで作業ステーション自動配分</span></li>
+                    </ul>
+                    <div class="mt-2 text-xs text-indigo-400 font-semibold"><span class="vi">👤 Kế Hoạch SX</span><span
+                            class="jp">👤 生産計画担当</span></div>
+                </div>
+                <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+                <div class="flex-1 bg-orange-50 border-2 border-orange-300 rounded-xl p-3 flex flex-col">
+                    <div class="flex items-center gap-1.5 mb-1.5"><span
+                            class="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">3</span>
+                        <div class="font-bold text-orange-700 text-xs leading-tight">
+                            <div class="vi">Mua Hàng</div>
+                            <div class="jp">購買管理</div>
+                        </div>
+                    </div>
+                    <span
+                        class="text-xs font-bold text-orange-600 bg-orange-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Purchase</span>
+                    <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">RFQ tự động gửi
+                                nhà cung cấp</span><span class="jp">RFQ自動生成・送信</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">So sánh báo giá &
+                                tạo PO</span><span class="jp">見積比較・PO作成</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Phê duyệt PO qua
+                                mobile</span><span class="jp">モバイルでPO承認</span></li>
+                    </ul>
+                    <div class="mt-2 text-xs text-orange-400 font-semibold"><span class="vi">👤 Phòng Mua
+                            Hàng</span><span class="jp">👤 購買担当</span></div>
+                </div>
+                <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+                <div class="flex-1 bg-emerald-50 border-2 border-emerald-300 rounded-xl p-3 flex flex-col">
+                    <div class="flex items-center gap-1.5 mb-1.5"><span
+                            class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">4</span>
+                        <div class="font-bold text-emerald-700 text-xs leading-tight">
+                            <div class="vi">Nhập Kho NVL</div>
+                            <div class="jp">原材料入庫</div>
+                        </div>
+                    </div>
+                    <span
+                        class="text-xs font-bold text-emerald-600 bg-emerald-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Inventory</span>
+                    <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Scan Barcode/RFID
+                                → nhập kho</span><span class="jp">バーコード/RFIDスキャン入庫</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Gán Lot Number,
+                                QC incoming</span><span class="jp">ロット番号付番・受入検査</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Reserve NVL tự
+                                động cho MO</span><span class="jp">MO用原材料を自動引当</span></li>
+                    </ul>
+                    <div class="mt-2 text-xs text-emerald-400 font-semibold"><span class="vi">👤 Kho NVL</span><span
+                            class="jp">👤 原材料倉庫</span></div>
+                </div>
+                <div class="flex flex-col items-center justify-end pb-2 pl-1"><span
+                        class="text-slate-400 text-2xl leading-none">↩</span></div>
+            </div>
+
+            <!-- Row 2 connector label -->
+            <div class="text-right text-xs text-slate-400 italic mb-1 pr-8"><span class="vi">↓ tiếp theo (stages
+                    5–7)</span><span class="jp">↓ 次のステップ（5〜7）</span></div>
+
+            <!-- ROW 2: Stages 5-7 -->
+            <div class="flex items-stretch gap-1 mb-6 avoid-break">
+                <div class="flex-1 bg-sky-50 border-2 border-sky-400 rounded-xl p-3 flex flex-col shadow">
+                    <div class="flex items-center gap-1.5 mb-1.5"><span
+                            class="w-6 h-6 bg-sky-600 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">5</span>
+                        <div class="font-bold text-sky-700 text-xs leading-tight">
+                            <div class="vi">Sản Xuất (MES)</div>
+                            <div class="jp">製造実行 (MES)</div>
+                        </div>
+                    </div>
+                    <span
+                        class="text-xs font-bold text-sky-600 bg-sky-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Manufacturing
+                        + IoT</span>
+                    <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Shop Floor
+                                tablet: Start/Done</span><span class="jp">現場タブレット操作</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Sensor Y-NetTech
+                                đếm SL auto</span><span class="jp">Y-NetTechセンサー自動カウント</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">OEE real-time,
+                                cảnh báo dừng máy</span><span class="jp">OEEリアルタイム・停止アラート</span></li>
+                    </ul>
+                    <div class="mt-2 text-xs text-sky-400 font-semibold"><span class="vi">👤 Xưởng SX +
+                            Y-NetTech</span><span class="jp">👤 製造現場 + Y-NetTech</span></div>
+                </div>
+                <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+                <div class="flex-1 bg-violet-50 border-2 border-violet-300 rounded-xl p-3 flex flex-col">
+                    <div class="flex items-center gap-1.5 mb-1.5"><span
+                            class="w-6 h-6 bg-violet-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">6</span>
+                        <div class="font-bold text-violet-700 text-xs leading-tight">
+                            <div class="vi">Kiểm Tra CL (QC)</div>
+                            <div class="jp">品質検査 (QC)</div>
+                        </div>
+                    </div>
+                    <span
+                        class="text-xs font-bold text-violet-600 bg-violet-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Quality</span>
+                    <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Control Points tự
+                                tạo theo SX</span><span class="jp">製造連動でQCポイント自動生成</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Pass→Kho TP |
+                                Fail→NCR+Block</span><span class="jp">合格→完成品倉庫 | 不合格→自動NCR</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Truy xuất lỗi tận
+                                Lot NVL gốc</span><span class="jp">欠陥をロット単位で追跡</span></li>
+                    </ul>
+                    <div class="mt-2 text-xs text-violet-400 font-semibold"><span class="vi">👤 Phòng QC</span><span
+                            class="jp">👤 品質管理部門</span></div>
+                </div>
+                <div class="flex items-center text-slate-400 font-bold text-xl">→</div>
+                <div class="flex-1 bg-teal-50 border-2 border-teal-300 rounded-xl p-3 flex flex-col">
+                    <div class="flex items-center gap-1.5 mb-1.5"><span
+                            class="w-6 h-6 bg-teal-500 text-white rounded-full flex items-center justify-center font-extrabold text-xs flex-shrink-0">7</span>
+                        <div class="font-bold text-teal-700 text-xs leading-tight">
+                            <div class="vi">Giao Hàng & Kế Toán</div>
+                            <div class="jp">出荷・会計処理</div>
+                        </div>
+                    </div>
+                    <span
+                        class="text-xs font-bold text-teal-600 bg-teal-100 px-1.5 py-0.5 rounded inline-block self-start mb-2">Inventory
+                        + Accounting</span>
+                    <ul class="text-xs text-slate-600 space-y-1 flex-1">
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">1-click: xuất kho
+                                + DO + Invoice</span><span class="jp">ワンクリック：出庫・DO・請求書</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">KH xác nhận qua
+                                Customer Portal</span><span class="jp">顧客ポータルで受領確認</span></li>
+                        <li class="flex gap-1"><span class="text-emerald-500">✔</span><span class="vi">Bank
+                                reconciliation auto 95%+</span><span class="jp">銀行照合95%以上自動化</span></li>
+                    </ul>
+                    <div class="mt-2 text-xs text-teal-400 font-semibold"><span class="vi">👤 Logistics + Kế
+                            Toán</span><span class="jp">👤 物流・経理担当</span></div>
+                </div>
+                <div class="w-8 flex-shrink-0"></div>
+            </div>
+
+            <!-- CEO Dashboard Bar -->
+            <div class="bg-slate-900 rounded-xl p-4 text-white flex items-start gap-4 avoid-break">
+                <div class="text-3xl mt-1">📊</div>
+                <div class="flex-1">
+                    <div class="font-bold text-sky-400 text-sm mb-2"><span class="vi">CEO Real-time Dashboard — Theo dõi
+                            xuyên suốt 7 quy trình bất kỳ lúc nào</span><span class="jp">CEOリアルタイムダッシュボード —
+                            全7プロセスを24時間監視</span></div>
+                    <div class="grid grid-cols-3 gap-2 text-xs text-slate-300">
+                        <span class="flex items-center gap-1.5">📦 <span class="vi">Tồn kho NVL/TP real-time</span><span
+                                class="jp">原材料/完成品リアルタイム在庫</span></span>
+                        <span class="flex items-center gap-1.5">⚙️ <span class="vi">OEE thiết bị theo máy</span><span
+                                class="jp">設備別OEEモニタリング</span></span>
+                        <span class="flex items-center gap-1.5">🎯 <span class="vi">Tiến độ từng đơn hàng</span><span
+                                class="jp">注文別進捗状況</span></span>
+                        <span class="flex items-center gap-1.5">✅ <span class="vi">Tỷ lệ QC Pass/Fail theo
+                                ngày</span><span class="jp">日次QC合格率</span></span>
+                        <span class="flex items-center gap-1.5">💰 <span class="vi">Công nợ & Dòng tiền</span><span
+                                class="jp">売掛金・キャッシュフロー</span></span>
+                        <span class="flex items-center gap-1.5">🚨 <span class="vi">Cảnh báo: tồn kho thấp / máy
+                                dừng</span><span class="jp">在庫低水準・機械停止アラート</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE F2: DETAIL — STAGES 1-2: ORDER → MRP -->
+        <div class="page bg-white">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+                <span
+                    class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F2</span>
+                <span class="vi">Chi Tiết: Nhận Đơn Hàng → Lập Kế Hoạch Sản Xuất</span>
+                <span class="jp">詳細フロー：受注 → 生産計画（MRP）</span>
+            </h2>
+            <p class="text-xs text-slate-400 italic mb-4 vi">Stages 1–2 | Module: Sale · Manufacturing (MRP)</p>
+            <p class="text-xs text-slate-400 italic mb-4 jp">ステージ1〜2 | モジュール：Sale · Manufacturing (MRP)</p>
+
+            <!-- SWIMLANE KEY -->
+            <div class="flex gap-3 mb-4 text-xs">
+                <span class="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded"><span
+                        class="w-4 h-3 bg-amber-200 border border-amber-400 rounded-sm inline-block"></span><span
+                        class="vi">Hình thoi = Điểm quyết định</span><span class="jp">菱形 = 分岐点</span></span>
+                <span class="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded"><span
+                        class="w-4 h-3 bg-sky-100 border border-sky-300 rounded-sm inline-block"></span><span
+                        class="vi">Ô vuông = Tác vụ Odoo</span><span class="jp">四角 = Odooアクション</span></span>
+                <span class="flex items-center gap-1 bg-slate-100 px-2 py-1 rounded"><span
+                        class="text-slate-400 font-bold">①</span><span class="vi">= Kết nối giữa lanes</span><span
+                        class="jp">= レーン間連携</span></span>
+            </div>
+
+            <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm text-xs">
+                <!-- Lane: Customer -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:64px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-blue-300 bg-blue-50"
+                        style="width:80px;"><span class="font-bold text-blue-700 text-center leading-tight"><span
+                                class="vi">Khách Hàng</span><span class="jp">顧客</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-blue-800"><span class="vi">Gửi đơn hàng</span><span
+                                    class="jp">発注・購買依頼</span></div>
+                            <div class="text-slate-400 mt-0.5">Email / Portal</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-blue-800"><span class="vi">Xem & duyệt báo giá ①</span><span
+                                    class="jp">見積確認・承認 ①</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo Portal</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Sales -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-indigo-300 bg-indigo-50"
+                        style="width:80px;"><span class="font-bold text-indigo-700 text-center leading-tight"><span
+                                class="vi">Sales / CSKH</span><span class="jp">営業</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-indigo-800"><span class="vi">Nhận yêu cầu</span><span
+                                    class="jp">要求受付</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Sale</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-indigo-800"><span class="vi">Tạo Quotation</span><span
+                                    class="jp">見積書作成</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Sale</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <!-- Decision Diamond -->
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#f59e0b;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">KH<br>duyệt?</span><span class="jp">承認?</span></span></div>
+                            <div class="flex gap-3 mt-1"><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Có →</span><span class="jp">Y
+                                        →</span></span><span class="text-rose-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">↩Sửa</span><span
+                                        class="jp">↩修正</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">✅ Confirm SO ②</span><span
+                                    class="jp">✅ SO確定 ②</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Sale</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Odoo Auto-trigger -->
+                <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:40px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100"
+                        style="width:80px;"><span
+                            class="font-bold text-slate-500 text-center leading-tight text-xs"><span class="vi">Odoo
+                                Auto</span><span class="jp">自動連携</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3">
+                        <span class="text-slate-400 text-xs italic"><span class="vi">② SO confirmed → Odoo tự động tạo
+                                Manufacturing Order & khởi động MRP Scheduler</span><span class="jp">②
+                                SO確定→Odooが自動で製造指示(MO)作成・MRPスケジューラー起動</span></span>
+                    </div>
+                </div>
+                <!-- Lane: Ke Hoach SX -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:80px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-sky-400 bg-sky-50"
+                        style="width:80px;"><span class="font-bold text-sky-700 text-center leading-tight"><span
+                                class="vi">Kế Hoạch Sản Xuất</span><span class="jp">生産計画</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-sky-800"><span class="vi">Nhận MO từ Odoo</span><span
+                                    class="jp">MO受信</span></div>
+                            <div class="text-slate-400 mt-0.5">MRP auto</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#8b5cf6;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">Đủ<br>kho TP?</span><span class="jp">完成品<br>在庫?</span></span></div>
+                            <div class="flex gap-3 mt-1"><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Có→DO</span><span
+                                        class="jp">Y→DO</span></span><span class="text-rose-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">Không↓</span><span
+                                        class="jp">N↓</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-sky-800"><span class="vi">Tính BOM</span><span
+                                    class="jp">BOM計算</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: MRP</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#0ea5e9;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">Đủ<br>NVL?</span><span class="jp">材料<br>十分?</span></span></div>
+                            <div class="flex gap-3 mt-1"><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Có→SX</span><span
+                                        class="jp">Y→製造</span></span><span class="text-rose-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">Không③</span><span
+                                        class="jp">N③</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-indigo-50 border border-indigo-300 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-indigo-800"><span class="vi">Gantt: Xếp lịch</span><span
+                                    class="jp">ガント自動配分</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: MRP</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Purchase triggered -->
+                <div class="flex" style="min-height:48px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-orange-300 bg-orange-50"
+                        style="width:80px;"><span class="font-bold text-orange-700 text-center leading-tight"><span
+                                class="vi">Mua Hàng</span><span class="jp">購買</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3">
+                        <span class="text-orange-600 font-bold">③</span>
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-orange-800"><span class="vi">Nhận RFQ tự động</span><span
+                                    class="jp">自動RFQ受信</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Purchase</div>
+                        </div>
+                        <span class="text-slate-400 italic text-xs"><span class="vi">→ tiếp tục ở trang F3</span><span
+                                class="jp">→ F3ページへ続く</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE F3: DETAIL — STAGES 3-5: PURCHASE → INVENTORY → MANUFACTURING -->
+        <div class="page bg-white">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+                <span
+                    class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F3</span>
+                <span class="vi">Chi Tiết: Mua Hàng → Nhập Kho NVL → Sản Xuất</span>
+                <span class="jp">詳細フロー：購買 → 原材料入庫 → 製造</span>
+            </h2>
+            <p class="text-xs text-slate-400 italic mb-5 vi">Stages 3–5 | Module: Purchase · Inventory · Manufacturing ·
+                IoT (Y-NetTech)</p>
+            <p class="text-xs text-slate-400 italic mb-5 jp">ステージ3〜5 | モジュール：Purchase · Inventory · Manufacturing · IoT
+            </p>
+
+            <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm text-xs">
+                <!-- Lane: Mua Hang -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-orange-400 bg-orange-50"
+                        style="width:80px;"><span class="font-bold text-orange-700 text-center leading-tight"><span
+                                class="vi">Mua Hàng</span><span class="jp">購買</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-orange-800"><span class="vi">So sánh NCC</span><span
+                                    class="jp">仕入先比較</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Purchase</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-orange-800"><span class="vi">Tạo PO</span><span
+                                    class="jp">PO作成</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Purchase</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#f59e0b;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">Cần<br>approve?</span><span class="jp">承認<br>必要?</span></span></div>
+                            <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">→BGĐ</span><span
+                                        class="jp">→役員</span></span><span class="text-slate-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">Không→</span><span
+                                        class="jp">N→</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">Gửi PO cho NCC ④</span><span
+                                    class="jp">NCC へPO送付 ④</span></div>
+                            <div class="text-slate-400 mt-0.5">Email auto</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: NCC -->
+                <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:56px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100"
+                        style="width:80px;"><span class="font-bold text-slate-600 text-center leading-tight"><span
+                                class="vi">Nhà Cung Cấp (NCC)</span><span class="jp">サプライヤー</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <span class="text-slate-400 font-bold">④</span>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-slate-700"><span class="vi">Nhận & xác nhận PO</span><span
+                                    class="jp">PO受信・確認</span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-slate-700"><span class="vi">Giao hàng ⑤</span><span class="jp">納品
+                                    ⑤</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Kho NVL -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:80px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-emerald-400 bg-emerald-50"
+                        style="width:80px;"><span class="font-bold text-emerald-700 text-center leading-tight"><span
+                                class="vi">Kho NVL</span><span class="jp">原材料倉庫</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <span class="text-emerald-600 font-bold">⑤</span>
+                        <div class="bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">Mở Receipt từ PO</span><span
+                                    class="jp">PO連動Receipt開幕</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Inventory</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">Scan Barcode/RFID</span><span
+                                    class="jp">スキャン入庫</span></div>
+                            <div class="text-slate-400 mt-0.5">Barcode App</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#10b981;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">QC<br>Incoming?</span><span class="jp">受入<br>検査?</span></span></div>
+                            <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Pass→</span><span
+                                        class="jp">OK→</span></span><span class="text-rose-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">↩Return</span><span
+                                        class="jp">↩返品</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">Nhập kho, gán Lot</span><span
+                                    class="jp">入庫・ロット付番</span></div>
+                            <div class="text-slate-400 mt-0.5">Real-time ⑥</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Odoo auto reserve -->
+                <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:36px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100"
+                        style="width:80px;"><span
+                            class="font-bold text-slate-500 text-center leading-tight text-xs"><span class="vi">Odoo
+                                Auto</span><span class="jp">自動</span></span></div>
+                    <div class="flex-1 flex items-center p-3">
+                        <span class="text-slate-400 italic"><span class="vi">⑥ Tồn kho đủ cho MO → Odoo tự động Reserve
+                                NVL & chuyển MO sang trạng thái "Ready to Produce"</span><span class="jp">⑥
+                                MO必要量が確保→Odooが自動でNVL引当・MO状態を「製造可能」に更新</span></span>
+                    </div>
+                </div>
+                <!-- Lane: Xuong SX -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:80px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-sky-500 bg-sky-50"
+                        style="width:80px;"><span class="font-bold text-sky-700 text-center leading-tight"><span
+                                class="vi">Xưởng Sản Xuất</span><span class="jp">製造現場</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-sky-800"><span class="vi">Nhận MO trên Tablet</span><span
+                                    class="jp">タブレットでMO確認</span></div>
+                            <div class="text-slate-400 mt-0.5">Shop Floor</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-sky-800"><span class="vi">Bấm Start → Vận hành</span><span
+                                    class="jp">開始ボタン→稼働</span></div>
+                            <div class="text-slate-400 mt-0.5">Work Orders</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#0284c7;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">Có<br>Scrap?</span><span class="jp">廃棄<br>あり?</span></span></div>
+                            <div class="flex gap-2 mt-1"><span class="text-slate-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">Có→Ghi</span><span
+                                        class="jp">Y→記録</span></span><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Không→</span><span
+                                        class="jp">N→</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">✅ Hoàn thành MO ⑦</span><span
+                                    class="jp">✅ MO完了 ⑦</span></div>
+                            <div class="text-slate-400 mt-0.5">Mark as Done</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Y-NetTech IoT -->
+                <div class="flex" style="min-height:48px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-amber-400 bg-amber-50"
+                        style="width:80px;"><span class="font-bold text-amber-700 text-center leading-tight"><span
+                                class="vi">Y-NetTech IoT</span><span class="jp">IoTセンサー</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-amber-800"><span class="vi">Sensor/PLC đếm SL</span><span
+                                    class="jp">センサー/PLC自動カウント</span></div>
+                            <div class="text-slate-400 mt-0.5">IoT Box</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-amber-800"><span class="vi">Push data → Odoo MES</span><span
+                                    class="jp">データをOdoo MESへ送信</span></div>
+                            <div class="text-slate-400 mt-0.5">Real-time</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-slate-900 rounded-lg px-3 py-2 text-center" style="min-width:100px;">
+                            <div class="font-bold text-sky-400"><span class="vi">OEE Dashboard cập nhật</span><span
+                                    class="jp">OEEダッシュボード更新</span></div>
+                            <div class="text-amber-400 mt-0.5 text-xs">Live</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE F4: DETAIL — STAGES 6-7: QC → DELIVERY → ACCOUNTING -->
+        <div class="page bg-white">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2 flex items-center">
+                <span
+                    class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-sm font-bold">F4</span>
+                <span class="vi">Chi Tiết: Kiểm Tra CL → Giao Hàng → Kế Toán</span>
+                <span class="jp">詳細フロー：品質検査 → 出荷 → 会計処理</span>
+            </h2>
+            <p class="text-xs text-slate-400 italic mb-5 vi">Stages 6–7 | Module: Quality · Inventory · Accounting</p>
+            <p class="text-xs text-slate-400 italic mb-5 jp">ステージ6〜7 | モジュール：Quality · Inventory · Accounting</p>
+
+            <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm text-xs">
+                <!-- Lane: QC -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:88px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-violet-400 bg-violet-50"
+                        style="width:80px;"><span class="font-bold text-violet-700 text-center leading-tight"><span
+                                class="vi">Phòng QC</span><span class="jp">品質管理</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-violet-50 border border-violet-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-violet-800"><span class="vi">⑦ Nhận thông báo QC</span><span
+                                    class="jp">⑦ QC通知受信</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Quality</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-violet-50 border border-violet-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-violet-800"><span class="vi">Điền checklist trên
+                                    tablet</span><span class="jp">タブレットでチェック記入</span></div>
+                            <div class="text-slate-400 mt-0.5">Quality Check</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#8b5cf6;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">Kết quả<br>Pass?</span><span class="jp">結果<br>合格?</span></span></div>
+                            <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Pass→⑧</span><span
+                                        class="jp">OK→⑧</span></span><span class="text-rose-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">Fail↓</span><span
+                                        class="jp">NG↓</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#ef4444;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">Rework<br>được?</span><span class="jp">手直し<br>可能?</span></span></div>
+                            <div class="flex gap-2 mt-1"><span class="text-amber-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">Có→SX</span><span
+                                        class="jp">Y→再製造</span></span><span class="text-rose-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Không→Scrap</span><span
+                                        class="jp">N→廃棄</span></span></div>
+                        </div>
+                        <div class="bg-rose-50 border border-rose-200 rounded-lg px-2 py-1 text-center flex-shrink-0">
+                            <div class="font-bold text-rose-700"><span class="vi">NCR auto + Block Lot</span><span
+                                    class="jp">NCR自動作成・ロットブロック</span></div>
+                            <div class="text-slate-400 mt-0.5">Alert Manager</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Kho TP -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:64px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-teal-400 bg-teal-50"
+                        style="width:80px;"><span class="font-bold text-teal-700 text-center leading-tight"><span
+                                class="vi">Kho Thành Phẩm</span><span class="jp">完成品倉庫</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <span class="text-teal-600 font-bold">⑧</span>
+                        <div class="bg-teal-50 border border-teal-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-teal-800"><span class="vi">Nhập kho TP đạt QC</span><span
+                                    class="jp">合格品を完成品倉庫へ</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Inventory</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="flex flex-col items-center flex-shrink-0">
+                            <div
+                                style="width:50px;height:50px;background:#14b8a6;transform:rotate(45deg);display:flex;align-items:center;justify-content:center;border-radius:3px;">
+                                <span
+                                    style="transform:rotate(-45deg);font-size:8px;font-weight:800;color:white;text-align:center;line-height:1.1;"><span
+                                        class="vi">Đủ<br>xuất?</span><span class="jp">出荷<br>可能?</span></span></div>
+                            <div class="flex gap-2 mt-1"><span class="text-emerald-600 font-bold"
+                                    style="font-size:9px;"><span class="vi">Có→⑨</span><span
+                                        class="jp">Y→⑨</span></span><span class="text-slate-500 font-bold"
+                                    style="font-size:9px;"><span class="vi">Chờ SX</span><span
+                                        class="jp">製造待ち</span></span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-teal-50 border-2 border-teal-400 rounded-lg px-3 py-2 text-center"
+                            style="min-width:100px;">
+                            <div class="font-bold text-teal-800"><span class="vi">⑨ DO kích hoạt từ SO</span><span
+                                    class="jp">⑨ SOからDO自動起動</span></div>
+                            <div class="text-slate-400 mt-0.5">Linked to SO</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Logistics -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-cyan-400 bg-cyan-50"
+                        style="width:80px;"><span class="font-bold text-cyan-700 text-center leading-tight"><span
+                                class="vi">Logistics / Giao Hàng</span><span class="jp">物流・配送</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <span class="text-cyan-600 font-bold">⑨</span>
+                        <div class="bg-cyan-50 border border-cyan-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-cyan-800"><span class="vi">Đóng gói hàng</span><span
+                                    class="jp">梱包作業</span></div>
+                            <div class="text-slate-400 mt-0.5">Packing</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-cyan-50 border border-cyan-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-cyan-800"><span class="vi">Scan Barcode xuất kho</span><span
+                                    class="jp">バーコードスキャン出庫</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Inventory</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-cyan-50 border border-cyan-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-cyan-800"><span class="vi">In DO + Packing List</span><span
+                                    class="jp">DO・梱包リスト印刷</span></div>
+                            <div class="text-slate-400 mt-0.5">Auto-print</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">✅ Giao hàng cho KH ⑩</span><span
+                                    class="jp">✅ 顧客へ納品 ⑩</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Customer confirm -->
+                <div class="flex border-b border-dashed border-slate-200 bg-slate-50" style="min-height:48px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-300 bg-slate-100"
+                        style="width:80px;"><span class="font-bold text-slate-600 text-center leading-tight"><span
+                                class="vi">Khách Hàng</span><span class="jp">顧客</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <span class="text-slate-500 font-bold">⑩</span>
+                        <div class="bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-center"
+                            style="min-width:110px;">
+                            <div class="font-bold text-slate-700"><span class="vi">Nhận hàng & xác nhận qua
+                                    Portal</span><span class="jp">受領・ポータルで確認</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: Ke Toan -->
+                <div class="flex border-b border-dashed border-slate-200" style="min-height:72px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-slate-500 bg-slate-100"
+                        style="width:80px;"><span class="font-bold text-slate-700 text-center leading-tight"><span
+                                class="vi">Kế Toán</span><span class="jp">経理</span></span></div>
+                    <div class="flex-1 flex items-center gap-2 p-3 flex-wrap">
+                        <div class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-center"
+                            style="min-width:110px;">
+                            <div class="font-bold text-slate-800"><span class="vi">Invoice tự tạo từ DO</span><span
+                                    class="jp">DOから請求書自動生成</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Accounting</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-slate-800"><span class="vi">Gửi Invoice cho KH</span><span
+                                    class="jp">顧客へ請求書送付</span></div>
+                            <div class="text-slate-400 mt-0.5">Email auto</div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-center"
+                            style="min-width:95px;">
+                            <div class="font-bold text-slate-800"><span class="vi">KH thanh toán</span><span
+                                    class="jp">顧客支払い</span></div>
+                        </div>
+                        <span class="text-slate-400 font-bold">→</span>
+                        <div class="bg-emerald-50 border-2 border-emerald-400 rounded-lg px-3 py-2 text-center"
+                            style="min-width:110px;">
+                            <div class="font-bold text-emerald-800"><span class="vi">✅ Bank Reconcile auto
+                                    95%+</span><span class="jp">✅ 銀行照合95%+自動</span></div>
+                            <div class="text-slate-400 mt-0.5">Odoo: Accounting</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lane: BGD Dashboard -->
+                <div class="flex bg-slate-900" style="min-height:48px;">
+                    <div class="flex-shrink-0 flex items-center justify-center p-2 border-r-4 border-sky-500 bg-slate-800"
+                        style="width:80px;"><span class="font-bold text-sky-400 text-center leading-tight text-xs">📊
+                            BGĐ</span></div>
+                    <div class="flex-1 flex items-center gap-3 p-3 text-xs text-slate-300">
+                        <span class="vi">P&L cập nhật real-time · Công nợ phải thu · Dòng tiền tức thời · Cảnh báo tự
+                            động</span>
+                        <span class="jp">P&Lリアルタイム更新 · 売掛金 · キャッシュフロー即時 · 自動アラート</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 3: THE SOLUTION & DATA WORKFLOW -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <span
+                    class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">02</span>
+                <span class="vi">Bức Tranh Toàn Cảnh (Data Workflow)</span>
+                <span class="jp">全体像 (データワークフロー)</span>
+            </h2>
+
+            <p class="text-slate-600 mb-8 max-w-3xl">
+                <span class="vi">Luồng dữ liệu liền mạch. Hệ thống thiết kế chuyên tối ưu cho nhà máy quy mô
+                    <strong>2,000 nhân sự</strong>.</span>
+                <span class="jp">原材料の購買から最終出荷までのシームレスなデータフロー。<strong>2,000名</strong>規模の分業モデルに最適化されたシステムアーキテクチャ。</span>
+            </p>
+
+            <!-- Flow Diagram Visual -->
+            <div class="bg-white border border-slate-200 rounded-xl p-8 shadow-sm mb-12 avoid-break relative">
+
+                <div class="space-y-4 relative z-10 w-full">
+                    <!-- Row 1 -->
+                    <div class="flex items-center justify-between bg-slate-50 p-4 border border-slate-200 rounded-lg">
+                        <div class="font-bold text-slate-800 w-48 shrink-0">
+                            <span class="vi">1. Mua Hàng (Purchase)</span>
+                            <span class="jp">1. 購買管理 (Purchase)</span>
+                        </div>
+                        <div class="text-sm text-slate-600 flex-1 border-l-2 border-slate-300 pl-4 ml-4">
+                            <span class="vi">Đơn hàng tự động gửi NPP dựa trên ngưỡng tồn kho điện tử hiển thị.</span>
+                            <span class="jp">規定された最小在庫しきい値に基づき、自動的に発注書をサプライヤーに送信します。</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div
+                        class="flex items-center justify-between bg-white p-4 border border-sky-200 rounded-lg shadow-sm">
+                        <div class="font-bold text-sky-700 w-48 shrink-0">
+                            <span class="vi">2. Kho Bãi (Inventory)</span>
+                            <span class="jp">2. 倉庫・在庫 (Inventory)</span>
+                        </div>
+                        <div class="text-sm text-slate-600 flex-1 border-l-2 border-sky-300 pl-4 ml-4">
+                            <span class="vi">Sử dụng thiết bị Barcode/RFID. Không cần nạp số liệu lên thẻ kho
+                                giấy.</span>
+                            <span class="jp">バーコード/RFID スキャナーによる入出庫処理。紙の在庫台帳への記入は不要でリアルタイム反映されます。</span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 - CORE -->
+                    <div
+                        class="flex items-center justify-between bg-sky-50 border-2 border-sky-400 p-6 rounded-lg text-slate-800 shadow-sm transform scale-[1.02]">
+                        <div class="font-bold text-sky-700 w-48 shrink-0 flex items-center">
+                            <span class="vi">3. Sản Xuất (MES)</span>
+                            <span class="jp">3. 製造実行システム (MES)</span>
+                        </div>
+                        <div class="text-sm text-slate-700 font-medium flex-1 border-l-2 border-sky-400 pl-4 ml-4">
+                            <span class="vi">
+                                Kéo dữ liệu trực tiếp (chu kỳ chạy máy, đếm sản phẩm) từ Sensors/PLC của Y-NetTech lên
+                                <strong>Tablet (Shop Floor)</strong>. Loại bỏ 100% việc nhập sổ.
+                            </span>
+                            <span class="jp">
+                                Y-NetTechのセンサー/PLCから製造データ（稼働サイクル、生産数）を<strong>現場タブレット</strong>にダイレクトに引き上げます。作業員の手入力は100%排除されます。
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="flex items-center justify-between bg-white p-4 border border-slate-200 rounded-lg">
+                        <div class="font-bold text-slate-800 w-48 shrink-0">
+                            <span class="vi">4. Kiểm Chất Lượng (QC)</span>
+                            <span class="jp">4. 品質管理 (QC / 品質保証)</span>
+                        </div>
+                        <div class="text-sm text-slate-600 flex-1 border-l-2 border-slate-300 pl-4 ml-4">
+                            <span class="vi">Cảnh báo lỗi thông minh. Quản lý hàng hỏng tự động theo Số lô
+                                (Lot/Serial).</span>
+                            <span class="jp">インテリジェントなエラー検出と警報。不良品は製造ロット番号やシリアル単位で正確に追跡・保管されます。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center avoid-break mb-10">
+                <h4 class="text-base font-bold text-slate-700 mb-4">
+                    <span class="vi">Giao Di&#7879;n Dashboard OEE Th&#7901;i Gian Th&#7921;c (Real-time MES)</span>
+                    <span class="jp">&#12522;&#12450;&#12523;&#12479;&#12452;&#12512; OEE
+                        &#12514;&#12491;&#12479;&#12522;&#12531;&#12464;&#12480;&#12483;&#12471;&#12517;&#12508;&#12540;&#12489;
+                        (MES&#30011;&#38754;)</span>
+                </h4>
+                <img id="oee-image" src="oee_dashboard.png" alt="OEE Real-time Dashboard"
+                    class="mx-auto rounded-xl shadow-md border border-slate-200 max-w-full">
+                <p class="text-xs text-slate-500 mt-3 italic">
+                    <span class="vi">B&#7843;ng &#273;i&#7873;u khi&#7875;n Hi&#7879;u su&#7845;t T&#7893;ng th&#7875;
+                        Thi&#7871;t b&#7883; (OEE) &#8211; c&#7843;nh b&#225;o t&#7921;&#273;&#7897;ng t&#7915; d&#7919;
+                        li&#7879;u IoT th&#7921;c t&#7871; c&#7911;a nh&#224; m&#225;y.</span>
+                    <span
+                        class="jp">IoT&#12475;&#12531;&#12469;&#12540;&#12363;&#12425;&#12398;&#12522;&#12450;&#12523;&#12487;&#12540;&#12479;&#306B;&#22522;&#12389;&#12356;&#12383;OEE&#12514;&#12491;&#12479;&#12522;&#12531;&#12464;&#12480;&#12483;&#12471;&#12517;&#12508;&#12540;&#12489;&#65294;&#27770;&#23450;&#27425;&#31383;&#12408;&#12398;&#30452;&#30528;&#30340;&#12394;&#12487;&#12540;&#12479;&#25552;&#20379;&#65294;</span>
+                </p>
+            </div>
+
+            <div
+                class="bg-indigo-50/50 border border-indigo-100 p-8 rounded-2xl mb-12 avoid-break shadow-sm relative overflow-hidden">
+                <div class="absolute w-2 h-full bg-indigo-500 rounded-tl-2xl rounded-bl-2xl top-0 left-0"></div>
+                <h3 class="text-xl font-bold text-indigo-900 mb-6 ml-4">
+                    <span class="vi">Thế Mạnh Hiệu Suất Cốt Lõi Của Nền Tảng Odoo</span>
+                    <span class="jp">Odooプラットフォームのコアパフォーマンスの強み</span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 ml-4">
+                    <div>
+                        <h5 class="font-bold text-indigo-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                </path>
+                            </svg>
+                            <span class="vi">Quản Trị Đa Nhà Máy & Đồng Bộ SOP</span>
+                            <span class="jp">マルチカンパニー管理とSOPの同調</span>
+                        </h5>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            <span class="vi">Odoo hỗ trợ kiến trúc Multi-company, giúp Ban lãnh đạo gom dữ liệu của phân
+                                xưởng và văn phòng trụ sở về một khối tập trung. Cho phép nhân bản nhanh chóng các Quy
+                                chuẩn Vận hành Tiêu chuẩn (SOP) để đảm bảo mọi nơi đều hoạt động nhất quán.</span>
+                            <span
+                                class="jp">Odooのマルチカンパニーアーキテクチャにより、経営陣は複数拠点や本社のデータを単一のデータベースに集約できます。標準作業手順書（SOP）を迅速に横展開し、すべての工場での運用の一貫性を保証します。</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-indigo-700 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                            <span class="vi">Khơi Thông Chuỗi Cung Ứng Phức Tạp</span>
+                            <span class="jp">複雑なサプライチェーンの可視化と解明</span>
+                        </h5>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            <span class="vi">Nối liền các đứt gãy từ khâu Nhập khẩu vật tư, Lưu kho, Sản xuất cho đến
+                                Kiểm định Chất lượng (QC) và Giao hàng thành một chuỗi giá trị xuyên suốt. Giải quyết
+                                triệt để nút thắt cổ chai logistics của nhà máy quy mô lớn.</span>
+                            <span
+                                class="jp">原材料の輸入から倉庫保管、製造、品質検査（QC）、および物流に至るプロセスをシームレスな単一のバリューチェーンに統合し、大規模工場における情報のボトルネックを完全に排除します。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-slate-800 mb-6 border-l-4 border-sky-500 pl-4 avoid-break">
+                <span class="vi">Xử Lý Kỹ Thuật (Phần Mềm Đóng)</span>
+                <span class="jp">技術的統合ソリューション（閉鎖的システム対応）</span>
+            </h3>
+            <p class="text-sm text-slate-600 mb-6">
+                <span class="vi">Ngay cả các thiết bị dùng phần mềm legacy (cũ) không cho phép API, chúng tôi có 3
+                    phương án đấu nối:</span>
+                <span class="jp">工場内の古い設備で通信用APIを備えていない・ソフトウェアが閉鎖的（クローズド）である場合でも、3つの統合アプローチが可能です：</span>
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 avoid-break">
+                <div class="bg-slate-50 p-6 border border-slate-200 rounded-xl">
+                    <span class="text-sky-600 font-bold text-lg inline-block mb-3">01. Direct Database</span>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Truy xuất trực tiếp Read-Only thông qua Middleware vào database gốc để lấy
+                            log.</span>
+                        <span class="jp">ミドルウェアを介して元のデータベースに読み取り専用（Read-only）で直接接続し、ログを安全に抽出します。</span>
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-6 border border-slate-200 rounded-xl">
+                    <span class="text-sky-600 font-bold text-lg inline-block mb-3">02. File Sync</span>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Tự động hóa luồng Export/Import FTP thông qua file (.csv/.txt) sinh ra từ
+                            máy.</span>
+                        <span class="jp">機械が自動生成するCSVやテキストファイルをFTP経由でスケジュール通りに自動取得します。</span>
+                    </p>
+                </div>
+                <div class="bg-sky-50 p-6 border border-sky-200 rounded-xl">
+                    <span class="text-sky-600 font-bold text-lg inline-block mb-3">03. Odoo IoT Box</span>
+                    <p class="text-sm text-slate-700">
+                        <span class="vi">Trỏ dây cáp điện từ IoT Box thẳng vào máy để báo lên Odoo mà không đụng chạm
+                            software.</span>
+                        <span class="jp">Odoo IoT Boxのケーブルを直接機械の信号線（PLCなど）に接続し、古いソフトウェアを完全に迂回して状態を通知します。</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center avoid-break bg-white border border-slate-200 rounded-2xl p-6 shadow-md">
+                <h4 class="text-xl font-bold text-sky-700 mb-6 tracking-wide">
+                    <span class="vi">Hệ Thống Quản Trị Và Tích Hợp Odoo - Quản Lý Thiết Bị Tích Hợp</span>
+                    <span class="jp">Odoo 管理および統合システム - 統合デバイス管理</span>
+                </h4>
+                <img id="integration-image" src="IMG_20260330_193114.jpg" alt="Odoo Integrated Device Management"
+                    class="mx-auto rounded-xl shadow-inner border border-slate-200 max-w-full">
+                <p class="text-xs text-slate-500 mt-4 italic bg-slate-50 inline-block px-4 py-2 rounded-full">
+                    <span class="vi">Sơ đồ luồng dữ liệu thiết bị thực tế trong nhà máy.</span>
+                    <span class="jp">工場内の実際のデバイスデータフロー図。</span>
+                </p>
+            </div>
+        </div>
+
+
+        <!-- PAGE 4: PROOF OF CAPABILITY (JEWELRY INDUSTRY) -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <span
+                    class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">03</span>
+                <span class="vi">Bảo Chứng Năng Lực: Sự Khắc Nghiệt Của Ngành Trang Sức</span>
+                <span class="jp">能力の証明：ジュエリー業界の極めて厳しい技術要件</span>
+            </h2>
+
+            <p class="text-slate-600 mb-8 max-w-3xl">
+                <span class="vi">Để minh chứng cho Ban giám đốc về sức chịu tải và độ chính xác của Odoo ERP, chúng tôi
+                    sử dụng <strong>Ngành Trang Sức</strong> – ngành công nghiệp tinh vi bậc nhất – làm chuẩn đối
+                    sánh.</span>
+                <span
+                    class="jp">経営陣の皆さまに対しOdooのデータ処理能力と堅牢性を証明するため、製造業の中でも最も精巧で厳しい要件を持つ<strong>「ジュエリー・宝飾品業界」</strong>の事例を参考指標として紹介します。</span>
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 avoid-break">
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="text-sky-600 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg></div>
+                    <h4 class="font-bold text-slate-800 mb-2">
+                        <span class="vi">Định mức (BOM) Phức Tạp</span>
+                        <span class="jp">超複雑なBOM (部品表)</span>
+                    </h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Mỗi sản phẩm trang sức có hàng ngàn biến thể (tinh khiết vàng, số carat). Odoo
+                            tính toán trôi chảy các bản vẽ kỹ thuật này.</span>
+                        <span class="jp">各製品は数千のバリエーション（金の純度、ダイヤのカラット数やカット）を含みます。これら多階層の複雑な設計構成をスムーズに処理します。</span>
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="text-sky-600 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                            </path>
+                        </svg></div>
+                    <h4 class="font-bold text-slate-800 mb-2">
+                        <span class="vi">Tồn Kho Vi Mô</span>
+                        <span class="jp">マイクロレベルの在庫管理</span>
+                    </h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Quản lý thất thoát đo mút ở mức miligram thông qua túi lưu trữ ("bag control")
+                            giữa từng khâu đánh bóng.</span>
+                        <span class="jp">研磨やセッティングの各工程間において、「バッグコントロール」方式を使用し、ミリグラム単位の損失や材料の移動を厳格に追跡します。</span>
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="text-sky-600 mb-3"><svg class="w-8 h-8" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg></div>
+                    <h4 class="font-bold text-slate-800 mb-2">
+                        <span class="vi">Giá Biến Động Real-time</span>
+                        <span class="jp">リアルタイムの市場価格連携</span>
+                    </h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="vi">Tự động liên kết mốc giá vàng thế giới để định giá chi phí linh kiện tồn kho
+                            thay đổi theo phút.</span>
+                        <span class="jp">世界の金・貴金属市場価格と自動連携し、1分単位でリアルタイムに材料コストと在庫価格を動的評価（COGS）します。</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- NEW CLEAR DESIGN for Everlee Jewelers -->
+            <div
+                class="bg-white border-2 border-sky-100 rounded-2xl p-8 mb-8 avoid-break shadow-md relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-sky-50 rounded-bl-full -z-10"></div>
+
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">
+                    <span class="vi">Case Study Tiêu Biểu / Thực Tế: Everlee Jewelers</span>
+                    <span class="jp">主要実績事例：Everlee Jewelers（米国）</span>
+                </h3>
+                <p class="text-sky-600 text-sm font-semibold mb-6 tracking-wide uppercase">
+                    <span class="vi">Chuyển đổi số thành công bằng Odoo 17 Enterprise</span>
+                    <span class="jp">Odoo 17 DX エンタープライズ導入成功</span>
+                </p>
+
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1">
+                        <h5 class="text-slate-800 font-bold mb-3 border-b-2 border-slate-100 pb-2">
+                            <span class="vi">Khó Khăn Trước Đây</span>
+                            <span class="jp">導入前の重大なペインポイント</span>
+                        </h5>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <span class="vi">Hệ thống phân mảnh, tính hoa hồng thủ công. Quản lý tồn kho mờ mịt gây khó
+                                khăn cực độ cho B2B.</span>
+                            <span class="jp">既存システムが分断され、販売手数料計算も手動。在庫の透明性が著しく低く、B2Bパートナーとの連携に極度の支障が生じていました。</span>
+                        </p>
+
+                        <h5 class="text-slate-800 font-bold mb-3 border-b-2 border-slate-100 pb-2 mt-6">
+                            <span class="vi">Khắc Phục Bằng Hệ Sinh Thái Odoo MES</span>
+                            <span class="jp">Odoo + MES 導入による解決策</span>
+                        </h5>
+                        <ul class="space-y-2 text-slate-600 text-sm list-disc pl-4">
+                            <li class="vi">Cung cấp Cổng Portal trao đổi cho đối tác B2B.</li>
+                            <li class="vi">Tự động hóa thanh toán hoa hồng (Commission).</li>
+                            <li class="jp">B2Bパートナー向けの標準通信ポータルを提供し集権化。</li>
+                            <li class="jp">複雑な毎月の売上手数料（Commission）計算を完全自動化。</li>
+                        </ul>
+                    </div>
+                    <div class="w-px bg-slate-200 hidden md:block"></div>
+                    <div class="flex-1 flex flex-col justify-center">
+                        <h5 class="text-sky-700 font-bold mb-4 text-center">
+                            <span class="vi">Hiệu Quả Đột Phá Sau Triển Khai</span>
+                            <span class="jp">導入後の圧倒的なROIと成果</span>
+                        </h5>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-center">
+                                <div class="text-3xl font-extrabold text-sky-600 mb-1">-50%</div>
+                                <div class="text-xs text-slate-600 font-semibold uppercase">
+                                    <span class="vi">Chi phí vận hành</span>
+                                    <span class="jp">運用・管理コスト低減</span>
+                                </div>
+                            </div>
+                            <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-center">
+                                <div class="text-3xl font-extrabold text-sky-600 mb-1">-70%</div>
+                                <div class="text-xs text-slate-600 font-semibold uppercase">
+                                    <span class="vi">Thao tác thủ công</span>
+                                    <span class="jp">不必要な手作業の削減</span>
+                                </div>
+                            </div>
+                            <div class="bg-sky-50 p-4 rounded-xl border border-sky-100 text-center col-span-2">
+                                <div class="text-3xl font-extrabold text-sky-600 mb-1">+60%</div>
+                                <div class="text-xs text-slate-600 font-semibold uppercase">
+                                    <span class="vi">Năng suất lao động tổng thể</span>
+                                    <span class="jp">全社的な従業員生産性の向上</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 5: AI MEETING SECRETARY -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <span
+                    class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">04</span>
+                <span class="vi">Đột Phá AI: Tự Động Hóa Từ Cuộc Giao Tiếp</span>
+                <span class="jp">AIのブレークスルー：初期のコミュニケーションから自動化</span>
+            </h2>
+
+            <p class="text-slate-600 mb-6 max-w-3xl">
+                <span class="vi">DanaExperts sở hữu năng lực AI chuyên sâu. Giải quyết tận gốc bài toán <strong>"nhập
+                        liệu thủ công"</strong> bằng giải pháp AI Meeting Secretary tự ghi chép.</span>
+                <span class="jp">DanaExpertsはエンタープライズAI技術を保有しています。独自のAIシステム（AI Meeting
+                    Secretary）によりデータ化を完全自動化し作業員から<strong>手動データ入力問題</strong>を根本から解決します。</span>
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 avoid-break">
+                <div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-4 border-l-4 border-sky-500 pl-3">
+                        <span class="vi">Hệ sinh thái AI Meeting Secretary hoạt động thế nào?</span>
+                        <span class="jp">AI機能はどのように動作するのか？</span>
+                    </h4>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex items-start">
+                            <div
+                                class="bg-sky-100 text-sky-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs mr-3 mt-0.5 shrink-0">
+                                1</div>
+                            <div>
+                                <strong class="vi">Thu thập đa kênh:</strong><strong class="jp">マルチチャネルからの収集:</strong>
+                                <span class="vi"> AI tự phân tích file ghi âm, họp video (Teams/Zoom), Email.</span>
+                                <span class="jp"> 音声ファイル、オンライン会議動画、メールテキストなど、多角的な情報を分析。</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div
+                                class="bg-sky-100 text-sky-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs mr-3 mt-0.5 shrink-0">
+                                2</div>
+                            <div>
+                                <strong class="vi">Bóc tách thông minh:</strong><strong
+                                    class="jp">AIによるインテリジェント抽出:</strong>
+                                <span class="vi"> Dùng Whisper (Speech-to-Text) và LLM để loại bỏ hội thoại thừa.</span>
+                                <span class="jp"> WhisperとLLMモデルを使用し、関係のない雑談から核心情報のみを抽出。</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div
+                                class="bg-sky-100 text-sky-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-xs mr-3 mt-0.5 shrink-0">
+                                3</div>
+                            <div>
+                                <strong class="vi">Auto Data Mapping:</strong><strong class="jp">自動データ変換とマッピング:</strong>
+                                <span class="vi"> Nhận diện và điền chuẩn xác >25 thông số kỹ thuật (Chất liệu, Kích
+                                    thước, v.v.) vào Form.</span>
+                                <span class="jp"> 会話の文脈から25項目以上の技術仕様（素材など）を特定し、Odoo等のフォームへ正確に自動入力します。</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-slate-800 mb-3 text-center">
+                        <span class="vi">Minh Họa Khả Năng Sinh Form Tự Động</span>
+                        <span class="jp">S-DV-01 技術要件フォーム (自動入力成功例)</span>
+                    </h4>
+                    <p class="text-sm text-slate-600 mb-4 text-center">
+                        <span class="vi">Biểu mẫu yêu cầu phức tạp được AI tự soạn chính xác 95%.</span>
+                        <span class="jp">人間の手による入力なしに、要件の複雑な見積りや定義を95%以上の精度で自動設定します。</span>
+                    </p>
+                    <div
+                        class="rounded-lg overflow-hidden border border-slate-200 shadow max-h-56 relative text-center">
+                        <!-- Same Image for Both -->
+                        <img src="formRoyiSal.png" alt="Royi Sal Form Example"
+                            class="w-full object-cover object-top h-full">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-sky-600 text-white p-6 rounded-xl shadow-lg border border-sky-700 avoid-break mt-6">
+                <h4 class="font-bold text-xl mb-3">
+                    <span class="vi">Ứng Dụng Giá Trị Trực Tiếp Cho Nhà Máy Tại Nhật Bản</span>
+                    <span class="jp">日本の工場全体における莫大な実践的価値</span>
+                </h4>
+                <p class="text-sky-50 leading-relaxed text-sm">
+                    <span class="vi">Với số lượng lớn Vendor nội địa Nhật và Oversea, AI Secretary sẽ "lắng nghe" và
+                        dịch tự động các trao đổi phức tạp, sau đó soạn thảo ra Lệnh Mua Hàng (PR) hoặc Yêu cầu Đổi
+                        Thiết Kế (ECO). Tính năng này giải phóng hàng chục ngàn giờ hành chính và rào cản ngôn
+                        ngữ.</span>
+                    <span
+                        class="jp">日本のサプライヤーや海外のベンダーとのやり取りをAI秘書が直接「リスニング」し解析。その後、複雑な購買依頼書（PR）や設計変更通知（ECO）のドラフトを自動で作成します。これにより言語の障壁と入力作業が解消され、従業員の年間数万時間が解放されます。</span>
+                </p>
+                <div class="mt-4 pt-4 border-t border-sky-400/50 relative z-10 flex justify-end">
+                    <span
+                        class="inline-flex items-center text-sm font-semibold text-white bg-sky-800 px-4 py-2 rounded-lg shadow-inner">
+                        <span class="vi">👉 Mời xem thêm: Chi tiết Case Study Lumina Jewelers ở trang kế tiếp</span>
+                        <span class="jp">👉 次ページ：詳細事例 Lumina Jewelers をご覧ください</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 5B: LUMINA CASE STUDY -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6 flex items-center">
+                <span
+                    class="bg-indigo-100 text-indigo-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl tracking-tighter">04b</span>
+                <span class="vi">Case Study Thực Tế: Lumina Jewelers</span>
+                <span class="jp">実践的ケーススタディ: Lumina Jewelers</span>
+            </h2>
+
+            <div class="bg-slate-50 border-l-4 border-indigo-500 p-6 rounded-r-xl mb-8">
+                <h4 class="font-bold text-lg text-slate-800 mb-2">
+                    <span class="vi">Tóm Tắt Tổng Quan (Executive Summary)</span>
+                    <span class="jp">エグゼクティブサマリー</span>
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    <span class="vi">Lumina Jewelers (Mỹ) là nhà sản xuất trang sức tùy chỉnh với 35 nhân sự, doanh thu
+                        hơn 8 triệu USD. Trước Odoo, họ vật lộn với hệ thống phân mảnh (Magento, QuickBooks, sổ sách
+                        xuất/nhập kim loại...). Bằng cách triển khai Odoo ERP, Lumina đã hợp nhất Kho, Sản xuất, Bán
+                        hàng và Kế toán thành một nền tảng duy nhất chỉ trong 7 tháng.</span>
+                    <span class="jp">Lumina
+                        Jewelers（米国）は、従業員35名、売上高800万ドル以上の特注ジュエリー製造小売企業です。導入前はシステムが分断されており、在庫情報の不正確さに悩まされていました。Odoo
+                        ERPの導入により、わずか7ヶ月で在庫、製造、販売、会計を単一システムに統合しました。</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 avoid-break">
+                <div>
+                    <h4 class="text-indigo-700 font-bold mb-3 border-b-2 border-indigo-100 pb-2">
+                        <span class="vi">Thách Thức Hiện Tại (Pain Points)</span>
+                        <span class="jp">直面していた課題 (ペインポイント)</span>
+                    </h4>
+                    <ul class="space-y-3 text-slate-600 text-sm list-none pl-0 mt-3">
+                        <li class="flex items-start"><span class="text-rose-500 mr-2 font-bold">✖</span><span
+                                class="vi"><strong>Sai số Tồn kho Nguyên liệu:</strong> Tổn thất vàng, kim cương do theo
+                                dõi phân tán thủ công bằng tay.</span><span class="jp"><strong>在庫の不正確さ:</strong>
+                                手動シリアル追跡のため、金やダイヤの高価な原材料で在庫ズレが頻発。</span></li>
+                        <li class="flex items-start"><span class="text-rose-500 mr-2 font-bold">✖</span><span
+                                class="vi"><strong>Tắc Nghẽn Sản Xuất:</strong> Cấu hình sản phẩm quá phức tạp làm chậm
+                                luồng đơn hàng sản xuất tùy chỉnh (Custom order).</span><span
+                                class="jp"><strong>製造のボトルネック:</strong> 製品構成が複雑で、カスタムオーダーの製造に大規模な遅延が発生。</span></li>
+                        <li class="flex items-start"><span class="text-rose-500 mr-2 font-bold">✖</span><span
+                                class="vi"><strong>Rời rạc Dữ Liệu:</strong> Sales, Kỹ thuật và Kế toán (QuickBooks)
+                                hoạt động như những ốc đảo độc lập không thông suốt.</span><span
+                                class="jp"><strong>データの孤立:</strong> 販売、製造、会計（QuickBooks）がそれぞれ独立した“サイロ”として機能。</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-indigo-700 font-bold mb-3 border-b-2 border-indigo-100 pb-2">
+                        <span class="vi">Giải Pháp Phần Mềm Odoo Do Partner Quy Hoạch</span>
+                        <span class="jp">パートナーによるOdooソリューション</span>
+                    </h4>
+                    <ul class="space-y-3 text-slate-600 text-sm list-none pl-0 mt-3">
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2 font-bold">✔</span><span
+                                class="vi"><strong>Kho & Sản xuất (BOM Tracking):</strong> Cấu trúc BOM phân tầng chặt
+                                chẽ; Tính toán định mức "Tỷ lệ tinh chế thu hồi" (Refining yields).</span><span
+                                class="jp"><strong>倉庫・製造:</strong> 多階層BOMにより原材料の歩留まりや精錬ロスを精密に計算・追跡。</span></li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2 font-bold">✔</span><span
+                                class="vi"><strong>Hệ sinh thái CRM Bán hàng:</strong> Trang bị bộ tùy chỉnh sản phẩm;
+                                Tự động hóa cổng hoa hồng đại lý và hợp đồng ký gửi B2B.</span><span
+                                class="jp"><strong>販売・CRM:</strong> B2B委託ポータル及び営業担当者の販売手数料の完全自動計算を導入。</span></li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2 font-bold">✔</span><span
+                                class="vi"><strong>Kế toán Đồng bộ (Accounting):</strong> Tự động khớp lệnh chứng từ với
+                                tỉ lệ Match tỷ trọng ngân hàng hơn 95%+.</span><span class="jp"><strong>会計:</strong>
+                                95%以上の精度で請求書と支払勘定の自動照合（Reconciliation）を実現。</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-700 text-white rounded-2xl p-8 avoid-break shadow-xl mt-6">
+                <h4 class="text-sky-400 font-bold text-xl mb-6 text-center">
+                    <span class="vi">Kết Quả Đột Phá Bức Tranh Toàn Cảnh (Sau 7 Tháng)</span>
+                    <span class="jp">7ヶ月後の圧倒的なパフォーマンス成果</span>
+                </h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-3 bg-slate-800/50 rounded-lg">
+                        <div class="text-3xl font-extrabold text-sky-400 mb-1">+40%</div>
+                        <div class="text-xs text-slate-300 font-medium uppercase tracking-wider"><span class="vi">Tốc độ
+                                Khớp Đơn</span><span class="jp">注文処理スピード</span></div>
+                    </div>
+                    <div class="p-3 bg-slate-800/50 rounded-lg">
+                        <div class="text-3xl font-extrabold text-emerald-400 mb-1">-30%</div>
+                        <div class="text-xs text-slate-300 font-medium uppercase tracking-wider"><span class="vi">Chênh
+                                lệnh Tồn kho</span><span class="jp">在庫差異の減少</span></div>
+                    </div>
+                    <div class="p-3 bg-slate-800/50 rounded-lg">
+                        <div class="text-3xl font-extrabold text-emerald-400 mb-1">-50%</div>
+                        <div class="text-xs text-slate-300 font-medium uppercase tracking-wider"><span class="vi">Chi
+                                phí Vận hành</span><span class="jp">運用コストの削減</span></div>
+                    </div>
+                    <div class="p-3 bg-slate-800/50 rounded-lg">
+                        <div class="text-3xl font-extrabold text-sky-400 mb-1">+25%</div>
+                        <div class="text-xs text-slate-300 font-medium uppercase tracking-wider"><span class="vi">Phát
+                                giác Mức độ hao hụt</span><span class="jp">材料歩留まり追跡</span></div>
+                    </div>
+                </div>
+                <p class="text-slate-400 text-sm mt-8 italic border-l-2 border-sky-600 pl-4 py-1 leading-relaxed">
+                    <span class="vi">"Odoo đã biến thành duy nhất một Chân lý dữ liệu (Single source of truth) trong cấu
+                        trúc vận hành của chúng tôi. Giờ đây các Kỹ sư không còn vật lộn với bảng tính rải rác mà có đủ
+                        thời gian để tối ưu hoá chuyên môn cốt lõi!" <br><strong
+                            class="text-slate-300 inline-block mt-2">— COO, Lumina Jewelers</strong></span>
+                    <span class="jp">「Odooは我々の唯一の真実（Single source of
+                        truth）となりました。Excelとの格闘は終わり、最高のジュエリーを創り出すという本来のコア業務に集中できるようになりました。」<br><strong
+                            class="text-slate-300 inline-block mt-2">— Lumina Jewelers COO</strong></span>
+                </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 flex justify-between items-center">
+                <p class="text-xs text-slate-400 italic">
+                    <span class="vi">* Số liệu tham chiếu từ các triển khai Odoo trong ngành trang sức. Kết quả thực tế
+                        có thể khác nhau tùy theo quy mô.</span>
+                    <span class="jp">*この数字はジュエリー業界のOdoo実装事例からの参考値です。実際の結果は規模により異なります。</span>
+                </p>
+                <span class="inline-flex items-center text-xs font-semibold text-sky-600 ml-4">
+                    <span class="vi">→ Tiếp theo: Phân tích ROI (Trang 05)</span>
+                    <span class="jp">→ 次へ：ROI分析（ページ 05）</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- PAGE 6: ROI & CASE STUDIES -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <span
+                    class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">05</span>
+                <span class="vi">Phân Tích Hoàn Vốn (ROI)</span>
+                <span class="jp">投資利益率（ROI）分析モデル</span>
+            </h2>
+
+            <!-- ROI SIMULATION -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 mb-8 avoid-break shadow-sm">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 border-b pb-4">
+                    <span class="vi">Mô Phỏng ROI Cho Doanh Nghiệp (2,000 Staffs)</span>
+                    <span class="jp">ROIシミュレーション（人員規模2,000名）</span>
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white p-6 rounded-xl border border-rose-100">
+                        <h5 class="text-rose-600 font-bold mb-3 border-b border-rose-50 pb-2">
+                            <span class="vi">Chi phí lãng phí hiện hành</span>
+                            <span class="jp">導入前の無駄な見えないコスト</span>
+                        </h5>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start">
+                                <span class="text-rose-500 mr-2">✖</span>
+                                <span class="vi">Quỹ lương cho các nhân sự chỉ chuyên ngồi nhập tài liệu dư thừa.</span>
+                                <span class="jp">書類整理・データ入力業務だけを専門とするスタッフの膨大な人件費。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-rose-500 mr-2">✖</span>
+                                <span class="vi">Thâm hụt tồn kho không rõ lý do do đối soát giấy tờ lệch.</span>
+                                <span class="jp">紙での照合ズレによって原因不明の在庫損失が発生する。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-rose-500 mr-2">✖</span>
+                                <span class="vi">Hiệu suất thiết bị (OEE) thấp do không biết dây chuyền nào đang bị tắc
+                                    nghẽn theo thời gian thực.</span>
+                                <span class="jp">どのラインがボトルネックになっているかリアルタイムで把握できないため、設備総合効率（OEE）が低水準に止まる。</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-emerald-100">
+                        <h5 class="text-emerald-600 font-bold mb-3 border-b border-emerald-50 pb-2">
+                            <span class="vi">Lợi Ích Của Công Nghệ Odoo + Y-NetTech</span>
+                            <span class="jp">Odoo + Y-NetTech導入後のメリット</span>
+                        </h5>
+                        <ul class="space-y-3 text-slate-600 text-sm">
+                            <li class="flex items-start">
+                                <span class="text-emerald-500 mr-2">✔</span>
+                                <span class="vi">Điểu chuyển tối đa <strong>50%</strong> người nhập liệu sang lao động
+                                    sinh lời.</span>
+                                <span class="jp">入力スタッフを最大<strong>50%</strong>削減し、利益を生む直接生産等へ配置転換。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-emerald-500 mr-2">✔</span>
+                                <span class="vi">Lộ trình 100% không còn hàng tồn kho ảo, độ chính xác siêu cao.</span>
+                                <span class="jp">架空在庫が消失し、極めて高い材料精度（99%以上）を保証。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-sky-50 border border-sky-200 p-6 rounded-xl text-center shadow-inner">
+                    <p class="text-sm text-sky-700 font-bold uppercase tracking-widest mb-2">
+                        <span class="vi">DỰ KIẾN KHOẢNG THỜI GIAN HOÀN VỐN (Breakeven)</span>
+                        <span class="jp">推定投資回収期間（ブレークイーブンポイント）</span>
+                    </p>
+                    <div class="text-4xl font-extrabold text-sky-600">
+                        <span class="vi">Chỉ Từ 9 Đến 14 Tháng</span>
+                        <span class="jp">わずか 9〜14 ヶ月</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 font-medium">
+                        <span class="vi">*Giảm quỹ lương + giảm hàng thiếu hụt bù đắp hoàn toàn chi phí phần cứng/mềm
+                            ban đầu.</span>
+                        <span class="jp">*給与削減＋在庫損失の削減分が、初期ハードウェア・ソフトウェア投資を完全に相殺します。</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center avoid-break">
+                <!-- Authentic ROI Break-even Simulation -->
+                <img id="roi-image" src="roi_chart.png" alt="ROI Break-even chart"
+                    class="mx-auto rounded-xl border border-slate-200 shadow-md">
+                <p class="text-xs mt-3 text-slate-500 italic bg-white inline-block px-3 py-1 rounded">
+                    <span class="vi">Mô phỏng điểm hoàn vốn theo chi phí cơ hội thực tế.</span>
+                    <span class="jp">実際の機会費用と人件費に基づいたブレークイーブンポイントのシミュレーション図。</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- PAGE 6A: WORKFORCE & PROCESS BENEFITS -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4 flex items-center">
+                <span
+                    class="bg-emerald-100 text-emerald-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">06</span>
+                <span class="vi">Tác Động Nhân Sự & Lợi Ích Cụ Thể Từng Quy Trình</span>
+                <span class="jp">人員インパクト & 各プロセスの具体的なメリット</span>
+            </h2>
+            <p class="text-slate-500 text-sm mb-8 italic">
+                <span class="vi">* Ước tính cho nhà máy ~500 nhân sự gián tiếp. Số liệu chính xác sẽ được xác định sau
+                    Gap Analysis thực tế.</span>
+                <span class="jp">* 間接部門500名規模の工場を前提としたシミュレーション。正確な数値はGap Analysis後に確定します。</span>
+            </p>
+
+            <!-- Workforce Table -->
+            <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm mb-10 avoid-break">
+                <div class="grid text-center divide-x divide-slate-200 border-b border-slate-200 bg-slate-100 font-bold text-sm uppercase tracking-wider text-slate-700"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 text-left pl-4"><span class="vi">Quy Trình</span><span class="jp">プロセス</span></div>
+                    <div class="p-3 bg-rose-50 text-rose-700"><span class="vi">Thủ Công</span><span
+                            class="jp">手作業</span></div>
+                    <div class="p-3 bg-emerald-50 text-emerald-700"><span class="vi">Với Odoo</span><span
+                            class="jp">Odoo導入後</span></div>
+                    <div class="p-3 bg-sky-50 text-sky-700"><span class="vi">Giảm %</span><span class="jp">削減率</span>
+                    </div>
+                    <div class="p-3 text-left"><span class="vi">Nội dung được tự động hoá</span><span
+                            class="jp">自動化される業務内容</span></div>
+                </div>
+                <!-- Row Purchase -->
+                <div class="grid text-sm divide-x divide-y divide-slate-100 bg-white items-center"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 pl-4 font-bold text-slate-800 flex items-center gap-2"><span
+                            class="w-2 h-2 bg-orange-400 rounded-full inline-block"></span><span class="vi">Purchase
+                            (Mua hàng)</span><span class="jp">購買管理</span></div>
+                    <div class="p-3 text-center text-rose-600 font-bold">8–12</div>
+                    <div class="p-3 text-center text-emerald-600 font-bold">2–3</div>
+                    <div class="p-3 text-center font-extrabold text-sky-600">~70%</div>
+                    <div class="p-3 text-xs text-slate-600"><span class="vi">Tạo PO tự động từ ngưỡng tồn kho, gửi email
+                            NCC tự động</span><span class="jp">在庫しきい値から自動PO作成、サプライヤーへの自動メール送信</span></div>
+                </div>
+                <!-- Row Inventory -->
+                <div class="grid text-sm divide-x divide-y divide-slate-100 bg-slate-50/30 items-center"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 pl-4 font-bold text-slate-800 flex items-center gap-2"><span
+                            class="w-2 h-2 bg-blue-400 rounded-full inline-block"></span><span class="vi">Inventory
+                            (Nhập kho)</span><span class="jp">倉庫・在庫管理</span></div>
+                    <div class="p-3 text-center text-rose-600 font-bold">10–15</div>
+                    <div class="p-3 text-center text-emerald-600 font-bold">3–4</div>
+                    <div class="p-3 text-center font-extrabold text-sky-600">~75%</div>
+                    <div class="p-3 text-xs text-slate-600"><span class="vi">Barcode/RFID scan tự động cập nhật tồn kho
+                            real-time, xoá sổ kho giấy</span><span class="jp">バーコード/RFIDスキャンでリアルタイム在庫更新、紙帳票を完全廃止</span>
+                    </div>
+                </div>
+                <!-- Row Manufacturing -->
+                <div class="grid text-sm divide-x divide-y divide-slate-100 bg-white items-center"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 pl-4 font-bold text-sky-700 flex items-center gap-2"><span
+                            class="w-2 h-2 bg-sky-500 rounded-full inline-block"></span><span class="vi">Manufacturing
+                            (Sản xuất)</span><span class="jp">製造実行 (MES)</span></div>
+                    <div class="p-3 text-center text-rose-600 font-bold">15–25</div>
+                    <div class="p-3 text-center text-emerald-600 font-bold">4–6</div>
+                    <div class="p-3 text-center font-extrabold text-sky-600">~80%</div>
+                    <div class="p-3 text-xs text-slate-600"><span class="vi">Shop Floor tablet + Sensor/PLC Y-NetTech
+                            đẩy dữ liệu tự động, 0% ghi sổ</span><span class="jp">Shop Floorタブレット +
+                            Y-NetTechセンサー/PLCによる自動データ入力</span></div>
+                </div>
+                <!-- Row Quality -->
+                <div class="grid text-sm divide-x divide-y divide-slate-100 bg-slate-50/30 items-center"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 pl-4 font-bold text-slate-800 flex items-center gap-2"><span
+                            class="w-2 h-2 bg-violet-400 rounded-full inline-block"></span><span class="vi">Quality
+                            (Kiểm tra CL)</span><span class="jp">品質管理 (QC)</span></div>
+                    <div class="p-3 text-center text-rose-600 font-bold">5–8</div>
+                    <div class="p-3 text-center text-emerald-600 font-bold">2–3</div>
+                    <div class="p-3 text-center font-extrabold text-sky-600">~65%</div>
+                    <div class="p-3 text-xs text-slate-600"><span class="vi">Tablet nhập kết quả QC trực tiếp, fail tự
+                            tạo NCR & block lot</span><span class="jp">タブレットでQC結果を直接入力、不合格時は自動でNCR作成・ロットブロック</span>
+                    </div>
+                </div>
+                <!-- Row Delivery -->
+                <div class="grid text-sm divide-x divide-y divide-slate-100 bg-white items-center"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 pl-4 font-bold text-slate-800 flex items-center gap-2"><span
+                            class="w-2 h-2 bg-teal-400 rounded-full inline-block"></span><span class="vi">Delivery (Xuất
+                            hàng)</span><span class="jp">出荷・配送管理</span></div>
+                    <div class="p-3 text-center text-rose-600 font-bold">6–10</div>
+                    <div class="p-3 text-center text-emerald-600 font-bold">2–3</div>
+                    <div class="p-3 text-center font-extrabold text-sky-600">~70%</div>
+                    <div class="p-3 text-xs text-slate-600"><span class="vi">One-click tạo phiếu xuất + Packing List +
+                            Invoice liên thông kế toán</span><span class="jp">ワンクリックで出荷指示・梱包リスト・請求書を自動生成し会計と連携</span>
+                    </div>
+                </div>
+                <!-- Row Report -->
+                <div class="grid text-sm divide-x divide-y divide-slate-100 bg-slate-50/30 items-center"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 pl-4 font-bold text-slate-800 flex items-center gap-2"><span
+                            class="w-2 h-2 bg-slate-500 rounded-full inline-block"></span><span class="vi">Báo cáo
+                            BGĐ</span><span class="jp">経営幹部レポート</span></div>
+                    <div class="p-3 text-center text-rose-600 font-bold">8–10</div>
+                    <div class="p-3 text-center text-emerald-600 font-bold">0–1</div>
+                    <div class="p-3 text-center font-extrabold text-sky-600">~95%</div>
+                    <div class="p-3 text-xs text-slate-600"><span class="vi">Dashboard tự động real-time, BGĐ xem ngay
+                            không cần chờ báo cáo</span><span class="jp">リアルタイム自動ダッシュボード、経営陣はいつでも即時確認可能</span></div>
+                </div>
+                <!-- Summary Row -->
+                <div class="grid text-sm divide-x bg-slate-900 text-white items-center"
+                    style="grid-template-columns: 2fr 1fr 1fr 1fr 2fr;">
+                    <div class="p-3 pl-4 font-extrabold"><span class="vi">TỔNG CỘNG</span><span class="jp">合計</span>
+                    </div>
+                    <div class="p-3 text-center font-bold text-rose-300">~52–80</div>
+                    <div class="p-3 text-center font-bold text-emerald-300">~13–20</div>
+                    <div class="p-3 text-center font-extrabold text-sky-300 text-base">✅ ~70%</div>
+                    <div class="p-3 text-xs text-slate-300 italic"><span class="vi">Điều chuyển sang vai trò tạo giá trị
+                            cao hơn (R&D, QC chuyên sâu, phát triển KH)</span><span
+                            class="jp">より高付加価値な役割（R&D・高度QC・顧客開発）へ配置転換</span></div>
+                </div>
+            </div>
+
+            <!-- Process Benefits Grid -->
+            <h3 class="text-xl font-bold text-slate-800 mb-5 border-l-4 border-emerald-500 pl-4 avoid-break">
+                <span class="vi">Lợi Ích Đồng Bộ Hoá Dữ Liệu — 5 Quy Trình Thực Tế</span>
+                <span class="jp">データ同期の具体的メリット — 5つのプロセス詳細</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-3 avoid-break">
+                <!-- Purchase -->
+                <div class="bg-orange-50 border border-orange-100 rounded-xl p-4">
+                    <div class="font-bold text-orange-700 mb-2 text-sm flex items-center gap-1">🛒 <span
+                            class="vi">Purchase</span><span class="jp">購買</span></div>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Tự biết cần mua gì qua Reordering Rules — không cần hỏi thủ kho</span><span
+                                class="jp">補充ルールで自動発注判断、倉庫担当に聞く必要なし</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">MRP tính ngược BOM → mua đúng loại, đúng số lượng, đúng thời điểm</span><span
+                                class="jp">MRPがBOMから逆計算し適切な品目・数量・タイミングで発注</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">So sánh báo giá nhiều NCC ngay trên hệ thống</span><span
+                                class="jp">複数サプライヤーの見積もりをシステム上で直接比較</span></li>
+                    </ul>
+                </div>
+                <!-- Inventory -->
+                <div class="bg-blue-50 border border-blue-100 rounded-xl p-4">
+                    <div class="font-bold text-blue-700 mb-2 text-sm flex items-center gap-1">📦 <span
+                            class="vi">Inventory</span><span class="jp">倉庫</span></div>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Phòng SX thấy ngay "kho có hàng chưa" — không cần gọi điện</span><span
+                                class="jp">製造部門はリアルタイムで在庫状況を確認、電話不要</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Reserve tự động NVL theo lệnh SX — không bị lộn với lệnh khác</span><span
+                                class="jp">製造指示ごとに原材料を自動引当、他の指示との混同なし</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">3-way Matching: PO vs Delivery vs Invoice tự động đối chiếu</span><span
+                                class="jp">発注書・納品書・請求書の3方向自動照合</span></li>
+                    </ul>
+                </div>
+                <!-- Manufacturing -->
+                <div class="bg-sky-50 border border-sky-200 rounded-xl p-4">
+                    <div class="font-bold text-sky-700 mb-2 text-sm flex items-center gap-1">⚙️ <span
+                            class="vi">Manufacturing</span><span class="jp">製造</span></div>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Lịch SX tự tối ưu trên Gantt Chart — không họp lập kế hoạch mỗi
+                                sáng</span><span class="jp">ガントチャートで自動スケジュール最適化、毎朝の計画会議不要</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">OEE real-time: thấy ngay máy nào đang chạy/dừng và lý do</span><span
+                                class="jp">OEEリアルタイム：どの機械が稼働中/停止中か、理由も即時把握</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Sensor Y-NetTech đếm sản lượng tự động — 0% ghi chép thủ công</span><span
+                                class="jp">Y-NetTechセンサーが生産数を自動カウント、手書き記録ゼロ</span></li>
+                    </ul>
+                </div>
+                <!-- Quality -->
+                <div class="bg-violet-50 border border-violet-100 rounded-xl p-4">
+                    <div class="font-bold text-violet-700 mb-2 text-sm flex items-center gap-1">🔬 <span
+                            class="vi">Quality</span><span class="jp">品質</span></div>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Control Points tự tạo tại các bước quan trọng của sản xuất</span><span
+                                class="jp">製造の重要工程に自動でQCチェックポイントを設定</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Fail → NCR + block lô + alert quản lý ngay lập tức</span><span
+                                class="jp">不合格→即座にNCR作成・ロットブロック・管理者アラート</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Trace ngay lô NVL gây lỗi — rà soát toàn bộ sản phẩm liên quan</span><span
+                                class="jp">欠陥原材料ロットを即時追跡、関連製品を全数確認</span></li>
+                    </ul>
+                </div>
+                <!-- Delivery -->
+                <div class="bg-teal-50 border border-teal-100 rounded-xl p-4">
+                    <div class="font-bold text-teal-700 mb-2 text-sm flex items-center gap-1">🚚 <span
+                            class="vi">Delivery</span><span class="jp">出荷</span></div>
+                    <ul class="text-xs text-slate-600 space-y-2">
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">1 người thay cho 3 người — xuất kho + packing list + invoice cùng
+                                lúc</span><span class="jp">1人で3人分の作業を実現：出庫・梱包・請求書を同時処理</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Tồn kho cập nhật ngay khi xác nhận xuất — không có độ trễ</span><span
+                                class="jp">出荷確認と同時に在庫が更新、タイムラグなし</span></li>
+                        <li class="flex items-start gap-1"><span class="text-emerald-500 font-bold">✔</span><span
+                                class="vi">Customer Portal: KH theo dõi trạng thái đơn hàng trực tiếp</span><span
+                                class="jp">顧客ポータルで注文ステータスをリアルタイム確認</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE 6B: PRICING & MANUFACTURING FLOW -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <span
+                    class="bg-amber-100 text-amber-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">07</span>
+                <span class="vi">Cấu Trúc Đầu Tư & Luồng Sản Xuất Chi Tiết Trong Odoo</span>
+                <span class="jp">投資構造 & Odooにおける製造フロー詳細</span>
+            </h2>
+
+            <!-- Pricing Section -->
+            <h3 class="text-xl font-bold text-slate-800 mb-5 border-l-4 border-amber-500 pl-4">
+                <span class="vi">Cấu Trúc Giá 3 Tầng (Basic → Standard → Advanced)</span>
+                <span class="jp">3段階の投資モデル（Basic → Standard → Advanced）</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-4 avoid-break">
+                <!-- Basic -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
+                    <div class="text-center mb-4">
+                        <span
+                            class="inline-block bg-slate-200 text-slate-700 text-xs font-bold uppercase px-3 py-1 rounded-full mb-2"><span
+                                class="vi">Gói Cơ Bản</span><span class="jp">ベーシック</span></span>
+                        <div class="text-3xl font-extrabold text-slate-800 mt-1">150–300<span
+                                class="text-base font-normal text-slate-500"> <span class="vi">triệu VND</span><span
+                                    class="jp">百万VND</span></span></div>
+                        <p class="text-xs text-slate-400 mt-1"><span class="vi">One-time · Triển khai 2–3
+                                tháng</span><span class="jp">初期費用のみ · 導入期間2〜3ヶ月</span></p>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Cấu hình module theo workflow hiện có</span><span
+                                class="jp">既存ワークフローに合わせたモジュール設定</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Không custom code, deploy nhanh</span><span
+                                class="jp">カスタムコードなし、迅速なデプロイ</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Training cơ bản cho người dùng</span><span
+                                class="jp">エンドユーザー向け基礎トレーニング</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Purchase + Inventory + Manufacturing core</span><span
+                                class="jp">購買・在庫・製造コアモジュール</span></li>
+                    </ul>
+                    <div class="mt-4 bg-slate-100 rounded-lg p-3 text-center">
+                        <p class="text-xs text-slate-500"><span class="vi">+ ~5 triệu VND/tháng (Odoo
+                                License)</span><span class="jp">+ 月額約500万VND（Odooライセンス）</span></p>
+                    </div>
+                </div>
+                <!-- Standard+ -->
+                <div class="bg-sky-50 border-2 border-sky-300 rounded-2xl p-6 shadow-md relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        <span class="vi">ĐỀ XUẤT</span><span class="jp">推奨</span></div>
+                    <div class="text-center mb-4">
+                        <span
+                            class="inline-block bg-sky-200 text-sky-800 text-xs font-bold uppercase px-3 py-1 rounded-full mb-2"><span
+                                class="vi">Gói Chuẩn+</span><span class="jp">スタンダード+</span></span>
+                        <div class="text-3xl font-extrabold text-sky-700 mt-1">300–500<span
+                                class="text-base font-normal text-sky-500"> <span class="vi">triệu VND</span><span
+                                    class="jp">百万VND</span></span></div>
+                        <p class="text-xs text-sky-400 mt-1"><span class="vi">One-time · Triển khai 3–4
+                                tháng</span><span class="jp">初期費用のみ · 導入期間3〜4ヶ月</span></p>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Tất cả tính năng Basic</span><span class="jp">Basicの全機能を含む</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Tích hợp Barcode/RFID scanner</span><span class="jp">バーコード/RFIDスキャナー統合</span>
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Migrate data từ hệ thống cũ (Excel/ERP cũ)</span><span
+                                class="jp">旧システム（Excel/旧ERP）からのデータ移行</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Quality module + Approval flow tùy chỉnh</span><span
+                                class="jp">品質モジュール＋カスタム承認フロー</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Báo cáo & Dashboard cơ bản cho BGĐ</span><span
+                                class="jp">経営幹部向け基本レポート＆ダッシュボード</span></li>
+                    </ul>
+                </div>
+                <!-- Advanced -->
+                <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-6 shadow-sm">
+                    <div class="text-center mb-4">
+                        <span
+                            class="inline-block bg-indigo-200 text-indigo-800 text-xs font-bold uppercase px-3 py-1 rounded-full mb-2"><span
+                                class="vi">Gói Nâng Cao</span><span class="jp">アドバンスト</span></span>
+                        <div class="text-3xl font-extrabold text-indigo-700 mt-1">500tr–1.2tỷ<span
+                                class="text-base font-normal text-indigo-500"> <span class="vi">VND</span><span
+                                    class="jp">VND</span></span></div>
+                        <p class="text-xs text-indigo-400 mt-1"><span class="vi">One-time · Triển khai 4–6
+                                tháng</span><span class="jp">初期費用のみ · 導入期間4〜6ヶ月</span></p>
+                    </div>
+                    <ul class="text-sm text-slate-600 space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Tất cả tính năng Standard+</span><span class="jp">Standard+の全機能を含む</span>
+                        </li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Tích hợp Sensor/PLC Y-NetTech (IoT Box)</span><span class="jp">Y-NetTech
+                                センサー/PLC統合（IoT Box）</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Custom OEE Dashboard cho BGĐ real-time</span><span
+                                class="jp">経営幹部向けカスタムOEEリアルタイムダッシュボード</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">AI Meeting Secretary tự động tạo PO</span><span
+                                class="jp">AI秘書による購買依頼書の自動生成</span></li>
+                        <li class="flex items-start gap-2"><span class="text-emerald-500 mt-0.5">✔</span><span
+                                class="vi">Tích hợp hệ thống cũ không API (DB/File sync)</span><span
+                                class="jp">非API旧システム統合（DBダイレクト/ファイル同期）</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Custom add-on % -->
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 avoid-break">
+                <p class="text-sm font-bold text-amber-800 mb-2">💡 <span class="vi">Custom Add-on — Tính thêm % trên
+                        gói Standard+:</span><span class="jp">カスタム追加オプション — Standard+に対する追加割合：</span></p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs text-slate-700">
+                    <div class="bg-white rounded-lg px-3 py-2 border border-amber-100 flex justify-between"><span
+                            class="vi">Tích hợp PLC/Sensor Y-NetTech</span><span class="jp">PLC/センサー統合</span><span
+                            class="font-bold text-amber-700">+20–30%</span></div>
+                    <div class="bg-white rounded-lg px-3 py-2 border border-amber-100 flex justify-between"><span
+                            class="vi">Custom OEE Dashboard BGĐ</span><span class="jp">OEEダッシュボード</span><span
+                            class="font-bold text-amber-700">+10–15%</span></div>
+                    <div class="bg-white rounded-lg px-3 py-2 border border-amber-100 flex justify-between"><span
+                            class="vi">Tích hợp hệ thống cũ (no API)</span><span class="jp">非API旧システム統合</span><span
+                            class="font-bold text-amber-700">+15–25%</span></div>
+                    <div class="bg-white rounded-lg px-3 py-2 border border-amber-100 flex justify-between"><span
+                            class="vi">AI Meeting Secretary</span><span class="jp">AI秘書機能</span><span
+                            class="font-bold text-amber-700">+20–30%</span></div>
+                    <div class="bg-white rounded-lg px-3 py-2 border border-amber-100 flex justify-between"><span
+                            class="vi">Giao diện đa ngôn ngữ (JP/EN/VI)</span><span class="jp">多言語UI（日/英/越）</span><span
+                            class="font-bold text-amber-700">+5–10%</span></div>
+                    <div class="bg-white rounded-lg px-3 py-2 border border-amber-100 flex justify-between"><span
+                            class="vi">Custom Mobile App công nhân</span><span class="jp">作業員向けモバイルアプリ</span><span
+                            class="font-bold text-amber-700">+25–40%</span></div>
+                </div>
+            </div>
+
+            <!-- Manufacturing Flow -->
+            <h3 class="text-xl font-bold text-slate-800 mb-5 border-l-4 border-sky-500 pl-4 avoid-break">
+                <span class="vi">Luồng Sản Xuất Chi Tiết Trong Odoo: Đơn Hàng → Giao Hàng</span>
+                <span class="jp">Odooにおける製造フロー詳細：受注から出荷まで</span>
+            </h3>
+            <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm avoid-break">
+                <div class="flex flex-col md:flex-row gap-2 items-stretch justify-between text-xs text-center">
+                    <!-- Step 1 -->
+                    <div
+                        class="flex-1 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col items-center justify-start">
+                        <div
+                            class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold text-sm mb-2">
+                            1</div>
+                        <div class="font-bold text-slate-700 mb-1"><span class="vi">Sales Order</span><span
+                                class="jp">受注</span></div>
+                        <p class="text-slate-500"><span class="vi">KH gửi đơn → SO tạo trên Odoo ngay lập
+                                tức</span><span class="jp">顧客発注→Odooに即座にSO作成</span></p>
+                    </div>
+                    <div class="hidden md:flex items-center text-sky-400 font-bold text-lg">→</div>
+                    <!-- Step 2 -->
+                    <div
+                        class="flex-1 bg-sky-50 border border-sky-200 rounded-xl p-3 flex flex-col items-center justify-start">
+                        <div
+                            class="w-8 h-8 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-2">
+                            2</div>
+                        <div class="font-bold text-sky-700 mb-1"><span class="vi">MRP Planning</span><span
+                                class="jp">生産計画</span></div>
+                        <p class="text-slate-500"><span class="vi">Odoo tự tính BOM → lập MO + PO NVL thiếu + xếp lịch
+                                Gantt</span><span class="jp">BOM逆算→製造指示/不足材料の発注/ガントスケジュール自動生成</span></p>
+                    </div>
+                    <div class="hidden md:flex items-center text-sky-400 font-bold text-lg">→</div>
+                    <!-- Step 3 -->
+                    <div
+                        class="flex-1 bg-sky-100 border-2 border-sky-400 rounded-xl p-3 flex flex-col items-center justify-start shadow">
+                        <div
+                            class="w-8 h-8 bg-sky-700 text-white rounded-full flex items-center justify-center font-bold text-sm mb-2">
+                            3</div>
+                        <div class="font-bold text-sky-800 mb-1"><span class="vi">Shop Floor</span><span
+                                class="jp">製造現場</span></div>
+                        <p class="text-slate-600"><span class="vi">Tablet tại xưởng: công nhân bấm Start/Done, Sensor
+                                Y-NetTech đếm tự động</span><span
+                                class="jp">現場タブレット：作業員がStart/Done操作、Y-NetTechセンサーが自動カウント</span></p>
+                    </div>
+                    <div class="hidden md:flex items-center text-sky-400 font-bold text-lg">→</div>
+                    <!-- Step 4 -->
+                    <div
+                        class="flex-1 bg-violet-50 border border-violet-200 rounded-xl p-3 flex flex-col items-center justify-start">
+                        <div
+                            class="w-8 h-8 bg-violet-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-2">
+                            4</div>
+                        <div class="font-bold text-violet-700 mb-1"><span class="vi">QC Check</span><span
+                                class="jp">品質検査</span></div>
+                        <p class="text-slate-500"><span class="vi">Pass → kho thành phẩm. Fail → NCR tự động + block lô
+                                + alert</span><span class="jp">合格→完成品倉庫。不合格→自動NCR・ロットブロック・アラート</span></p>
+                    </div>
+                    <div class="hidden md:flex items-center text-sky-400 font-bold text-lg">→</div>
+                    <!-- Step 5 -->
+                    <div
+                        class="flex-1 bg-teal-50 border border-teal-200 rounded-xl p-3 flex flex-col items-center justify-start">
+                        <div
+                            class="w-8 h-8 bg-teal-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-2">
+                            5</div>
+                        <div class="font-bold text-teal-700 mb-1"><span class="vi">Delivery</span><span
+                                class="jp">出荷</span></div>
+                        <p class="text-slate-500"><span class="vi">One-click: Phiếu xuất + Packing List + Invoice liên
+                                thông kế toán</span><span class="jp">ワンクリック：出荷伝票・梱包リスト・請求書を自動生成し会計に連携</span></p>
+                    </div>
+                </div>
+
+                <!-- Time savings comparison -->
+                <div class="mt-6 border-t border-slate-100 pt-5">
+                    <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3"><span class="vi">So sánh
+                            thời gian xử lý</span><span class="jp">処理時間の比較</span></p>
+                    <div class="grid grid-cols-4 gap-2 text-xs text-center">
+                        <div class="bg-slate-50 rounded-lg p-2">
+                            <div class="text-rose-500 line-through font-bold">1–2 <span class="vi">ngày</span><span
+                                    class="jp">日</span></div>
+                            <div class="text-emerald-600 font-extrabold">→ &lt;5 <span class="vi">phút</span><span
+                                    class="jp">分</span></div>
+                            <div class="text-slate-400 mt-1"><span class="vi">Nhận đơn → tạo MO</span><span
+                                    class="jp">受注→製造指示</span></div>
+                        </div>
+                        <div class="bg-slate-50 rounded-lg p-2">
+                            <div class="text-rose-500 line-through font-bold">1–3 <span class="vi">ngày</span><span
+                                    class="jp">日</span></div>
+                            <div class="text-emerald-600 font-extrabold">→ &lt;30 <span class="vi">phút</span><span
+                                    class="jp">分</span></div>
+                            <div class="text-slate-400 mt-1"><span class="vi">Lên kế hoạch NVL</span><span
+                                    class="jp">MRPによる資材計画</span></div>
+                        </div>
+                        <div class="bg-slate-50 rounded-lg p-2">
+                            <div class="text-rose-500 line-through font-bold"><span class="vi">Họp cuối ngày</span><span
+                                    class="jp">日次会議</span></div>
+                            <div class="text-emerald-600 font-extrabold"><span class="vi">Real-time 24/7</span><span
+                                    class="jp">24時間リアルタイム</span></div>
+                            <div class="text-slate-400 mt-1"><span class="vi">Theo dõi tiến độ SX</span><span
+                                    class="jp">製造進捗管理</span></div>
+                        </div>
+                        <div class="bg-slate-50 rounded-lg p-2">
+                            <div class="text-rose-500 line-through font-bold">2–4 <span class="vi">giờ</span><span
+                                    class="jp">時間</span></div>
+                            <div class="text-emerald-600 font-extrabold">→ &lt;30 <span class="vi">phút</span><span
+                                    class="jp">分</span></div>
+                            <div class="text-slate-400 mt-1"><span class="vi">Xuất kho + invoicing</span><span
+                                    class="jp">出荷・請求処理</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE 7: ROADMAP & CLOSING -->
+        <div class="page bg-white">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center">
+                <span
+                    class="bg-sky-100 text-sky-700 w-10 h-10 rounded-lg flex items-center justify-center mr-4 text-xl">06</span>
+                <span class="vi">Lộ Trình Tích Hợp Rủi Ro Bằng Zero</span>
+                <span class="jp">ゼロリスクのシステム導入ロードマップ</span>
+            </h2>
+
+            <p class="text-slate-600 mb-10 max-w-3xl">
+                <span class="vi">Triết lý tích hợp hệ thống: <strong>"Think Big, Start Small"</strong>. Không bao giờ
+                    làm ngưng trệ nhà máy.</span>
+                <span class="jp">私たちのシステム導入哲学は<strong>「Think Big, Start
+                        Small（大きく構想し、小さく始める）」</strong>です。工場の稼働を急停止させることは決してありません。</span>
+            </p>
+
+            <div class="relative max-w-2xl ml-4 mb-16 avoid-break">
+                <!-- Items -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 class="font-bold text-lg text-slate-800">
+                        <span class="vi">Giai Đoạn 1: Pilot Kỹ Thuật (Proof of Concept)</span>
+                        <span class="jp">フェーズ 1: 技術検証とパイロット運用（POC）</span>
+                    </h4>
+                    <p class="text-sm text-slate-600 mb-2 mt-1">
+                        <span class="vi">Thực hiện khởi động dự án bằng <strong>Phân tích khoảng cách (Gap
+                                Analysis)</strong>. Sau đó triển khai thử nghiệm cục bộ tại một dây chuyền cốt lõi để
+                            đánh giá tính chính xác của dữ liệu, đảm bảo duy trì hoạt động kinh doanh liên tục trong
+                            suốt quá trình chuyển đổi.</span>
+                        <span class="jp">プロジェクトは<strong>ギャップ分析 (Gap Analysis)</strong>
+                            の実施から始まります。その後、コア生産ライン1か所で実証実験を行い、システム移行期間中も企業の継続的稼働を100%維持しながらデータ精度を検証します。</span>
+                    </p>
+                    <span class="inline-block bg-sky-100 text-sky-700 font-bold text-xs px-2 py-1 rounded">Month 1 -
+                        2</span>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h4 class="font-bold text-lg text-slate-800">
+                        <span class="vi">Giai Đoạn 2: Chuyển Đổi Từng Phần (Phased Migration)</span>
+                        <span class="jp">フェーズ 2: 段階的システム移行 (Phased Migration)</span>
+                    </h4>
+                    <p class="text-sm text-slate-600 mb-3 mt-1">
+                        <span class="vi">Tích hợp Odoo theo từng bộ phận cốt lõi một cách cuốn chiếu (ví dụ: Phân hệ Kho
+                            & Sản xuất trước, Kế toán & Bán hàng sau). Phương pháp chia nhỏ hệ thống thành từng Module
+                            này giúp nhân sự dễ dàng hấp thụ công nghệ mới, đồng thời triệt tiêu hoàn toàn rủi ro ảnh
+                            hưởng đến guồng máy hiện tại.</span>
+                        <span
+                            class="jp">工場全体を一度に置き換えるのではなく、指定された機能単位でOdooを段階的に統合します（例：倉庫・製造モジュールを先行稼働させ、後に会計・販売へ拡大）。プロセスを細分化することで、従業員の適応期間を確保し、システム稼働におけるリスクを100%排除します。</span>
+                    </p>
+                    <span class="inline-block bg-sky-100 text-sky-700 font-bold text-xs px-2 py-1 rounded">Month 3 -
+                        6</span>
+                </div>
+
+                <div class="timeline-item border-l-transparent pb-0">
+                    <div class="timeline-dot"></div>
+                    <h4 class="font-bold text-lg text-slate-800">
+                        <span class="vi">Giai Đoạn 3: Roll-out Toàn Bộ Quy Mô</span>
+                        <span class="jp">フェーズ 3: メイン工場への全面展開（スケール）</span>
+                    </h4>
+                    <p class="text-sm text-slate-600 mb-2 mt-1">
+                        <span class="vi">Gắn thiết bị và scale lên 2000 nhân sự khi dữ liệu POC đã trơn tru hoàn
+                            hảo.</span>
+                        <span class="jp">フェーズ1のデータ移行が完璧に動作することが証明された後、2,000人規模の工場全体へ残りの機能を安全に展開します。</span>
+                    </p>
+                    <span class="inline-block bg-sky-100 text-sky-700 font-bold text-xs px-2 py-1 rounded">Month
+                        7+</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-8 text-center border border-slate-200 mt-20 avoid-break shadow-sm">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">
+                    <span class="vi">Trân Trọng Đề Xuất</span>
+                    <span class="jp">ご提案にかかる御礼</span>
+                </h3>
+                <p class="text-slate-600 mb-8 max-w-xl mx-auto font-medium">
+                    <span class="vi">Sự kết hợp giữa Nền tảng Tự động hóa Y-NetTech và Cỗ máy Dữ liệu Odoo DanaExperts
+                        là câu trả lời toàn diện nhất cho nhà máy của Quý khách.</span>
+                    <span
+                        class="jp">Y-NetTechの強力なハードウェアプロセス自動化プラットフォームと、DanaExpertsによるソフトウェアERPの融合こそが、貴社工場の革新への最も包括的な答えであると確信しています。</span>
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-700 font-bold">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-sky-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                            </path>
+                        </svg>
+                        www.danaexperts.com
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-sky-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        contact@danaexperts.com
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
